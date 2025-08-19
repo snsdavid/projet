@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+
+.oreade-header {
+  background-color: #f2f5f5;
+  font-family: 'Julius Sans One', sans-serif;
+  border-bottom: 2px solid #c3e6e6;
+  padding: 1rem 0;
+  position: relative;
+  margin-bottom: 30px; /* Espace pour la courbe */
+  clip-path: ellipse(110% 100% at 50% 0%);
+
+}
+
+/* Courbe incurvée en bas du header
+.oreade-header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: #5a7272;
+  z-index: 1;
+  margin-bottom: 80px;
+bottom: -80px;
+height: 150px;
+clip-path: ellipse(110% 100% at 50% 0%);
+} */
+
+.oreade-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.logo img {
+  height: 300px;
+}
+
+.menu-list {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+}
+
+.menu-list a {
+  text-decoration: none;
+  color: rgb(30, 51, 78);
+  font-size: 22px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.menu-list a:hover {
+  color: #0d6efd;
+}
+
+/* Style responsive */
+@media (max-width: 768px) {
+  .oreade-nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .oreade-header {
+    margin-bottom: 20px; /* Moins d'espace sur mobile */
+  }
+  
+  .oreade-header::after {
+    bottom: -20px;
+    height: 20px;
+  }
+}
