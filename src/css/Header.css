@@ -8,7 +8,6 @@
   position: relative;
   margin-bottom: 30px; /* Espace pour la courbe */
   clip-path: ellipse(110% 100% at 50% 0%);
-
 }
 
 /* Courbe incurvée en bas du header
@@ -57,6 +56,34 @@ clip-path: ellipse(110% 100% at 50% 0%);
 }
 
 /* Style responsive */
+@media (max-width: 1200px) {
+  .logo img {
+    height: 250px;
+  }
+  
+  .menu-list a {
+    font-size: 20px;
+  }
+  
+  .menu-list {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .logo img {
+    height: 200px;
+  }
+  
+  .menu-list a {
+    font-size: 18px;
+  }
+  
+  .menu-list {
+    gap: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .oreade-nav {
     flex-direction: column;
@@ -70,5 +97,68 @@ clip-path: ellipse(110% 100% at 50% 0%);
   .oreade-header::after {
     bottom: -20px;
     height: 20px;
+  }
+  
+  .logo img {
+    height: 150px;
+  }
+  
+  .menu-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .menu-list a {
+    font-size: 16px;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo img {
+    height: 120px;
+  }
+  
+  .menu-list {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.25rem;
+  }
+  
+  .menu-list a {
+    font-size: 14px;
+    padding: 0.75rem;
+    display: block;
+  }
+  
+  .oreade-header {
+    padding: 0.75rem 0;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    height: 100px;
+  }
+  
+  .menu-list a {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 320px) {
+  .logo img {
+    height: 80px;
+  }
+  
+  .menu-list a {
+    font-size: 12px;
+    padding: 0.5rem;
+  }
+  
+  .oreade-header {
+    padding: 0.5rem 0;
   }
 }
