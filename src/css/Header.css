@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
 
 .oreade-header {
-  background-color: #f2f5f5;
+  background-color: #dff3f3;
   font-family: 'Julius Sans One', sans-serif;
   border-bottom: 2px solid #c3e6e6;
   padding: 1rem 0;
   position: relative;
-  margin-bottom: 30px; /* Espace pour la courbe */
+  margin-bottom: 30px; 
   clip-path: ellipse(110% 100% at 50% 0%);
 }
 
@@ -16,7 +16,7 @@
   position: absolute;
   left: 0;
   width: 100%;
-  background: #5a7272;
+  background: #f8f9fa;
   z-index: 1;
   margin-bottom: 80px;
 bottom: -80px;
