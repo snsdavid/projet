@@ -19,12 +19,12 @@
             background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--dark-blue) 100%);
             position: relative;
             overflow: hidden;
-            padding: 80px 0;
-            min-height: 100vh;
+            padding: 60px 0;
+            min-height: 80vh;
             display: flex;
             align-items: center;
-              margin-bottom: 30px; 
-  clip-path: ellipse(150% 100% at 50% 0%);
+            margin-bottom: 30px; 
+            clip-path: ellipse(170% 100% at 50% 0%);
         }
 
         .testimonial-section::before {
@@ -121,7 +121,7 @@
             backdrop-filter: blur(20px);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 2.5rem;
+            padding: 1rem;
             margin-bottom: 2rem;
             transition: all 0.3s ease;
             animation: slideInLeft 1s ease-out 0.4s both;
