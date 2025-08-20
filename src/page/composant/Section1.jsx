@@ -10,7 +10,7 @@ const Section1 = () => {
   }, []);
 
   return (
-    <section className="position-relative d-flex align-items-center justify-content-center min-vh-70 overflow-hidden" 
+    <section className="position-relative d-flex align-items-center justify-content-center min-vh-70 overflow-hidden pb-5" 
              style={{ background: "linear-gradient(135deg, #10b981, #22c55e, #0d9488)" }}>
 
       {/* Contenu central limité à 400px */}
