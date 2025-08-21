@@ -3,6 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from '../page/HomePage';
 import EntreprisePage from '../page/EntreprisePage';
+import NewsPage from '../page/NewsPage';
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -22,6 +23,7 @@ const AppRoute = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/entreprise" element={<EntreprisePage />} />
         {/* Add more routes as needed */}
+        <Route path="/actualites" element={<NewsPage></NewsPage>} />
       </Routes>
     </>
   );

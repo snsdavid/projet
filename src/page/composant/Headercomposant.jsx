@@ -11,7 +11,6 @@ const Header = () => {
         <ul className="menu-list">
           <li><a href="/">Accueil</a></li>
           <li><a href="/entreprise">L’entreprise</a></li>
-          <li><a href="/prestations">Prestations</a></li>
           <li><a href="/actualites">Actualités</a></li>
           <li><a href="/contact">Contactez-nous</a></li>
         </ul>
