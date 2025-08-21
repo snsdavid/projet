@@ -492,6 +492,48 @@ const Entreprise = () => {
             grid-template-columns: 1fr 1fr;
           }
         }
+        
+        .cta-section {
+          text-align: center;
+          margin-top: 80px;
+          padding: 60px 40px;
+          background: white;
+          border-radius: 25px;
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-title {
+          font-size: 2.2rem;
+          color: rgb(30, 51, 78);
+          margin-bottom: 20px;
+          font-weight: 700;
+        }
+
+        .cta-text {
+          font-size: 1.1rem;
+          color: #64748b;
+          margin-bottom: 30px;
+          line-height: 1.6;
+        }
+
+        .cta-button {
+          background: linear-gradient(135deg, #10b981, #22c55e, #0d9488);
+          color: white;
+          padding: 15px 40px;
+          border: none;
+          border-radius: 50px;
+          font-size: 1.1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .cta-button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+        }
+
       `}</style>
 
       {/* Hero Section */}
@@ -609,6 +651,14 @@ const Entreprise = () => {
               <div className="stat-label">Expertise Locale</div>
             </div>
           </div>
+        </section>
+        <section className="cta-section">
+          <h2 className="cta-title">Prêt à Démarrer Votre Projet ?</h2>
+          <p className="cta-text">
+            Contactez nos experts pour une consultation personnalisée et découvrez comment 
+            nous pouvons vous accompagner dans la réussite de vos projets agricoles.
+          </p>
+          <button className="cta-button">Demander un Devis</button>
         </section>
       </div>
     </div>
