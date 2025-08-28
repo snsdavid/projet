@@ -6,7 +6,7 @@ const Section2 = () => {
 
   return (
     <>
-    <div class="main-section body">
+    <div class="main-section body1">
         <div class="green-stripe"></div>
         
         <div class="curved-background"></div>

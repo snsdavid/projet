@@ -1,281 +1,186 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import '../../css/Carrosel.css'; // Assuming you have a CSS file for styling
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+ // Assuming you have a CSS file for styling
 
 const Carrosel = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = [
+  const [activeIndex, setActiveIndex] = useState(0);
+
+    const slides = [
     {
-      id: 0,
-      class: 'slide-1',
-      title: 'Excellence & Innovation',
-      subtitle: 'Votre partenaire de confiance depuis plus de 40 ans',
-      description: 'Nous accompagnons les entreprises et organisations dans leurs défis les plus complexes grâce à notre expertise reconnue et notre approche innovante. Notre équipe d\'experts vous guide vers des solutions durables et performantes.',
-      link: '#services',
-      buttonText: 'Découvrir nos services'
+    title: "PROMOUVOIR UNE AGRICULTURE DURABLE, SOURCE DE SÉCURITÉ ALIMENTAIRE",
+    buttonText: "Découvrez cet enjeu",
+    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200&h=600&fit=crop"
     },
     {
-      id: 1,
-      class: 'slide-2',
-      title: 'Développement Durable',
-      subtitle: 'Construisons ensemble un avenir responsable',
-      description: 'Notre engagement pour l\'environnement et la responsabilité sociale guide chacune de nos actions. Nous développons des solutions respectueuses de l\'environnement pour un impact positif durable.',
-      link: '#environnement',
-      buttonText: 'Nos engagements'
+    title: "SOUTENIR L'INNOVATION AGRICOLE POUR UN AVENIR DURABLE",
+    buttonText: "En savoir plus",
+    image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&h=600&fit=crop"
     },
     {
-      id: 2,
-      class: 'slide-3',
-      title: 'Solutions Personnalisées',
-      subtitle: 'Chaque projet est unique, notre approche aussi',
-      description: 'Fort de notre expérience sur plus de 3000 références mondiales, nous adaptons notre méthodologie à vos besoins spécifiques pour garantir votre succès.',
-      link: '#projets',
-      buttonText: 'Voir nos projets'
+    title: "PRÉSERVER LES RESSOURCES NATURELLES POUR LES GÉNÉRATIONS FUTURES",
+    buttonText: "Découvrir",
+    image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1200&h=600&fit=crop"
     },
     {
-      id: 3,
-      class: 'slide-4',
-      title: 'Expertise Reconnue',
-      subtitle: 'Plus de 800 projets pilotés avec succès',
-      description: 'Notre équipe pluridisciplinaire d\'experts vous apporte des solutions concrètes et opérationnelles adaptées aux défis de votre secteur d\'activité.',
-      link: '#contact',
-      buttonText: 'Nous contacter'
+    title: "DÉVELOPPER DES PRATIQUES AGRICOLES RESPECTUEUSES DE L'ENVIRONNEMENT",
+    buttonText: "Explorer",
+    image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1200&h=600&fit=crop"
+    },
+    {
+    title: "AMÉLIORER LA QUALITÉ DE VIE DES AGRICULTEURS",
+    buttonText: "Découvrir l'initiative",
+    image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1200&h=600&fit=crop"
+    },
+    {
+    title: "CULTIVER L'AVENIR ENSEMBLE",
+    buttonText: "Participez",
+    image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1200&h=600&fit=crop"
     }
-  ];
+    ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    const nextSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    };
 
-    return () => clearInterval(interval);
-  }, [slides.length]);
+    const prevSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
+    };
 
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
+    const goToSlide = (index) => {
+    setActiveIndex(index);
+    };
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
+    return (
+      <>
+    <div className="position-relative overflow-hidden mb-5" style={{ borderRadius: '0 0 20px 20px', maxWidth: '1200px', margin: '0 auto' }}>
+    <div id="agricultureCarousel" className="carousel slide">
+    <div className="carousel-inner">
+    {slides.map((slide, index) => (
+    <div key={index} className={`carousel-item ${index === activeIndex ? 'active' : ''}`}>
+    <div className="position-relative" style={{ height: '500px' }}>
+      <img
+      src={slide.image}
+      className="d-block w-100 h-100"
+      alt={`Slide ${index + 1}`}
+      style={{ objectFit: 'cover' }}
+      />
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+    <div className="position-absolute top-0 start-0 h-100" style={{ width: '45%' }}>
+    <div className="h-100 d-flex align-items-center"
+    style={{
+    background: 'linear-gradient(135deg, rgba(6, 147, 227, 0.95), rgba(4, 119, 184, 0.90))',
+    clipPath: 'polygon(0 0, 100% 0, 85% 100%, 0% 100%)'
+    }}>
+    <div className="px-5">
+    <h1 className="text-white fw-bold mb-5" style={{ fontSize: '2.5rem', lineHeight: '1.2', textTransform: 'uppercase' }}>
+    {slide.title}
+    </h1>
 
-  // Fonction pour réinitialiser les animations
-  const resetAnimations = () => {
-    const activeSlide = document.querySelector('.carousel-item[style*="opacity: 1"]');
-    if (activeSlide) {
-      const elements = activeSlide.querySelectorAll('.carousel-title, .carousel-subtitle, .carousel-description, .carousel-btn');
-      elements.forEach(el => {
-        el.style.animation = 'none';
-        // Force reflow
-        void el.offsetHeight;
-      });
-      
-      setTimeout(() => {
-        activeSlide.classList.add('active');
-      }, 50);
-    }
-  };
-
-  useEffect(() => {
-    resetAnimations();
-  }, [currentSlide]);
-
-  return (
-    <div className="carousel-container">
-      <section
-        id="heroCarousel"
-        className="hero-carousel"
-        style={{
-          position: 'relative',
-          overflow: 'hidden'
-        }}
-      >
-        {/* Indicateurs */}
-        <div className="carousel-indicators" style={{
-          position: 'absolute',
-          right: 0,
-          bottom: '30px',
-          left: 0,
-          zIndex: 2,
-          display: 'flex',
-          justifyContent: 'center',
-          paddingLeft: 0,
-          marginRight: '15%',
-          marginBottom: 0,
-          marginLeft: '15%',
-          listStyle: 'none'
-        }}>
-          {slides.map((slide, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => goToSlide(index)}
-              className={index === currentSlide ? 'active' : ''}
-              style={{
-                boxSizing: 'content-box',
-                flex: '0 1 auto',
-                width: '15px',
-                height: '15px',
-                padding: 0,
-                marginRight: '8px',
-                marginLeft: '8px',
-                textIndent: '-999px',
-                cursor: 'pointer',
-                backgroundColor: index === currentSlide ? 'white' : 'transparent',
-                border: '2px solid white',
-                borderTop: '2px solid white',
-                borderBottom: '2px solid white',
-                opacity: index === currentSlide ? 1 : 0.5,
-                transition: 'all 0.3s ease',
-                borderRadius: '50%',
-                transform: index === currentSlide ? 'scale(1.2)' : 'scale(1)'
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Container pour les slides */}
-        <div style={{
-          position: 'relative',
-          width: '100%',
-          overflow: 'hidden',
-          height: '80vh',
-          minHeight: '600px',
-          borderRadius: '20px'
-        }}>
-          {slides.map((slide, index) => (
-            <div 
-              key={slide.id}
-              className={`carousel-item ${slide.class} ${index === currentSlide ? 'active' : ''}`}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                opacity: index === currentSlide ? 1 : 0,
-                visibility: index === currentSlide ? 'visible' : 'hidden',
-                transition: 'opacity 0.8s ease-in-out, visibility 0.8s ease-in-out',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                borderRadius: '20px',
-                overflow: 'hidden'
-              }}
-            >
-              <div style={{
-                content: '',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: 'linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3))',
-                zIndex: 1
-              }} />
-              <div className="carousel-content">
-                <h1 className="carousel-title">
-                  {slide.title}
-                </h1>
-                <p className="carousel-subtitle">
-                  {slide.subtitle}
-                </p>
-                <p className="carousel-description">
-                  {slide.description}
-                </p>
-                <a 
-                  href={slide.link} 
-                  className="carousel-btn"
-                >
-                  {slide.buttonText}
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Contrôles */}
-        <button 
-          className="carousel-control-prev" 
-          type="button"
-          onClick={prevSlide}
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '30px',
-            zIndex: 3,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '80px',
-            height: '80px',
-            padding: 0,
-            color: '#fff',
-            textAlign: 'center',
-            background: 'rgba(255,255,255,0.1)',
-            border: '2px solid rgba(255,255,255,0.3)',
-            borderRadius: '50%',
-            opacity: 0.7,
-            transition: 'all 0.3s ease',
-            transform: 'translateY(-50%)',
-            cursor: 'pointer'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.opacity = '1';
-            e.target.style.background = 'rgba(255,255,255,0.2)';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.opacity = '0.7';
-            e.target.style.background = 'rgba(255,255,255,0.1)';
-          }}
-        >
-          <span className="carousel-control-prev-icon" style={{ display: 'inline-block' }}></span>
-          <span className="visually-hidden">Précédent</span>
-        </button>
-        
-        <button 
-          className="carousel-control-next" 
-          type="button"
-          onClick={nextSlide}
-          style={{
-            position: 'absolute',
-            top: '50%',
-            right: '30px',
-            zIndex: 3,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '80px',
-            height: '80px',
-            padding: 0,
-            color: '#fff',
-            textAlign: 'center',
-            background: 'rgba(255,255,255,0.1)',
-            border: '2px solid rgba(255,255,255,0.3)',
-            borderRadius: '50%',
-            opacity: 0.7,
-            transition: 'all 0.3s ease',
-            transform: 'translateY(-50%)',
-            cursor: 'pointer'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.opacity = '1';
-            e.target.style.background = 'rgba(255,255,255,0.2)';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.opacity = '0.7';
-            e.target.style.background = 'rgba(255,255,255,0.1)';
-          }}
-        >
-          <span className="carousel-control-next-icon" style={{ display: 'inline-block' }}></span>
-          <span className="visually-hidden">Suivant</span>
-        </button>
-      </section>
+    <button className="btn btn-lg text-white border-0 d-flex align-items-center gap-2"
+    style={{
+    backgroundColor: 'transparent',
+    borderBottom: '2px solid white',
+    borderRadius: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+    fontSize: '1.1rem'
+    }}
+    onMouseEnter={(e) => {
+    e.target.style.transform = 'translateX(5px)';
+    }}
+    onMouseLeave={(e) => {
+    e.target.style.transform = 'translateX(0)';
+    }}>
+    {slide.buttonText}
+    <ChevronRight size={24} />
+    </button>
     </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    ))}
+    </div>
+
+    <div className="position-absolute bottom-0 start-0 w-100 d-flex justify-content-center pb-4" style={{ zIndex: 10 }}>
+    <div className="d-flex gap-2">
+    {slides.map((_, index) => (
+    <button
+    key={index}
+    onClick={() => goToSlide(index)}
+    className={`border-0 rounded-circle transition-all ${
+    index === activeIndex ? 'bg-warning' : 'bg-white'
+    }`}
+    style={{
+    width: '12px',
+    height: '12px',
+    opacity: index === activeIndex ? 1 : 0.6,
+    transition: 'all 0.3s ease',
+    cursor: 'pointer'
+    }}
+    aria-label={`Go to slide ${index + 1}`}
+    />
+    ))}
+    </div>
+    </div>
+
+    <button
+    className="carousel-control-prev border-0 bg-transparent"
+    type="button"
+    onClick={prevSlide}
+    style={{ width: '5%', opacity: 0.8 }}
+    onMouseEnter={(e) => e.target.style.opacity = 1}
+    onMouseLeave={(e) => e.target.style.opacity = 0.8}
+    >
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Previous</span>
+    </button>
+
+    <button
+    className="carousel-control-next border-0 bg-transparent"
+    type="button"
+    onClick={nextSlide}
+    style={{ width: '5%', opacity: 0.8 }}
+    onMouseEnter={(e) => e.target.style.opacity = 1}
+    onMouseLeave={(e) => e.target.style.opacity = 0.8}
+    >
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Next</span>
+    </button>
+    </div>
+
+    <style jsx>{`
+    .carousel-item {
+    transition: transform 0.6s ease-in-out;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
+    }
+
+    button {
+    transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+    .position-absolute.top-0 {
+    width: 100% !important;
+    }
+
+    h1 {
+    font-size: 1.5rem !important;
+    }
+
+    .px-5 {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    }
+    }
+    `}</style>
+    </div>
+    </>
   );
 };
 
