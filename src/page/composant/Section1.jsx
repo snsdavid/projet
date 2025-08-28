@@ -11,7 +11,7 @@ const Section1 = () => {
 
   return (
     <section className="position-relative d-flex align-items-center justify-content-center min-vh-70 overflow-hidden pb-5" 
-             style={{ background: "linear-gradient(135deg, #10b981, #22c55e, #0d9488)" }}>
+             style={{ background: "linear-gradient(135deg,rgb(98, 185, 16),rgb(105, 187, 12),rgb(107, 148, 13))" }}>
 
       {/* Contenu central limité à 400px */}
       <div className="container text-center position-relative" style={{ maxWidth: "700px", zIndex: 10 }}>

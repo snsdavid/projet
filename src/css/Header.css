@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
 
 .oreade-header {
-  background-color: #dff3f3;
+  background-color: #f2f5f5;
   font-family: 'Julius Sans One', sans-serif;
   border-bottom: 2px solid #c3e6e6;
-  padding: 1rem 0;
   position: relative;
   margin-bottom: 30px; 
   clip-path: ellipse(110% 100% at 50% 0%);
@@ -45,7 +44,7 @@ clip-path: ellipse(110% 100% at 50% 0%);
 
 .menu-list a {
   text-decoration: none;
-  color: rgb(30, 51, 78);
+  color: rgb(36, 61, 94);
   font-size: 22px;
   font-weight: 500;
   transition: color 0.2s;
@@ -58,7 +57,7 @@ clip-path: ellipse(110% 100% at 50% 0%);
 /* Style responsive */
 @media (max-width: 1200px) {
   .logo img {
-    height: 250px;
+    height: 150px;
   }
   
   .menu-list a {
@@ -72,7 +71,7 @@ clip-path: ellipse(110% 100% at 50% 0%);
 
 @media (max-width: 992px) {
   .logo img {
-    height: 200px;
+    height: 150px;
   }
   
   .menu-list a {
