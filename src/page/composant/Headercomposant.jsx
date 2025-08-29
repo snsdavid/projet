@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, Menu } from 'lucide-react';
 
 const Header = () => {
   const [activeModal, setActiveModal] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const openModal = (modalId) => {
     setActiveModal(modalId);
@@ -12,6 +13,10 @@ const Header = () => {
   const closeModal = () => {
     setActiveModal(null);
     document.body.style.overflow = 'auto'; 
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
   
   const menuData = {
@@ -106,96 +111,145 @@ const Header = () => {
   
   return (
     <>
-    <div className="header-menu-system mb-5">
+    <div className="header-menu-system mb-5 pb-5">
       {/* Header principal */}
-      <header className="shadow-sm py-3 header-menu">
+      <header className="shadow-sm py-3 header-menu pt-5">
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">
             {/* Logo */}
-            <div className="d-flex align-items-center mt-5 mr-3">
+            <div className="d-flex align-items-center logo-container mt-4">
               <img 
                 src="icon.png"
                 alt="Logo" 
-                style={{ height: '120px' }}
-                padding="0px"
-                margin="0px"
+                style={{ width: "200px", height: "150px"}}
               />
-              <span style={{ fontSize: '1.2rem', color: '#0a7b8e', fontWeight: 'medium' , fontFamily: 'Julius Sans One,Arial, sans-serif'}}>
-              NYA AGRITEK
+              <span className="logo-text">
+                NYA AGRITEK
               </span>
             </div>
             
-            {/* Menu navigation principal */}
-            <nav>
-                {/* Liens additionnels */}
-            <div className="d-flex align-items-center gap-3 justify-content-end ">
-              <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" className="btn btn-link p-0 d-flex align-items-center fort" style={{ textDecoration: 'none' }}>
-                Suivez-nous 
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="16" 
-                  height="16" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="#0a7b8e" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  className="ms-1"
-                >
-                  <path d="M16 8a6 6 0 0 1 6 6v2a6 6 0 0 1-6 6h-4v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2H4a6 6 0 0 1-6-6v-2a6 6 0 0 1 6-6h4v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8h4z"></path>
-                </svg>
-              </a>
-              <a href="#" className="btn btn-link p-0 d-flex align-items-center fort" style={{textDecoration: 'none' }}>
-                Contactez-nous 
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="16" 
-                  height="16" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="#0a7b8e" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  className="ms-1 fort"
-                >
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </a>
-            </div>
-              <ul className="list-unstyled d-flex mb-0 gap-3 mt-3">
+            {/* Bouton hamburger mobile */}
+            <button 
+              className="btn btn-link d-lg-none mobile-menu-btn"
+              onClick={toggleMobileMenu}
+            >
+              <Menu size={24} color="#0a7b8e" />
+            </button>
+            
+            {/* Menu navigation principal - Desktop */}
+            <nav className="d-none d-lg-block mb-2">
+              <div className="d-flex align-items-center gap-3 justify-content-end mb-3">
+                <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" className="btn btn-link p-0 d-flex align-items-center fort header-link">
+                  Suivez-nous 
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="16" 
+                    height="16" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="#0a7b8e" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    className="ms-1"
+                  >
+                    <path d="M16 8a6 6 0 0 1 6 6v2a6 6 0 0 1-6 6h-4v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2H4a6 6 0 0 1-6-6v-2a6 6 0 0 1 6-6h4v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8h4z"></path>
+                  </svg>
+                </a>
+                <a href="#" className="btn btn-link p-0 d-flex align-items-center fort header-link">
+                  Contactez-nous 
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="16" 
+                    height="16" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="#0a7b8e" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    className="ms-1 fort"
+                  >
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </a>
+              </div>
+              <ul className="list-unstyled d-flex mb-0 gap-3 mt-2">
                 {Object.keys(menuData).map((menuKey) => (
                   <li key={menuKey}>
                     <button 
-                      className="btn btn-link text-uppercase fw-medium fort"
-                      style={{ textDecoration: 'none', padding: '0.5rem 0' , fontFamily: 'Julius Sans One' , fontSize: '14px' }}
+                      className="btn btn-link text-uppercase fw-medium fort nav-button"
                       onClick={() => openModal(menuKey)}
                     >
                       {menuKey === 'entreprise' ? "L'Entreprise " : 
                        menuKey === 'enjeux' ? "Domaines d'intervention " : 
                        menuKey === 'prestations' ? "Nos Prestations " : 
                        menuKey === 'contact' ? "Nous recrutons" : "Accueil "}
-                       {
-                      menuKey != 'contact' ? <span className="fw-bold "  style={{fontSize: '8px', paddingLeft: '6px'}}>o</span> : null
-                    }
+                       {menuKey !== 'contact' && <span className="fw-bold nav-dot">o</span>}
                     </button>
-                    
                   </li>
                 ))}
               </ul>
             </nav>
-            
           </div>
         </div>
       </header>
+
+      {/* Menu mobile */}
+      <div className={`mobile-menu ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
+        <div className="mobile-menu-header">
+          <span className="mobile-menu-title">Menu</span>
+          <button 
+            className="btn btn-link mobile-close-btn"
+            onClick={toggleMobileMenu}
+          >
+            <X size={24} color="#0a7b8e" />
+          </button>
+        </div>
+        <div className="mobile-menu-content">
+          <div className="mobile-links mb-4">
+            <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311" target="_blank" rel="noopener noreferrer" className="mobile-link">
+              Suivez-nous
+            </a>
+            <a href="#" className="mobile-link">
+              Contactez-nous
+            </a>
+          </div>
+          <ul className="mobile-nav-list">
+            {Object.keys(menuData).map((menuKey) => (
+              <li key={menuKey}>
+                <button 
+                  className="mobile-nav-button"
+                  onClick={() => {
+                    openModal(menuKey);
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  {menuKey === 'entreprise' ? "L'Entreprise" : 
+                   menuKey === 'enjeux' ? "Domaines d'intervention" : 
+                   menuKey === 'prestations' ? "Nos Prestations" : 
+                   menuKey === 'contact' ? "Nous recrutons" : "Accueil"}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      
+      {/* Overlay pour fermer le menu mobile */}
+      {isMobileMenuOpen && (
+        <div 
+          className="mobile-menu-overlay"
+          onClick={toggleMobileMenu}
+        />
+      )}
       
       {/* Modals pour sous-menus */}
       {Object.keys(menuData).map((menuKey) => (
         <div 
           key={menuKey}
-          className={`position-fixed top-0 start-0 w-100 ${activeModal === menuKey ? 'show' : 'd-none'}`}
+          className={`modal-overlay ${activeModal === menuKey ? 'show' : 'd-none'}`}
           style={{
             backgroundColor: 'rgba(255, 255, 255, 0.98)',
             zIndex: 1050,
@@ -204,39 +258,38 @@ const Header = () => {
             height: '100vh',
             width: '100vw',
             left: 0,
-            top: 0
+            top: 0,
+            position: 'fixed'
           }}
         >
-          <div className="container py-5">
+          <div className="container modal-container">
             <button 
-              className="btn btn-link position-absolute top-0 start-0 mt-3 ms-3"
-              style={{ color: '#0a7b8e', fontSize: '1.5rem' }}
+              className="btn btn-link modal-close-btn"
               onClick={closeModal}
             >
               <X size={28} />
             </button>
             
-            <div className="text-end mb-5">
-              <h2 className="fw-bold" style={{ color: '#0a7b8e', fontSize: '2rem' }}>
+            <div className="modal-header">
+              <h2 className="modal-title">
                 {menuData[menuKey].title}
               </h2>
             </div>
             
-            <div className="row g-4">
+            <div className="modal-content-grid">
               {menuData[menuKey].sections.map((section, idx) => (
-                <div key={idx} className={`col-md-${menuKey === 'entreprise' ? '3' : '4'}`}>
-                  <h3 style={{ color: '#83b614', marginBottom: '1rem', fontSize: '1.3rem' }}>
+                <div key={idx} className="modal-section">
+                  <h3 className="modal-section-title">
                     {section.title}
                   </h3>
                   <ul className="list-unstyled">
                     {section.links.map((link, linkIdx) => (
-                      <li key={linkIdx} className="mb-2">
+                      <li key={linkIdx} className="modal-link-item">
                         <a 
                           href={link.url}
-                          className="d-flex align-items-center"
-                          style={{ color: '#0a7b8e', textDecoration: 'none' }}
+                          className="modal-link"
                         >
-                          <span className="me-2" style={{ color: '#83b614' }}>◦</span>
+                          <span className="modal-link-bullet">◦</span>
                           {link.label}
                         </a>
                       </li>
@@ -246,11 +299,10 @@ const Header = () => {
               ))}
             </div>
             
-            <div className="d-flex justify-content-between mt-5 pt-4 border-top">
+            <div className="modal-footer">
               <a 
                 href="/" 
-                className="d-flex align-items-center"
-                style={{ color: '#0a7b8e', textDecoration: 'none' }}
+                className="modal-footer-link"
               >
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
@@ -270,12 +322,8 @@ const Header = () => {
                 Retour page d'accueil
               </a>
               
-              <div className="d-flex gap-3">
-                <a 
-                  href="#" 
-                  className="d-flex align-items-center"
-                  style={{ color: '#0a7b8e', textDecoration: 'none' }}
-                >
+              <div className="modal-footer-links">
+                <a href="#" className="modal-footer-link">
                   Suivez-nous 
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
@@ -292,11 +340,7 @@ const Header = () => {
                     <path d="M16 8a6 6 0 0 1 6 6v2a6 6 0 0 1-6 6h-4v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2H4a6 6 0 0 1-6-6v-2a6 6 0 0 1 6-6h4v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8h4z"></path>
                   </svg>
                 </a>
-                <a 
-                  href="#" 
-                  className="d-flex align-items-center"
-                  style={{ color: '#0a7b8e', textDecoration: 'none' }}
-                >
+                <a href="#" className="modal-footer-link">
                   Contactez-nous 
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
@@ -319,22 +363,439 @@ const Header = () => {
           </div>
         </div>
       ))}
-          </div>
-          <style jsx>{`
-            .fort:hover {
-              color: #9cc24d;
-            }
-            .fort {
-              color: #0a7b8e;
-            }
-            .header-menu {
-              margin-bottom: 20px;
-              clip-path: ellipse(110% 100% at 50% 0%);
-              background-color:rgb(243, 243, 243);
-            }
-          `}</style>
-          </>
-    );
+    </div>
+
+    <style jsx>{`
+      /* Support pour les devices avec notch/encoche */
+      .header-menu-system {
+        padding-top: env(safe-area-inset-top);
+      }
+
+      .fort:hover {
+        color: #9cc24d;
+      }
+      .fort {
+        color: #0a7b8e;
+      }
+      .header-menu {
+        margin-bottom: 20px;
+        clip-path: ellipse(110% 100% at 50% 0%);
+        background-color: rgb(243, 243, 243);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+      }
+
+      /* Logo responsive */
+      .logo-container {
+        margin-top: 0.5rem;
+        flex-shrink: 0;
+      }
+      .logo-img {
+        height: 120px;
+        padding: 0;
+        margin: 0;
+        max-width: 100px;
+        width: auto;
+      }
+      .logo-text {
+        font-size: 1.9rem;
+        color: #0a7b8e;
+        font-weight: bold;
+        font-family: 'Julius Sans One', Arial, sans-serif;
+        margin-left: 0.5rem;
+        white-space: nowrap;
+      }
+
+      /* Navigation desktop */
+      .header-link {
+        text-decoration: none !important;
+        font-size: 0.8rem;
+      }
+      .nav-button {
+        text-decoration: none !important;
+        padding: 0.3rem 0;
+        font-family: 'Julius Sans One';
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      .nav-dot {
+        font-size: 6px;
+        padding-left: 4px;
+      }
+
+      /* Menu mobile optimisé */
+      .mobile-menu-btn {
+        padding: 0.5rem;
+        margin: 0;
+        background: none;
+        border: none;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 85vw;
+        max-width: 320px;
+        height: 100vh;
+        height: 100dvh; /* Dynamic viewport height pour iOS */
+        background-color: white;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1060;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-top: env(safe-area-inset-top);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      
+      .mobile-menu-open {
+        right: 0;
+      }
+      
+      .mobile-menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 1rem 1rem 1rem;
+        border-bottom: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 1;
+      }
+      
+      .mobile-menu-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #0a7b8e;
+        font-family: 'Julius Sans One', Arial, sans-serif;
+      }
+      
+      .mobile-close-btn {
+        padding: 0.5rem;
+        margin: 0;
+        background: none;
+        border: none;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .mobile-menu-content {
+        padding: 1rem;
+        flex: 1;
+      }
+      
+      .mobile-links {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 1rem;
+      }
+      
+      .mobile-link {
+        display: flex;
+        align-items: center;
+        padding: 1rem 0;
+        color: #0a7b8e;
+        text-decoration: none;
+        font-size: 1rem;
+        min-height: 48px;
+        border-bottom: 1px solid #f5f5f5;
+      }
+      
+      .mobile-link:hover {
+        color: #9cc24d;
+        background-color: #f8f9fa;
+      }
+      
+      .mobile-nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .mobile-nav-button {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 1.2rem 0;
+        border: none;
+        background: none;
+        text-align: left;
+        color: #0a7b8e;
+        font-size: 1.1rem;
+        font-family: 'Julius Sans One', Arial, sans-serif;
+        border-bottom: 1px solid #f0f0f0;
+        cursor: pointer;
+        min-height: 56px;
+        position: relative;
+      }
+      
+      .mobile-nav-button:hover,
+      .mobile-nav-button:focus {
+        color: #9cc24d;
+        background-color: #f8f9fa;
+        outline: none;
+      }
+      
+      .mobile-nav-button::after {
+        content: '›';
+        position: absolute;
+        right: 0;
+        font-size: 1.5rem;
+        color: #ccc;
+      }
+      
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 1055;
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+      }
+
+      /* Modal responsive optimisé */
+      .modal-overlay {
+        padding-top: env(safe-area-inset-top);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+
+      .modal-container {
+        padding: 1rem;
+        height: 100vh;
+        height: 100dvh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+      }
+      
+      .modal-close-btn {
+        position: fixed;
+        top: calc(1rem + env(safe-area-inset-top));
+        left: calc(1rem + env(safe-area-inset-left));
+        color: #0a7b8e;
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        min-width: 48px;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        z-index: 10;
+      }
+      
+      .modal-header {
+        text-align: center;
+        margin: 3rem 0 2rem 0;
+        padding-top: 2rem;
+      }
+      
+      .modal-title {
+        font-weight: bold;
+        color: #0a7b8e;
+        font-size: 1.8rem;
+        font-family: 'Julius Sans One', Arial, sans-serif;
+      }
+      
+      .modal-content-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+      
+      .modal-section {
+        background: rgba(248, 249, 250, 0.5);
+        padding: 1.5rem;
+        border-radius: 8px;
+      }
+      
+      .modal-section-title {
+        color: #83b614;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+      
+      .modal-link-item {
+        margin-bottom: 0.8rem;
+      }
+      
+      .modal-link {
+        display: flex;
+        align-items: center;
+        color: #0a7b8e;
+        text-decoration: none;
+        padding: 0.5rem 0;
+        font-size: 1rem;
+        min-height: 44px;
+      }
+      
+      .modal-link:hover {
+        color: #9cc24d;
+      }
+      
+      .modal-link-bullet {
+        margin-right: 0.8rem;
+        color: #83b614;
+        font-size: 1.2rem;
+      }
+      
+      .modal-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+        border-top: 1px solid #dee2e6;
+        margin-bottom: calc(2rem + env(safe-area-inset-bottom));
+      }
+      
+      .modal-footer-link {
+        display: flex;
+        align-items: center;
+        color: #0a7b8e;
+        text-decoration: none;
+        padding: 0.5rem 0;
+        font-size: 1rem;
+        min-height: 44px;
+      }
+      
+      .modal-footer-link:hover {
+        color: #9cc24d;
+      }
+      
+      .modal-footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      /* iPhone X et similaires (375px) */
+      @media screen and (max-width: 414px) {
+        .logo-img {
+          height: 70px;
+          max-width: 70px;
+        }
+        .logo-text {
+          font-size: 1rem;
+          line-height: 1.2;
+        }
+        .logo-container {
+          margin-top: 0.25rem;
+        }
+        .header-link {
+          font-size: 0.7rem;
+        }
+        .nav-button {
+          font-size: 18px !important;
+          padding: 0.2rem 0;
+        }
+        .modal-title {
+          font-size: 1.4rem;
+        }
+        .modal-content-grid {
+          gap: 1.5rem;
+        }
+        .modal-section {
+          padding: 1rem;
+        }
+        .mobile-menu {
+          width: 90vw;
+        }
+      }
+
+      /* Très petits écrans (320px) */
+      @media screen and (max-width: 375px) {
+        .logo-img {
+          height: 60px;
+          max-width: 60px;
+        }
+        .logo-text {
+          font-size: 0.9rem;
+        }
+        .header-link {
+          font-size: 0.6rem;
+        }
+        .nav-button {
+          font-size: 18px !important;
+        }
+        .modal-container {
+          padding: 0.5rem;
+        }
+        .mobile-menu {
+          width: 95vw;
+        }
+      }
+
+      /* Landscape sur mobile */
+      @media screen and (max-height: 500px) and (orientation: landscape) {
+        .logo-img {
+          height: 50px;
+        }
+        .logo-text {
+          font-size: 0.8rem;
+        }
+        .logo-container {
+          margin-top: 0;
+        }
+        .header-menu {
+          padding: 0.5rem 0;
+        }
+        .modal-header {
+          margin: 1rem 0;
+          padding-top: 0;
+        }
+        .modal-title {
+          font-size: 1.2rem;
+        }
+      }
+
+      /* Support pour les écrans avec ratio élevé (iPhone X, 11, 12, etc.) */
+      @media screen and (device-aspect-ratio: 375/812) {
+        .mobile-menu-header {
+          padding-top: 1rem;
+        }
+      }
+
+      /* Optimisations tactiles */
+      @media (hover: none) and (pointer: coarse) {
+        .mobile-nav-button,
+        .mobile-link,
+        .modal-link,
+        .modal-footer-link {
+          min-height: 48px;
+        }
+        
+        .mobile-menu-btn,
+        .mobile-close-btn,
+        .modal-close-btn {
+          min-width: 48px;
+          min-height: 48px;
+        }
+      }
+    `}</style>
+    </>
+  );
 };
 
 export default Header;
