@@ -31,45 +31,50 @@ const Header = () => {
       title: "L'ENTREPRISE",
       sections: [
         {
-          title: "Qui sommes-nous ?",
+          title: "A propos",
           links: [
-            { label: "Nos valeurs et notre vision", url: "/entreprise" },
-            { label: "Nos clients", url: "/entreprise" },
-            { label: "Notre équipe", url: "/entreprise" },
+            { label: "Qui sommes-nous", url: "/entreprise" },
+            { label: "Notre vision", url: "/entreprise" },
+            { label: "Notre mission", url: "/entreprise" },
+            { label: "Nos valeurs", url: "/entreprise" },
           ]
         },
         {
-          title: "Actualités",
+          title: "Notre expertise",
           links: [
-            { label: "Nos actualités", url: "/actualites" },
+            { label: "Notre expertise", url: "/expertise" },
           ]
         },
-        {
-          title: "Offres d'emploi, de missions, de stages et alternances",
-          links: [
-            { label: "Offres d'emploi", url: "/contact" },
-            { label: "Offres de missions", url: "/contact" },
-            { label: "Offres de stages et d'alternances", url: "/contact" },
-          ]
-        },
-        {
-          title: "Contactez-nous",
-          links: [
-            { label: "Contacts et implantations", url: "#" },
-          ]
-        }
       ]
     },
     enjeux: {
-      title: "Domaines d'intervention",
+      title: "DOMAINES D'INTERVENTION",
       sections: [
         {
-          title: "Menu Enjeux",
+          title: "FORESTERIE & ENVIRONNEMENT",
           links: [
-            { label: "Sous-menu Enjeux 1", url: "#" },
-            { label: "Sous-menu Enjeux 2", url: "#" },
+            { label: "FORESTERIE & ENVIRONNEMENT", url: "#" },
           ]
-        }
+        },
+        {
+          title: "AGRICULTURE ET NEGOCE AGRICOLE",
+          links: [
+            { label: "AGRICULTURE", url: "#" },
+            { label: "NEGOCE AGRICOLE", url: "#" },
+          ]
+        },
+        {
+          title: "ETUDE ET CONSEIL",
+          links: [
+            { label: "ETUDE ET CONSEIL", url: "#" },
+          ]
+        },
+        {
+          title: "DIGITALISATION AGRICOLE",
+          links: [
+            { label: "DIGITALISATION AGRICOLE", url: "#" },
+          ]
+        },
       ]
     },
     prestations: {
@@ -107,14 +112,15 @@ const Header = () => {
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">
             {/* Logo */}
-            <div className="d-flex align-items-center mt-5">
+            <div className="d-flex align-items-center mt-5 mr-3">
               <img 
                 src="icon.png"
                 alt="Logo" 
-                className="me-2" 
-                style={{ height: '150px' }}
+                style={{ height: '120px' }}
+                padding="0px"
+                margin="0px"
               />
-              <span style={{ fontSize: '1.8rem', color: '#0a7b8e', fontWeight: 'bold' , fontFamily: 'Julius Sans One,Arial, sans-serif'}}>
+              <span style={{ fontSize: '1.2rem', color: '#0a7b8e', fontWeight: 'medium' , fontFamily: 'Julius Sans One,Arial, sans-serif'}}>
               NYA AGRITEK
               </span>
             </div>
@@ -159,19 +165,23 @@ const Header = () => {
                 </svg>
               </a>
             </div>
-              <ul className="list-unstyled d-flex mb-0 gap-4 mt-3">
+              <ul className="list-unstyled d-flex mb-0 gap-3 mt-3">
                 {Object.keys(menuData).map((menuKey) => (
                   <li key={menuKey}>
                     <button 
                       className="btn btn-link text-uppercase fw-medium fort"
-                      style={{ textDecoration: 'none', padding: '0.5rem 0' , fontFamily: 'Julius Sans One' }}
+                      style={{ textDecoration: 'none', padding: '0.5rem 0' , fontFamily: 'Julius Sans One' , fontSize: '14px' }}
                       onClick={() => openModal(menuKey)}
                     >
-                      {menuKey === 'entreprise' ? "L'Entreprise" : 
-                       menuKey === 'enjeux' ? "Vos Enjeux" : 
-                       menuKey === 'prestations' ? "Nos Prestations" : 
-                       menuKey === 'contact' ? "Nous recrutons" : "Accueil"}
+                      {menuKey === 'entreprise' ? "L'Entreprise " : 
+                       menuKey === 'enjeux' ? "Domaines d'intervention " : 
+                       menuKey === 'prestations' ? "Nos Prestations " : 
+                       menuKey === 'contact' ? "Nous recrutons" : "Accueil "}
+                       {
+                      menuKey != 'contact' ? <span className="fw-bold "  style={{fontSize: '8px', paddingLeft: '6px'}}>o</span> : null
+                    }
                     </button>
+                    
                   </li>
                 ))}
               </ul>
@@ -238,7 +248,7 @@ const Header = () => {
             
             <div className="d-flex justify-content-between mt-5 pt-4 border-top">
               <a 
-                href="#" 
+                href="/" 
                 className="d-flex align-items-center"
                 style={{ color: '#0a7b8e', textDecoration: 'none' }}
               >
