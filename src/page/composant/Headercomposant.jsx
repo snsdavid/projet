@@ -278,13 +278,13 @@ const Header = () => {
             
             <div className="modal-content-grid">
               {menuData[menuKey].sections.map((section, idx) => (
-                <div key={idx} className="modal-section">
-                  <h3 className="modal-section-title">
+                <div key={idx} className={`col-md-${menuKey === 'entreprise' ? '3' : '4'}`}>
+                  <h3 className="modal-section-title" style={{ color: '#83b614', marginBottom: '1rem', fontSize: '1.3rem' }}>
                     {section.title}
                   </h3>
                   <ul className="list-unstyled">
                     {section.links.map((link, linkIdx) => (
-                      <li key={linkIdx} className="modal-link-item">
+                      <li key={linkIdx} className="mb-2">
                         <a 
                           href={link.url}
                           className="modal-link"
@@ -618,10 +618,8 @@ const Header = () => {
       }
       
       .modal-content-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        margin-bottom: 3rem;
+        display: flex;
+        flex-wrap: wrap;
       }
       
       .modal-section {
