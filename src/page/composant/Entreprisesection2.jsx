@@ -26,7 +26,7 @@ const EntrepriseSection2 = ({
       
                 {/* Texte de description */}
                 {text && (
-                  <p className="mb-3" style={{lineHeight: '1.6' , fontSize: '1.1rem' , fontWeight: 'semi-bold' }}>
+                  <p className="mb-3" style={{lineHeight: '1.6' , fontSize: '1.1rem' , fontWeight: 'semi-bold' , maxWidth: "700px" , margin: "0 auto" }}>
                     {text}
                   </p>
                 )}

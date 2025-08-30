@@ -56,7 +56,7 @@ const Header = () => {
       title: "DOMAINES D'INTERVENTION",
       sections: [
         {
-          icon: "styleico.svg",
+          icon: "/styleico.svg",
           title: "FORESTERIE & ENVIRONNEMENT",
           links: [
             { label: "FORESTERIE & ENVIRONNEMENT", url: "#" },
@@ -64,7 +64,7 @@ const Header = () => {
         },
         {
           title: "AGRICULTURE ET NEGOCE AGRICOLE",
-          icon: "studi.svg",
+          icon: "/studi.svg",
           links: [
             { label: "AGRICULTURE", url: "#" },
             { label: "NEGOCE AGRICOLE", url: "#" },
@@ -72,14 +72,14 @@ const Header = () => {
         },
         {
           title: "ETUDE ET CONSEIL",
-          icon: "computer.svg",
+          icon: "/computer.svg",
           links: [
             { label: "ETUDE ET CONSEIL", url: "#" },
           ]
         },
         {
           title: "DIGITALISATION AGRICOLE",
-          icon: "agriculture (1).svg",
+          icon: "/agriculture (1).svg",
 
           links: [
             { label: "DIGITALISATION AGRICOLE", url: "#" },
@@ -217,7 +217,7 @@ const Header = () => {
             <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311" target="_blank" rel="noopener noreferrer" className="mobile-link">
               Suivez-nous
             </a>
-            <a href="#" className="mobile-link">
+            <a href="mailto:nya.agritek@gmail.com" className="mobile-link">
               Contactez-nous
             </a>
           </div>
