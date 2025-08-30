@@ -12,7 +12,7 @@ const Footer = () => {
     <div className="container text-center mb-4">
       {/* Logo */}
       <img
-        src="icon.png" // remplace par ton chemin d'image
+        src="/icon.png" // remplace par ton chemin d'image
         alt="NYA AGRITEK"
         style={{ width: "80px", marginBottom: "10px" }}
       />
@@ -69,6 +69,12 @@ const Footer = () => {
       © Nya Agritek 2023 - Mentions légales - Réalisation Agence Web Spin On
     </div>
   </footer>
+  <style jsx>{`
+    .footer{
+   clip-path: ellipse(150% 99% at 48% 110%);
+
+    }
+  `}</style>
 
   </>
   );

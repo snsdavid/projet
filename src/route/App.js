@@ -5,6 +5,7 @@ import HomePage from '../page/HomePage';
 import EntreprisePage from '../page/EntreprisePage';
 import NewsPage from '../page/NewsPage';
 import ContactPage from '../page/ContactPage';
+import ExpertisePage from '../page/ExpertisePage';
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -22,7 +23,8 @@ const AppRoute = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/entreprise" element={<EntreprisePage />} />
+        <Route path="/entreprise/:id" element={<EntreprisePage />} />
+        <Route path="/expertise" element={<ExpertisePage />} />
         {/* Add more routes as needed */}
         <Route path="/actualites" element={<NewsPage></NewsPage>} />
         <Route path="/contact" element={<ContactPage></ContactPage>}></Route>

@@ -1,0 +1,85 @@
+import React from "react";
+import { MapContainer, TileLayer, Marker, Popup, Tooltip } from "react-leaflet";
+import L from "leaflet";
+
+// Icône personnalisée 📌
+const customIcon = new L.Icon({
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
+  iconSize: [30, 30],
+  iconAnchor: [15, 30],
+  popupAnchor: [0, -30],
+});
+
+const ExpertiseSection = () => {
+  // Exemple de données de projets
+  const projects = [
+    {
+      id: 1,
+      name: "Projet Agro-forestier",
+      description: "Développement durable et reforestation.",
+      position: [5.35, -3.99], // Exemple: Abidjan
+    },
+    {
+      id: 2,
+      name: "Projet Rizicole",
+      description: "Modernisation de la filière riz.",
+      position: [6.13, 1.22], // Exemple: Lomé
+    },
+    {
+      id: 3,
+      name: "Projet Cacao",
+      description: "Optimisation de la production de cacao.",
+      position: [7.38, -1.54], // Exemple: Kumasi
+    },
+  ];
+
+  return (
+    <section className="py-2" >
+      <div className="container">
+        <h2
+          className="text-center fw-bold mb-4"
+          style={{ color: '#8bc34a', fontSize: '1.8rem', letterSpacing: '1px' ,fontFamily: 'Julius Sans One' }}
+        >
+          Notre expertise
+        </h2>
+        <p className="text-center mb-5" style={{lineHeight: '1.6' , fontSize: '1.1rem' , fontWeight: 'semi-bold' , maxWidth: "700px" , margin: "0 auto"}}>
+          NYA AGRITEK est le prolongement d'une expertise développée depuis
+          plusieurs années sur des projets agricoles et environnementaux en
+          Afrique. Nous mettons en avant notre savoir-faire et nos réalisations
+          à travers une carte interactive.
+        </p>
+
+        {/* Carte dynamique */}
+        <MapContainer
+          center={[6.5, -1.5]} // Position initiale (Afrique de l'Ouest)
+          zoom={6}
+          scrollWheelZoom={false}
+          style={{ height: "500px", borderRadius: "15px" }}
+        >
+          {/* Fond de carte */}
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+
+          {/* Marqueurs */}
+          {projects.map((project) => (
+            <Marker key={project.id} position={project.position} icon={customIcon}>
+              {/* Popup (clic) */}
+              <Popup>
+                <strong>{project.name}</strong>
+                <br />
+                {project.description}
+              </Popup>
+
+              {/* Infobulle (au survol) */}
+              <Tooltip>{project.name}</Tooltip>
+            </Marker>
+          ))}
+        </MapContainer>
+      </div>
+    </section>
+  );
+};
+
+export default ExpertiseSection;

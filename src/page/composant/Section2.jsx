@@ -125,7 +125,7 @@ const Section2 = () => {
                             <circle cx="45" cy="75" r="8"/>
                             <path d="M40 70l3 3 6-6" stroke-linecap="round" stroke-width="1.5"/>
                         </svg>
-                        <div class="prestation-text">Évaluations</div>
+                        <div class="prestation-text">FORESTERIE & ENVIRONNEMENT</div>
                     </div>
 
                     <div class="prestation-item">
@@ -140,7 +140,7 @@ const Section2 = () => {
                             <circle cx="65" cy="50" r="2" fill="currentColor"/>
                             <circle cx="60" cy="55" r="2" fill="currentColor"/>
                         </svg>
-                        <div class="prestation-text">Études et<br/>planification</div>
+                        <div class="prestation-text">AGRICULTURE ET<br/>NEGOCE AGRICOLE</div>
                     </div>
 
                     <div class="prestation-item">
@@ -158,7 +158,7 @@ const Section2 = () => {
                                 <path d="M-8,3 L-8,-3 L-10,-3 L-10,3 Z"/>
                             </g>
                         </svg>
-                        <div class="prestation-text">AT et AMO</div>
+                        <div class="prestation-text">ETUDE ET CONSEIL</div>
                     </div>
 
                     <div class="prestation-item">
@@ -173,23 +173,7 @@ const Section2 = () => {
                             <rect x="76" y="25" width="1" height="8"/>
                             <circle cx="76.5" cy="24" r="1"/>
                         </svg>
-                        <div class="prestation-text">Formation –<br/>Communication</div>
-                    </div>
-
-                    <div class="prestation-item">
-                        <svg class="prestation-icon" viewBox="0 0 100 100">
-                            <rect x="20" y="35" width="30" height="40" rx="2"/>
-                            <path d="M25 42h20 M25 47h15 M25 52h20 M25 57h12 M25 62h18 M25 67h10" stroke-linecap="round"/>
-                            <circle cx="75" cy="25" r="2" fill="currentColor"/>
-                            <circle cx="75" cy="35" r="2"/>
-                            <path d="M73 33l2 2 4-4" stroke-linecap="round" stroke-width="1.5"/>
-                            <circle cx="75" cy="45" r="2" fill="currentColor"/>
-                            <circle cx="75" cy="55" r="2"/>
-                            <path d="M73 53l2 2 4-4" stroke-linecap="round" stroke-width="1.5"/>
-                            <circle cx="75" cy="65" r="2" fill="currentColor"/>
-                            <path d="M65 25h8 M65 35h8 M65 45h8 M65 55h8 M65 65h8" stroke-linecap="round" stroke-width="1"/>
-                        </svg>
-                        <div class="prestation-text">Audit et expertise</div>
+                        <div class="prestation-text">DIGITALISATION AGRICOLE</div>
                     </div>
                 </div>
             </div>

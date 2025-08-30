@@ -38,10 +38,10 @@ const Header = () => {
         {
           title: "A propos",
           links: [
-            { label: "Qui sommes-nous", url: "/entreprise" },
-            { label: "Notre vision", url: "/entreprise" },
-            { label: "Notre mission", url: "/entreprise" },
-            { label: "Nos valeurs", url: "/entreprise" },
+            { label: "Qui sommes-nous", url: "/entreprise/Qui_Somme_Nous" },
+            { label: "Notre vision", url: "/entreprise/Notre_Vision" },
+            { label: "Notre mission", url: "/entreprise/Notre_Mission" },
+            { label: "Nos valeurs", url: "/entreprise/Nos_Valeurs" },
           ]
         },
         {
@@ -56,6 +56,7 @@ const Header = () => {
       title: "DOMAINES D'INTERVENTION",
       sections: [
         {
+          icon: "styleico.svg",
           title: "FORESTERIE & ENVIRONNEMENT",
           links: [
             { label: "FORESTERIE & ENVIRONNEMENT", url: "#" },
@@ -63,6 +64,7 @@ const Header = () => {
         },
         {
           title: "AGRICULTURE ET NEGOCE AGRICOLE",
+          icon: "studi.svg",
           links: [
             { label: "AGRICULTURE", url: "#" },
             { label: "NEGOCE AGRICOLE", url: "#" },
@@ -70,12 +72,15 @@ const Header = () => {
         },
         {
           title: "ETUDE ET CONSEIL",
+          icon: "computer.svg",
           links: [
             { label: "ETUDE ET CONSEIL", url: "#" },
           ]
         },
         {
           title: "DIGITALISATION AGRICOLE",
+          icon: "agriculture (1).svg",
+
           links: [
             { label: "DIGITALISATION AGRICOLE", url: "#" },
           ]
@@ -119,7 +124,7 @@ const Header = () => {
             {/* Logo */}
             <div className="d-flex align-items-center logo-container mt-4">
               <img 
-                src="icon.png"
+                src="/icon.png"
                 alt="Logo" 
                 style={{ width: "200px", height: "150px"}}
               />
@@ -277,14 +282,19 @@ const Header = () => {
             </div>
             
             <div className="modal-content-grid">
+            
               {menuData[menuKey].sections.map((section, idx) => (
                 <div key={idx} className={`col-md-${menuKey === 'entreprise' ? '3' : '4'}`}>
+                {section.icon && (
+                <img src={section.icon} alt={section.title}  style={{ width: "20px", height: "20px", objectFit: "contain" }}/>
+              )}
                   <h3 className="modal-section-title" style={{ color: '#83b614', marginBottom: '1rem', fontSize: '1.3rem' }}>
                     {section.title}
                   </h3>
                   <ul className="list-unstyled">
                     {section.links.map((link, linkIdx) => (
                       <li key={linkIdx} className="mb-2">
+                        
                         <a 
                           href={link.url}
                           className="modal-link"
