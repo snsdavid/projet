@@ -91,24 +91,27 @@ const Header = () => {
       title: "NOS PRESTATIONS",
       sections: [
         {
-          title: "",
+          title: "𝐅𝐨𝐫𝐞𝐬𝐭𝐞𝐫𝐢𝐞 & 𝐄𝐧𝐯𝐢𝐫𝐨𝐧𝐧𝐞𝐦𝐞𝐧𝐭",
           icon: "/styleico.svg",
           links: [
-            { label: "𝐅𝐨𝐫𝐞𝐬𝐭𝐞𝐫𝐢𝐞 & 𝐄𝐧𝐯𝐢𝐫𝐨𝐧𝐧𝐞𝐦𝐞𝐧𝐭", url: "#" },
+            { label: "Agroforesterie & reforestation", url: "/nos-prestation/Agroforesterie" },
+            { label: "Suivi de reboisement & réalisation de plans d’aménagement", url: "/nos-prestation/Suivi" },
           ]
         },
         {
-          title: "",
+          title: "𝐀𝐠𝐫𝐢𝐜𝐮𝐥𝐭𝐮𝐫𝐞",
           icon: "/studi.svg",
           links: [
-            { label: "𝐀𝐠𝐫𝐢𝐜𝐮𝐥𝐭𝐮𝐫𝐞", url: "#" },
+            { label: "Production de plants forestiers et fruitiers ", url: "/nos-prestation/Production" },
           ]
         },
         {
-          title: "",
-          icon: "/agriculture (1).svg",
+          title: "𝐄𝐓𝐔𝐃𝐄 𝐄𝐓 𝐂𝐎𝐍𝐒𝐄𝐈𝐋",
+          icon: "/computer.svg",
           links: [
-            { label: "𝐍𝐞́𝐠𝐨𝐜𝐞 𝐀𝐠𝐫𝐢𝐜𝐨𝐥𝐞", url: "#" },
+            { label: "Télédétection & cartographie forestière", url: "/nos-prestation/Télédétection" },
+            { label: "Formation en sylviculture & techniques de production de plants", url: "/nos-prestation/Formation" },
+            { label: "Gestion des écosystèmes & sensibilisation des communautés", url: "/nos-prestation/Gestion" },
           ]
         }
       ]

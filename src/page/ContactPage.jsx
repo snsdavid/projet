@@ -4,6 +4,7 @@ import Footer from './composant/Footer';
 import Contact from "./composant/NousContacter";
 import Entreprise from "./composant/Entreprise";
 import MapWithMarkers from "./composant/MapWithMarkers";
+import ForestryServicesCard from "./composant/ForestryServicesCard";
 
 const ContactPage = ()=>{
     return (
