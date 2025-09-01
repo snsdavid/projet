@@ -6,6 +6,7 @@ import EntreprisePage from '../page/EntreprisePage';
 import NewsPage from '../page/NewsPage';
 import ContactPage from '../page/ContactPage';
 import ExpertisePage from '../page/ExpertisePage';
+import DomaineDintervention from '../page/DomaineDintervention';
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -28,6 +29,7 @@ const AppRoute = () => {
         {/* Add more routes as needed */}
         <Route path="/actualites" element={<NewsPage></NewsPage>} />
         <Route path="/contact" element={<ContactPage></ContactPage>}></Route>
+        <Route path="/domaine-d-intervention/:id" element={<DomaineDintervention></DomaineDintervention>} />
       </Routes>
     </>
   );

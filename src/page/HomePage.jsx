@@ -9,7 +9,36 @@ const HomePage = () => {
   return (
     <>
       <HeaderComposant />
-      <Carrosel />
+      <div className="method-1 relative">
+        <div 
+          className="container-fluid relative" 
+          style={{
+            backgroundColor: "rgba(238, 237, 243, 0.84)", 
+            paddingBottom: "90px",
+          }}
+        >
+          {/* Forme concave avec pseudo-élément */}
+          <div 
+            className="absolute top-0 left-0 w-full overflow-hidden"
+            style={{ height: '100px' }}
+          >
+            <div
+              className="absolute top-0 left-0 w-full bg-white"
+              style={{
+                height: '100px',
+                borderRadius: '0 0 50% 50%',
+                transform: 'translateY(-50px)'
+              }}
+            />
+          </div>
+          
+          <div className="relative z-10">
+            <Carrosel />
+          </div>
+        </div>
+      </div>
+
+      <div className="h-8"></div>
       <Section1></Section1>
       <Section2></Section2>
       <Footer />

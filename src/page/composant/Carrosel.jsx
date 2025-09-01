@@ -52,28 +52,29 @@ const Carrosel = () => {
     };
 
     return (
-      <>
-    <div className="position-relative overflow-hidden mb-5" style={{ borderRadius: '0 0 20px 20px', maxWidth: '1200px', margin: '0 auto' }}>
+      <div>
+
+    <div className="position-relative overflow-hidden pb-5" style={{ borderRadius: '0 0 20px 20px', maxWidth:'1000px', margin:'0 auto' , maxHeight:'350px'}}>
     <div id="agricultureCarousel" className="carousel slide">
     <div className="carousel-inner">
     {slides.map((slide, index) => (
     <div key={index} className={`carousel-item ${index === activeIndex ? 'active' : ''}`}>
-    <div className="position-relative" style={{ height: '500px' }}>
+    <div className="position-relative" style={{ height: '350px' }}>
       <img
       src={slide.image}
-      className="d-block w-100 h-100"
+      className="d-block w-100 h-70"
       alt={`Slide ${index + 1}`}
       style={{ objectFit: 'cover' }}
       />
 
-    <div className="position-absolute top-0 start-0 h-100" style={{ width: '45%' }}>
+    <div className="position-absolute top-0 start-0 h-100" style={{ width: '40%' }}>
     <div className="h-100 d-flex align-items-center"
     style={{
     background: 'linear-gradient(135deg, rgba(6, 147, 227, 0.95), rgba(4, 119, 184, 0.90))',
     clipPath: 'polygon(0 0, 100% 0, 85% 100%, 0% 100%)'
     }}>
     <div className="px-5">
-    <h1 className="text-white fw-bold mb-5" style={{ fontSize: '2.5rem', lineHeight: '1.2', textTransform: 'uppercase' }}>
+    <h1 className="text-white fw-bold mb-5" style={{ fontSize: '1.5rem', lineHeight: '1.2', textTransform: 'uppercase' }}>
     {slide.title}
     </h1>
 
@@ -154,7 +155,6 @@ const Carrosel = () => {
     .carousel-item {
     transition: transform 0.6s ease-in-out;
     }
-
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
     filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
@@ -180,7 +180,7 @@ const Carrosel = () => {
     }
     `}</style>
     </div>
-    </>
+    </div>
   );
 };
 

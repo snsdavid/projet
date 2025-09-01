@@ -1,242 +1,89 @@
-import React, { useState } from "react";
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleSubmit = () => {
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-      alert("Veuillez remplir tous les champs");
-      return;
-    }
-    console.log("Formulaire soumis:", formData);
-    alert("Message envoyé avec succès!");
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
-
   return (
-    <div className="bg-light">
-      {/* Hero Section */}
-      <div
-        className="text-center text-white py-5 position-relative"
-        style={{
-          background: "linear-gradient(135deg, #10b981, #22c55e, #0d9488)",
-        }}
+    <div className="p-5" style={{ color: "rgb(30, 58, 95)" , backgroundColor: "rgba(248, 249, 250, 0.72)" , width: "100%" }}>
+      {/* ===== COMMENT NOUS TROUVER ===== */}
+      <h2
+        className="text-uppercase fw-bold mb-5"
+        style={{ color: "#8bc34a" ,fontFamily: "Julius Sans One"}}
       >
-        <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25"></div>
-        <div className="position-relative container">
-          <h1 className="display-4 fw-bold">Nous Contacter</h1>
-          <p className="lead">
-            Nous sommes là pour répondre à toutes vos questions. N'hésitez pas à
-            nous contacter !
+        Comment nous trouver ?
+      </h2>
+
+      {/* Colonnes Agences */}
+      <div className="row mb-5">
+        {/* AGENCE SUD */}
+        <div className="col-md-4 mb-4">
+          <h5 className="fw-bold text-uppercase" style={{ fontFamily: "Julius Sans One"}}>Agence Sud et Siège social</h5>
+          <p className="mb-1 " style={{ fontFamily: "Julius Sans One"}}>Angré Nouveau CHU, Cocody</p>
+          <p className="mb-1 " style={{ fontFamily: "Julius Sans One"}}>Abidjan, Côte d’Ivoire</p>
+          <p className="mb-1 " style={{ fontFamily: "Julius Sans One"}}>
+            Email :{" "}
+            <a href="mailto:nya.agritek@gmail.com" className="text-dark">
+              nya.agritek@gmail.com
+            </a>
+          </p>
+          <p className="mb-1" style={{ fontFamily: "Julius Sans One"}}>
+            <i className="bi bi-telephone text-success me-2"></i> 05 86 25 31 31
+          </p>
+          <p className="mb-1" style={{ fontFamily: "Julius Sans One"}}>
+            <i className="bi bi-phone text-success me-2"></i> +225 86 25 31 31
+          </p>
+          <p className="mb-0" style={{ fontFamily: "Julius Sans One"}}>
+            <i className="bi bi-linkedin text-success me-2"></i>
+            <a
+              href="https://www.linkedin.com/company/nya-agritek-sarl-0754ab311"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-dark"
+            >
+              nya-agritek-sarl
+            </a>
           </p>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="container py-5">
-        <div className="row g-5">
-          {/* Contact Information */}
-          <div className="col-lg-6">
-  <h2 className="fw-bold mb-3 text-dark">Nos Coordonnées</h2>
-  <p className="text-muted mb-4">
-    Contactez-nous par le moyen qui vous convient le mieux.
-  </p>
+        {/* AGENCE OUEST (exemple vide à compléter si besoin) */}
+        <div className="col-md-4 mb-4">
+          <h5 className="fw-bold text-uppercase" style={{ fontFamily: "Julius Sans One"}}>Agence Ouest</h5>
+          <p className="text-muted">À venir...</p>
+        </div>
 
-  <div className="row g-4">
-    {/* Téléphone */}
-    <div className="col-md-6">
-      <div className="card shadow-sm border-0 h-100 text-center">
-        <div className="card-body">
-          <div className="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style={{ width: 60, height: 60 }}>
-            📞
-          </div>
-          <h5 className="fw-bold text-dark">Téléphone</h5>
-          <a href="tel:0586253131" className="text-success fw-semibold">
-            05 86 25 31 31
-          </a>
+        {/* AGENCE EST (exemple vide à compléter si besoin) */}
+        <div className="col-md-4 mb-4">
+          <h5 className="fw-bold text-uppercase" style={{ fontFamily: "Julius Sans One"}}>Agence Est</h5>
+          <p className="text-muted">À venir...</p>
         </div>
       </div>
-    </div>
 
-    {/* WhatsApp */}
-    <div className="col-md-6">
-      <div className="card shadow-sm border-0 h-100 text-center">
-        <div className="card-body">
-          <div className="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style={{ width: 60, height: 60 }}>
-            💬
-          </div>
-          <h5 className="fw-bold text-dark">WhatsApp</h5>
-          <a
-            href="https://wa.me/22586253131"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-success fw-semibold"
-          >
-            +225 86 25 31 31
-          </a>
-        </div>
-      </div>
-    </div>
+      {/* ===== NOS IMPLANTATIONS ===== */}
+      <h2
+        className="text-uppercase fw-bold mb-4"
+        style={{ color: "#8bc34a" ,fontFamily: "Julius Sans One"}}
+      >
+        Nos implantations
+      </h2>
 
-    {/* Email */}
-    <div className="col-md-6">
-      <div className="card shadow-sm border-0 h-100 text-center">
-        <div className="card-body">
-          <div className="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style={{ width: 60, height: 60 }}>
-            ✉️
-          </div>
-          <h5 className="fw-bold text-dark">Email</h5>
-          <a href="mailto:nya.agritek@gmail.com" className="text-primary fw-semibold">
-            nya.agritek@gmail.com
-          </a>
-        </div>
-      </div>
-    </div>
+      <p>
+        Nya Agritek est implantée à Abidjan, en Côte d’Ivoire, au cœur d’un
+        écosystème agricole dynamique. Grâce à ses partenariats et réseaux
+        d’experts, l’entreprise développe progressivement une présence à
+        l’international pour accompagner les projets agricoles, environnementaux
+        et digitaux sur plusieurs continents.
+      </p>
 
-    {/* Adresse */}
-    <div className="col-md-6">
-      <div className="card shadow-sm border-0 h-100 text-center">
-        <div className="card-body">
-          <div className="bg-danger bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style={{ width: 60, height: 60 }}>
-            📍
-          </div>
-          <h5 className="fw-bold text-dark">Adresse</h5>
-          <p className="text-muted mb-0">
-            Angré Nouveau CHU, Cocody <br /> Abidjan, Côte d'Ivoire
-          </p>
-        </div>
-      </div>
-    </div>
+      <p>
+        Nous intervenons principalement en Afrique de l’Ouest, mais également en
+        Europe et en Asie, dans le cadre de la digitalisation agricole, du
+        négoce et du développement durable.
+      </p>
 
-    {/* LinkedIn */}
-    <div className="col-md-12">
-      <div className="card shadow-sm border-0 h-100 text-center">
-        <div className="card-body">
-          <div className="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style={{ width: 60, height: 60 }}>
-            🔗
-          </div>
-          <h5 className="fw-bold text-dark">LinkedIn</h5>
-          <a
-            href="https://linkedin.com/company/nya-agritek-sarl-0754ab311"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-info fw-semibold"
-          >
-            nya-agritek-sarl
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-          {/* Contact Form */}
-          <div className="col-lg-6">
-            <div className="card shadow p-4">
-              <h2 className="fw-bold mb-4 text-dark">Envoyez-nous un Message</h2>
-              <div className="mb-3">
-                <label className="form-label">Nom Complet</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, name: e.target.value }))
-                  }
-                  placeholder="Votre nom complet"
-                />
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Adresse Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, email: e.target.value }))
-                  }
-                  placeholder="votre.email@example.com"
-                />
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Sujet</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={formData.subject}
-                  onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, subject: e.target.value }))
-                  }
-                  placeholder="Sujet de votre message"
-                />
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Message</label>
-                <textarea
-                  rows={5}
-                  className="form-control"
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, message: e.target.value }))
-                  }
-                  placeholder="Écrivez votre message ici..."
-                ></textarea>
-              </div>
-
-              <button
-                className="btn btn-success w-100 py-2 fw-bold"
-                onClick={handleSubmit}
-              >
-                Envoyer le Message
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Map Section */}
-        <div className="mt-5 text-center">
-          <h2 className="fw-bold text-dark mb-4">Notre Localisation</h2>
-          <div className="card shadow p-4">
-            <div className="bg-light d-flex flex-column align-items-center justify-content-center rounded" style={{ height: "400px" }}>
-              <h5 className="text-muted">Carte Google Maps</h5>
-              <p className="small">Angré Nouveau CHU, Cocody, Abidjan</p>
-              <p className="text-secondary small">
-                Ajoutez votre lien Google Maps ici pour remplacer cette zone
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Call to Action */}
-        <div
-          className="text-center text-white rounded p-5 mt-5"
-          style={{
-            background: "linear-gradient(135deg, #10b981, #22c55e, #0d9488)",
-          }}
-        >
-          <h2 className="fw-bold mb-3">Prêt à Collaborer ?</h2>
-          <p className="lead mb-4">
-            Contactez-nous dès aujourd'hui pour discuter de vos projets
-            agricoles.
-          </p>
-          <a
-            href="https://wa.me/22586253131"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-light text-success fw-semibold px-4 py-2"
-          >
-            WhatsApp Direct 💬
-          </a>
-        </div>
-      </div>
+      <p>
+        Nos équipes accompagnent des projets pilotes pour renforcer la
+        traçabilité et la commercialisation des produits agricoles à l’échelle
+        mondiale.
+      </p>
     </div>
   );
 };

@@ -12,7 +12,7 @@ const Section1 = () => {
       style={{
         minHeight: "60vh",
         background: "linear-gradient(135deg, #7FB13D, #9CC24D)",
-        padding: "60px 20px",
+        padding: "20px",
       }}
     >
       <div className="container">

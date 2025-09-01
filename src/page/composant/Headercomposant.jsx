@@ -59,22 +59,22 @@ const Header = () => {
           icon: "/styleico.svg",
           title: "FORESTERIE & ENVIRONNEMENT",
           links: [
-            { label: "FORESTERIE & ENVIRONNEMENT", url: "#" },
+            { label: "FORESTERIE & ENVIRONNEMENT", url: "/domaine-d-intervention/FORESTERIE_ENVIRONNEMENT" },
           ]
         },
         {
           title: "AGRICULTURE ET NEGOCE AGRICOLE",
           icon: "/studi.svg",
           links: [
-            { label: "AGRICULTURE", url: "#" },
-            { label: "NEGOCE AGRICOLE", url: "#" },
+            { label: "AGRICULTURE", url: "/domaine-d-intervention/AGRICULTURE" },
+            { label: "NEGOCE AGRICOLE", url: "/domaine-d-intervention/NEGOCE_AGRICOLE" },
           ]
         },
         {
           title: "ETUDE ET CONSEIL",
           icon: "/computer.svg",
           links: [
-            { label: "ETUDE ET CONSEIL", url: "#" },
+            { label: "ETUDE ET CONSEIL", url: "/domaine-d-intervention/ETUDE_ET_CONSEIL" },
           ]
         },
         {
@@ -82,7 +82,7 @@ const Header = () => {
           icon: "/agriculture (1).svg",
 
           links: [
-            { label: "DIGITALISATION AGRICOLE", url: "#" },
+            { label: "DIGITALISATION AGRICOLE", url: "/domaine-d-intervention/DIGITALISATION_AGRICOLE" },
           ]
         },
       ]
@@ -91,10 +91,24 @@ const Header = () => {
       title: "NOS PRESTATIONS",
       sections: [
         {
-          title: "Menu Prestations",
+          title: "",
+          icon: "/styleico.svg",
           links: [
-            { label: "Sous-menu Prestations 1", url: "#" },
-            { label: "Sous-menu Prestations 2", url: "#" },
+            { label: "𝐅𝐨𝐫𝐞𝐬𝐭𝐞𝐫𝐢𝐞 & 𝐄𝐧𝐯𝐢𝐫𝐨𝐧𝐧𝐞𝐦𝐞𝐧𝐭", url: "#" },
+          ]
+        },
+        {
+          title: "",
+          icon: "/studi.svg",
+          links: [
+            { label: "𝐀𝐠𝐫𝐢𝐜𝐮𝐥𝐭𝐮𝐫𝐞", url: "#" },
+          ]
+        },
+        {
+          title: "",
+          icon: "/agriculture (1).svg",
+          links: [
+            { label: "𝐍𝐞́𝐠𝐨𝐜𝐞 𝐀𝐠𝐫𝐢𝐜𝐨𝐥𝐞", url: "#" },
           ]
         }
       ]
@@ -116,7 +130,7 @@ const Header = () => {
   
   return (
     <>
-    <div className="header-menu-system mb-5 pb-5">
+    <div className="header-menu-system">
       {/* Header principal */}
       <header className="shadow-sm py-3 header-menu pt-5">
         <div className="container">
@@ -161,7 +175,7 @@ const Header = () => {
                     <path d="M16 8a6 6 0 0 1 6 6v2a6 6 0 0 1-6 6h-4v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2H4a6 6 0 0 1-6-6v-2a6 6 0 0 1 6-6h4v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8h4z"></path>
                   </svg>
                 </a>
-                <a href="#" className="btn btn-link p-0 d-flex align-items-center fort header-link">
+                <a href="/contact" className="btn btn-link p-0 d-flex align-items-center fort header-link">
                   Contactez-nous 
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
@@ -217,7 +231,7 @@ const Header = () => {
             <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311" target="_blank" rel="noopener noreferrer" className="mobile-link">
               Suivez-nous
             </a>
-            <a href="mailto:nya.agritek@gmail.com" className="mobile-link">
+            <a href="/contact" className="mobile-link">
               Contactez-nous
             </a>
           </div>
@@ -350,7 +364,7 @@ const Header = () => {
                     <path d="M16 8a6 6 0 0 1 6 6v2a6 6 0 0 1-6 6h-4v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2H4a6 6 0 0 1-6-6v-2a6 6 0 0 1 6-6h4v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8h4z"></path>
                   </svg>
                 </a>
-                <a href="#" className="modal-footer-link">
+                <a href="/contact" className="modal-footer-link">
                   Contactez-nous 
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
@@ -388,9 +402,8 @@ const Header = () => {
         color: #0a7b8e;
       }
       .header-menu {
-        margin-bottom: 20px;
         clip-path: ellipse(110% 100% at 50% 0%);
-        background-color: rgb(243, 243, 243);
+        background-color: white;
         padding-left: env(safe-area-inset-left);
         padding-right: env(safe-area-inset-right);
       }

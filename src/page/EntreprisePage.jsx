@@ -4,14 +4,16 @@ import Footer from './composant/Footer';
 import EntrepriseSection2 from './composant/Entreprisesection2';
 import Entreprise from './composant/Entreprise';
 import { useParams } from 'react-router-dom';
+import BiodiversityHeader from './composant/BiodiversityComponents';
 
 
 const EntreprisePage = () => {
     const { id } = useParams();
     const data = {
             Qui_Somme_Nous: {
-                        title: "Qui sommes-nous",
-                        text: `Nous sommes une organisation engagée dans le développement rural et agricole durable.
+                title1:"L ENTREPRISE",
+                title: "Qui sommes-nous",
+                text: `Nous sommes une organisation engagée dans le développement rural et agricole durable.
                 Notre mission est claire : soutenir nos partenaires en leur offrant des solutions novatrices, adaptées à leurs besoins spécifiques, afin de relever les défis actuels et futurs.
 
                 Nous combinons expertise stratégique, créativité et technologies pour proposer des accompagnements sur mesure, et nous nous engageons à être aux côtés de nos clients à chaque étape de la mise en œuvre de leurs projets.
@@ -21,20 +23,23 @@ const EntreprisePage = () => {
                         petittitre:""
             },
             Notre_Vision: {
-                title: "Notre vision",
+                title1:"Notre vision",
+                title: "Notre vision de l entreprise",
                 text: `Soutenir le développement rural et agricole durable en forgeant des partenariats solides et en offrant des solutions novatrices, adaptées aux besoins uniques de nos partenaires, face aux défis actuels et futurs.`,
                 points:[],
                 petittitre:""
             },
             Notre_Mission: {
-                title: "Notre mission",
+                title1:"Notre mission",
+                title: "La mission de l entreprise",
                 text: ` accompagner nos clients vers le succès. 
 Nous combinons expertise stratégique, créativité et technologies pour fournir des prestations sur mesure qui répondent aux besoins uniques de chaque client. Notre engagement envers l'excellence et notre passion pour ce que nous faisons nous permettent d'accompagner nos clients à chaque étape de mise en œuvre de leurs projets et programmes de développement agricole durable.`,
                 points:[],
                 petittitre:"Notre mission est simple :"
             },
             Nos_Valeurs: {
-                title: "Nos valeurs",
+                title1:"Nos valeurs",
+                title: "Nos valeurs : Intégrité, excellence et collaboration",
                 text: `Intégrité, excellence et collaboration: nos valeurs fondamentales guident nos actions et renforcent nos relations.Ces valeurs fondamentales assurent une base solide pour guider nos actions quotidiennes et renforcer les relations professionnelles et humaines. Elles posent les piliers d’une entreprise fiable, performante et tournée vers le progrès durable.`,
                 points:[
                     {
@@ -65,7 +70,7 @@ Nous combinons expertise stratégique, créativité et technologies pour fournir
     return (
         <>
             <Header />
-            <Entreprise />
+            <Entreprise  title={currentData.title1}/>
             <EntrepriseSection2 title={currentData.title} petittitre={currentData.petittitre} text={currentData.text} points={currentData.points}/>
             <Footer />
         </>

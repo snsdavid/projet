@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Entreprise = () => {
+const Entreprise = ({title}) => {
   return (
     <section className="values-vision-section">
       <div className="container-fluid p-0">
@@ -8,8 +8,8 @@ const Entreprise = () => {
           {/* Colonne de texte */}
           <div className="col-lg-6 col-md-12">
             <div className="text-content p-5 d-flex align-items-center justify-content-center" style={{ backgroundColor: 'rgb(230, 229, 233)', minHeight: '400px' }}>
-              <h1  className="fw-bold" style={{ color: 'rgb(17, 8, 59)', fontWeight: '500',fontFamily: 'Julius Sans One', fontSize: '1.9rem'}}>
-                Nos valeurs et notre<br />vision
+              <h1  className="fw-bold" style={{ color: 'rgb(17, 8, 59)', fontWeight: '500',fontFamily: 'Julius Sans One', fontSize: '1.9rem' , maxWidth:'500px'}}>
+                {title}
               </h1>
             </div>
           </div>
@@ -38,7 +38,7 @@ const Entreprise = () => {
       {/* Styles CSS personnalisés */}
       <style jsx>{`
         .values-vision-section {
-          margin: 50px 0;
+          margin: 0 0 50px 0;
           position: relative;
           background-color: rgba(32, 10, 129, 0.25);
         }
