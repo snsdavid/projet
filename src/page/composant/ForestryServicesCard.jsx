@@ -140,14 +140,14 @@ const ForestryServicesCard = ({titre,paragraph1,paragraph2,paragraph3,paragraph4
                       borderRadius: '6px',
                       marginBottom: '15px',
                     }}>
-                      <a href="#" style={{ textDecoration: 'none' }}><div style={{ fontSize: '24px', marginBottom: '8px' }}>📋</div></a>
+                      <a href="#" style={{ textDecoration: 'none' }}><div style={{ fontSize: '24px', marginBottom: '8px' }}>🌿</div></a>
                       <div style={{ 
                         fontSize: '9px',
                         fontWeight: 'bold',
                         color: '#333',
                         lineHeight: '1.2'
                       }}>
-                        <a href="#" style={{ textDecoration: 'none' }}>ÉTUDES ET PLANIFICATION</a>
+                        <a href="#" style={{ textDecoration: 'none' }}>Agroforesterie & reforestation</a>
                       </div>
                     </div>
                   </div>
@@ -159,14 +159,14 @@ const ForestryServicesCard = ({titre,paragraph1,paragraph2,paragraph3,paragraph4
                       borderRadius: '6px',
                       marginBottom: '15px'
                     }}>
-                      <a href="#" style={{ textDecoration: 'none' }}><div style={{ fontSize: '24px', marginBottom: '8px' }}>💼</div></a>
+                      <a href="#" style={{ textDecoration: 'none' }}><div style={{ fontSize: '24px', marginBottom: '8px' }}>🛰️</div></a>
                       <div style={{ 
                         fontSize: '9px',
                         fontWeight: 'bold',
                         color: '#333',
                         lineHeight: '1.2'
                       }}>
-                       <a href="#" style={{ textDecoration: 'none' }}> AT ET AMO</a>
+                       <a href="#" style={{ textDecoration: 'none' }}> Télédétection & cartographie forestière</a>
                       </div>
                     </div>
                   </div>
@@ -184,7 +184,7 @@ const ForestryServicesCard = ({titre,paragraph1,paragraph2,paragraph3,paragraph4
                         color: '#333',
                         lineHeight: '1.2'
                       }}>
-                        <a href="#" style={{ textDecoration: 'none' }}>FORMATION -<br/>COMMUNICATION</a>
+                        <a href="#" style={{ textDecoration: 'none' }}>Formation en sylviculture & techniques de production de plants</a>
                       </div>
                     </div>
                   </div>
@@ -195,14 +195,14 @@ const ForestryServicesCard = ({titre,paragraph1,paragraph2,paragraph3,paragraph4
                       backgroundColor: '#e9ecef',
                       borderRadius: '6px'
                     }}>
-                      <a href="#" style={{ textDecoration: 'none' }}><div style={{ fontSize: '24px', marginBottom: '8px' }}>🎯</div></a>
+                      <a href="#" style={{ textDecoration: 'none' }}><div style={{ fontSize: '24px', marginBottom: '8px' }}>🪴</div></a>
                       <div style={{ 
                         fontSize: '9px',
                         fontWeight: 'bold',
                         color: '#333',
                         lineHeight: '1.2'
                       }}>
-                        <a href="#" style={{ textDecoration: 'none' }}>AUDIT ET EXPERTISE</a>
+                        <a href="#" style={{ textDecoration: 'none' }}>Production de plants forestiers et fruitiers</a>
                       </div>
                     </div>
                   </div>
