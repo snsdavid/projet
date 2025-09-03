@@ -22,43 +22,41 @@ const Footer = () => {
     <div className="container">
       <div className="row text-start">
         {/* Colonne 1 */}
-        <div className="col-md-4 mb-4" style={{fontFamily: "Arial, sans-serif", fontSize: "18px"}}>
+        <div className="col-md-4 mb-4" style={{fontFamily: "Arial, sans-serif", fontSize: "16px"}}>
           <h6 className="fw-bold" style={{ color: "#9CC24D" , paddingBottom: "18px"}}>
             Domaines d'intervention
           </h6>
           <ul className="list-unstyled">
-            <li><a href="#" className="text-white text-decoration-none">Biodiversité et ressources naturelles</a></li>
-            <li><a href="#" className="text-white text-decoration-none">Arbres et Forêts</a></li>
-            <li><a href="#" className="text-white text-decoration-none">Agriculture durable</a></li>
-            <li><a href="#" className="text-white text-decoration-none">Territoires</a></li>
-            <li><a href="#" className="text-white text-decoration-none">Climat</a></li>
+            <li><a href="/domaine-d-intervention/FORESTERIE_ENVIRONNEMENT" className="text-white text-decoration-none">FORESTERIE & ENVIRONNEMENT</a></li>
+            <li><a href="/domaine-d-intervention/AGRICULTURE" className="text-white text-decoration-none">AGRICULTURE ET NEGOCE AGRICOLE</a></li>
+            <li><a href="/domaine-d-intervention/ETUDE_ET_CONSEIL" className="text-white text-decoration-none">ETUDE ET CONSEIL</a></li>
+            <li><a href="/domaine-d-intervention/DIGITALISATION_AGRICOLE" className="text-white text-decoration-none">DIGITALISATION AGRICOLE</a></li>
           </ul>
         </div>
 
         {/* Colonne 2 */}
-        <div className="col-md-4 mb-4" style={{fontFamily: "Arial, sans-serif", fontSize: "18px"}}>
+        <div className="col-md-4 mb-4" style={{fontFamily: "Arial, sans-serif", fontSize: "16px"}}>
           <h6 className="fw-bold" style={{ color: "#9CC24D", paddingBottom: "18px" }}>
             Nos prestations
           </h6>
           <ul className="list-unstyled">
-            <li><a href="#" className="text-white text-decoration-none">Évaluations</a></li>
-            <li><a href="#" className="text-white text-decoration-none">Études et planification</a></li>
-            <li><a href="#" className="text-white text-decoration-none">AT et AMO</a></li>
-            <li><a href="#" className="text-white text-decoration-none">Formation / communication</a></li>
-            <li><a href="#" className="text-white text-decoration-none">Audit et expertise</a></li>
+            <li><a href="/nos-prestation/Agroforesterie" className="text-white text-decoration-none">Agroforesterie & reforestation</a></li>
+            <li><a href="/nos-prestation/Suivi" className="text-white text-decoration-none">Suivi de reboisement & réalisation de plans d’aménagement</a></li>
+            <li><a href="/nos-prestation/Formation" className="text-white text-decoration-none">Formation en sylviculture & techniques de production de plants</a></li>
+            <li><a href="/nos-prestation/Gestion" className="text-white text-decoration-none">Gestion des écosystèmes & sensibilisation des communautés</a></li>
           </ul>
         </div>
 
         {/* Colonne 3 */}
-        <div className="col-md-4 mb-4" style={{fontFamily: "Arial, sans-serif", fontSize: "18px"}}>
+        <div className="col-md-4 mb-4" style={{fontFamily: "Arial, sans-serif", fontSize: "16px"}}>
           <h6 className="fw-bold" style={{ color: "#9CC24D", paddingBottom: "18px" }}>
             L’entreprise
           </h6>
           <ul className="list-unstyled">
-            <li><a href="#" className="text-white text-decoration-none">Qui sommes-nous ?</a></li>
-            <li><a href="#" className="text-white text-decoration-none">Nos actualités</a></li>
-            <li><a href="#" className="text-white text-decoration-none">Offres d’emploi, de missions, de stages</a></li>
-            <li><a href="#" className="text-white text-decoration-none">Contacts et implantations</a></li>
+            <li><a href="/entreprise/Qui_Somme_Nous" className="text-white text-decoration-none">Qui sommes-nous ?</a></li>
+            <li><a href="/entreprise/Notre_Vision" className="text-white text-decoration-none">Notre vision</a></li>
+            <li><a href="/entreprise/Notre_Mission" className="text-white text-decoration-none">Notre mission</a></li>
+            <li><a href="/entreprise/Nos_Valeurs" className="text-white text-decoration-none">Nos valeurs</a></li>
           </ul>
         </div>
       </div>
@@ -74,6 +72,7 @@ const Footer = () => {
    clip-path: ellipse(150% 99% at 48% 110%);
 
     }
+ 
   `}</style>
 
   </>
