@@ -122,9 +122,7 @@ const Header = () => {
         {
           title: "Nous recrutons",
           links: [
-            { label: "Offres d'emploi", url: "#" },
-            { label: "Offres de missions", url: "#" },
-            { label: "Offres de stages et d'alternances", url: "#" },
+            { label: "Nous recrutons", url: "/nous-recrutons" },
           ]
         }
       ]
