@@ -5,6 +5,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Carrosel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
 
     const slides = [
     {
@@ -51,11 +53,24 @@ const Carrosel = () => {
     setActiveIndex(index);
     };
 
+    useEffect(() => {
+      let interval;
+    
+      if (!isHovered) {
+        interval = setInterval(() => {
+          nextSlide();
+        }, 1700);
+      }
+    
+      return () => clearInterval(interval);
+    }, [isHovered]);
+
     return (
       <div>
 
     <div className="position-relative overflow-hidden pb-5" style={{ borderRadius: '0 0 20px 20px', maxWidth:'1000px', margin:'0 auto' , maxHeight:'350px'}}>
-    <div id="agricultureCarousel" className="carousel slide">
+    <div id="agricultureCarousel" className="carousel slide" onMouseEnter={() => setIsHovered(true)}
+  onMouseLeave={() => setIsHovered(false)}>
     <div className="carousel-inner">
     {slides.map((slide, index) => (
     <div key={index} className={`carousel-item ${index === activeIndex ? 'active' : ''}`}>
