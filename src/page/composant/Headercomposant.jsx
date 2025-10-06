@@ -200,7 +200,13 @@ const Header = () => {
                   <li key={menuKey}>
                     <button 
                       className="btn btn-link text-uppercase fw-medium fort nav-button"
-                      onClick={() => openModal(menuKey)}
+                      onClick={() =>{
+                        if (menuKey !== 'accueil') {
+                        openModal(menuKey);
+                      } else {
+                        window.location.href = '/';
+                      }
+                      }}
                     >
                       {menuKey === 'entreprise' ? "L'Entreprise " : 
                        menuKey === 'enjeux' ? "Domaines d'intervention " : 

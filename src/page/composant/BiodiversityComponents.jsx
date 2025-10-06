@@ -8,7 +8,7 @@ export const BiodiversityHeader = ({title, description , icon}) => {
       <div 
         className="position-absolute w-100 h-100"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80")',
+          backgroundImage: 'url("/thumb__940_0_0_0_auto.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'right center'
         }}
