@@ -197,7 +197,7 @@ const Header = () => {
         <div className="mobile-menu-header">
           <span className="mobile-menu-title">Menu</span>
           <button className="btn btn-link mobile-close-btn" onClick={toggleMobileMenu}>
-            <X size={24} color="#0a7b8e" />
+            <X size={15} color="#0a7b8e" className="fort" />
           </button>
         </div>
         <div className="mobile-menu-content">
@@ -240,19 +240,18 @@ const Header = () => {
           className={`modal-overlay ${activeModal === menuKey ? 'show' : ''}`}
         >
           <div className="container modal-container">
+          <div className="modal-header">
             <button className="btn btn-link modal-close-btn" onClick={closeModal}>
-              <X size={28} />
+              <X size={24} />
             </button>
-            
-            <div className="modal-header">
-              <h2 className="modal-title">{menuData[menuKey].title}</h2>
-            </div>
+            <h2 className="modal-title">{menuData[menuKey].title}</h2>
+          </div>
             
             <div className="modal-content-grid">
               {menuData[menuKey].sections.map((section, idx) => (
                 <div key={idx} className={`col-md-${menuKey === 'entreprise' ? '3' : '4'}`}>
                   {section.icon && (
-                    <img src={section.icon} alt={section.title} style={{ width: "20px", height: "20px", objectFit: "contain" }}/>
+                    <img src={section.icon} alt={section.title} style={{ width: "15px", height: "15px", objectFit: "contain" }}/>
                   )}
                   <h3 className="modal-section-title">{section.title}</h3>
                   <ul className="list-unstyled">
@@ -405,8 +404,8 @@ const Header = () => {
         margin: 0;
         background: none;
         border: none;
-        min-width: 44px;
-        min-height: 44px;
+        min-width: 35px;
+        min-height: 35px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -517,28 +516,12 @@ const Header = () => {
       .modal-container {
         padding: 1rem;
         height: 100vh;
-        overflow-y: auto;
+        width: 60%;
+        overflow-y: none;
         -webkit-overflow-scrolling: touch;
         position: relative;
       }
       
-      .modal-close-btn {
-        position: fixed;
-        top: calc(1rem + env(safe-area-inset-top));
-        left: calc(1rem + env(safe-area-inset-left));
-        color: #0a7b8e;
-        font-size: 1.5rem;
-        padding: 0.5rem;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 50%;
-        min-width: 48px;
-        min-height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        z-index: 10;
-      }
       
       .modal-header {
         text-align: center;
@@ -549,7 +532,7 @@ const Header = () => {
       .modal-title {
         font-weight: bold;
         color: #0a7b8e;
-        font-size: 1.8rem;
+        font-size: 1rem;
         font-family: 'Julius Sans One', Arial, sans-serif;
       }
       
@@ -560,8 +543,8 @@ const Header = () => {
       
       .modal-section-title {
         color: #83b614;
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
+        font-size: 0.9rem;
         font-weight: 600;
       }
       
@@ -570,9 +553,9 @@ const Header = () => {
         align-items: center;
         color: #0a7b8e;
         text-decoration: none;
-        padding: 0.5rem 0;
-        font-size: 1rem;
-        min-height: 44px;
+        padding: 0.3rem 0;
+        font-size: 0.8rem;
+        min-height: 15px;
       }
       
       .modal-link:hover {
@@ -588,8 +571,7 @@ const Header = () => {
       .modal-footer {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
-        padding: 1.5rem 0;
+        gap: 0.5rem;
         border-top: 1px solid #dee2e6;
         margin-bottom: calc(2rem + env(safe-area-inset-bottom));
       }
@@ -599,9 +581,8 @@ const Header = () => {
         align-items: center;
         color: #0a7b8e;
         text-decoration: none;
-        padding: 0.5rem 0;
-        font-size: 1rem;
-        min-height: 44px;
+        padding: 0.2rem 0;
+        font-size: 0.9rem;
       }
       
       .modal-footer-link:hover {
@@ -630,7 +611,7 @@ const Header = () => {
           padding: 0.2rem 0;
         }
         .modal-title {
-          font-size: 1.4rem;
+          font-size: 1rem;
         }
         .mobile-menu {
           width: 90vw;
@@ -659,7 +640,56 @@ const Header = () => {
         .modal-footer-link {
           min-height: 48px;
         }
+
       }
+        .modal-overlay {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .modal-container {
+          width: 70%;
+          max-height: 80vh;
+          height: auto;
+          background: white;
+          padding: 2rem;
+          overflow-y: none;
+        }
+
+        .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd; /* fine ligne de séparation */
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0a7b8e;
+  margin: 0;
+  font-family: 'Julius Sans One', Arial, sans-serif;
+}
+
+.modal-close-btn {
+  border-radius: 50%;
+  z-index: 10;
+  background: none;
+  border: none;
+  color: #0a7b8e;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  color: #9cc24d;
+}
+
     `}</style>
     </>
   );
