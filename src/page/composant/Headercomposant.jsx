@@ -170,7 +170,7 @@ const Header = () => {
                 {Object.keys(menuData).map((menuKey) => (
                   <li key={menuKey}>
                     <button 
-                      className="btn btn-link text-uppercase fw-medium fort nav-button"
+                      className="btn btn-link text-uppercase fw-medium fort nav-button "
                       onClick={() =>{
                         if (menuKey !== 'accueil') {
                         openModal(menuKey);
@@ -519,7 +519,8 @@ const Header = () => {
         width: 60%;
         overflow-y: none;
         -webkit-overflow-scrolling: touch;
-        position: relative;
+        position: absolute;
+        top: 0;
       }
       
       
