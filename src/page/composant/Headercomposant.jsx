@@ -80,7 +80,6 @@ const Header = () => {
         {
           title: "DIGITALISATION AGRICOLE",
           icon: "/agriculture (1).svg",
-
           links: [
             { label: "DIGITALISATION AGRICOLE", url: "/domaine-d-intervention/DIGITALISATION_AGRICOLE" },
           ]
@@ -95,7 +94,7 @@ const Header = () => {
           icon: "/styleico.svg",
           links: [
             { label: "Agroforesterie & reforestation", url: "/nos-prestation/Agroforesterie" },
-            { label: "Suivi de reboisement & réalisation de plans d’aménagement", url: "/nos-prestation/Suivi" },
+            { label: "Suivi de reboisement & réalisation de plans d'aménagement", url: "/nos-prestation/Suivi" },
           ]
         },
         {
@@ -132,23 +131,18 @@ const Header = () => {
   return (
     <>
     <div className="header-menu-system">
-      {/* Header principal */}
       <header className="shadow-sm py-3 header-menu pt-5">
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">
-            {/* Logo */}
             <div className="d-flex align-items-center logo-container mt-4">
               <img 
                 src="/icon.png"
                 alt="Logo" 
                 style={{ width: "200px", height: "150px"}}
               />
-              <span className="logo-text">
-                NYA AGRITEK
-              </span>
+              <span className="logo-text">NYA AGRITEK</span>
             </div>
             
-            {/* Bouton hamburger mobile */}
             <button 
               className="btn btn-link d-lg-none mobile-menu-btn"
               onClick={toggleMobileMenu}
@@ -156,40 +150,17 @@ const Header = () => {
               <Menu size={24} color="#0a7b8e" />
             </button>
             
-            {/* Menu navigation principal - Desktop */}
             <nav className="d-none d-lg-block mb-2">
               <div className="d-flex align-items-center gap-3 justify-content-end mb-3">
-                <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" className="btn btn-link p-0 d-flex align-items-center fort header-link">
+                <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311" target="_blank" rel="noopener noreferrer" className="btn btn-link p-0 d-flex align-items-center fort header-link">
                   Suivez-nous 
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width="16" 
-                    height="16" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="#0a7b8e" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="ms-1"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1">
                     <path d="M16 8a6 6 0 0 1 6 6v2a6 6 0 0 1-6 6h-4v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2H4a6 6 0 0 1-6-6v-2a6 6 0 0 1 6-6h4v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8h4z"></path>
                   </svg>
                 </a>
                 <a href="/contact" className="btn btn-link p-0 d-flex align-items-center fort header-link">
                   Contactez-nous 
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width="16" 
-                    height="16" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="#0a7b8e" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="ms-1 fort"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1 fort">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
@@ -222,25 +193,17 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Menu mobile */}
       <div className={`mobile-menu ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
         <div className="mobile-menu-header">
           <span className="mobile-menu-title">Menu</span>
-          <button 
-            className="btn btn-link mobile-close-btn"
-            onClick={toggleMobileMenu}
-          >
+          <button className="btn btn-link mobile-close-btn" onClick={toggleMobileMenu}>
             <X size={24} color="#0a7b8e" />
           </button>
         </div>
         <div className="mobile-menu-content">
           <div className="mobile-links mb-4">
-            <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311" target="_blank" rel="noopener noreferrer" className="mobile-link">
-              Suivez-nous
-            </a>
-            <a href="/contact" className="mobile-link">
-              Contactez-nous
-            </a>
+            <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311" target="_blank" rel="noopener noreferrer" className="mobile-link">Suivez-nous</a>
+            <a href="/contact" className="mobile-link">Contactez-nous</a>
           </div>
           <ul className="mobile-nav-list">
             {Object.keys(menuData).map((menuKey) => (
@@ -267,63 +230,35 @@ const Header = () => {
         </div>
       </div>
       
-      {/* Overlay pour fermer le menu mobile */}
       {isMobileMenuOpen && (
-        <div 
-          className="mobile-menu-overlay"
-          onClick={toggleMobileMenu}
-        />
+        <div className="mobile-menu-overlay" onClick={toggleMobileMenu} />
       )}
       
-      {/* Modals pour sous-menus */}
       {Object.keys(menuData).map((menuKey) => (
         <div 
           key={menuKey}
-          className={`modal-overlay ${activeModal === menuKey ? 'show' : 'd-none'}`}
-          style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.98)',
-            zIndex: 1050,
-            opacity: activeModal === menuKey ? 1 : 0,
-            transition: 'opacity 0.3s ease',
-            height: '100vh',
-            width: '100vw',
-            left: 0,
-            top: 0,
-            position: 'fixed'
-          }}
+          className={`modal-overlay ${activeModal === menuKey ? 'show' : ''}`}
         >
           <div className="container modal-container">
-            <button 
-              className="btn btn-link modal-close-btn"
-              onClick={closeModal}
-            >
+            <button className="btn btn-link modal-close-btn" onClick={closeModal}>
               <X size={28} />
             </button>
             
             <div className="modal-header">
-              <h2 className="modal-title">
-                {menuData[menuKey].title}
-              </h2>
+              <h2 className="modal-title">{menuData[menuKey].title}</h2>
             </div>
             
             <div className="modal-content-grid">
-            
               {menuData[menuKey].sections.map((section, idx) => (
                 <div key={idx} className={`col-md-${menuKey === 'entreprise' ? '3' : '4'}`}>
-                {section.icon && (
-                <img src={section.icon} alt={section.title}  style={{ width: "20px", height: "20px", objectFit: "contain" }}/>
-              )}
-                  <h3 className="modal-section-title" style={{ color: '#83b614', marginBottom: '1rem', fontSize: '1.3rem' }}>
-                    {section.title}
-                  </h3>
+                  {section.icon && (
+                    <img src={section.icon} alt={section.title} style={{ width: "20px", height: "20px", objectFit: "contain" }}/>
+                  )}
+                  <h3 className="modal-section-title">{section.title}</h3>
                   <ul className="list-unstyled">
                     {section.links.map((link, linkIdx) => (
                       <li key={linkIdx} className="mb-2">
-                        
-                        <a 
-                          href={link.url}
-                          className="modal-link"
-                        >
+                        <a href={link.url} className="modal-link">
                           <span className="modal-link-bullet">◦</span>
                           {link.label}
                         </a>
@@ -335,22 +270,8 @@ const Header = () => {
             </div>
             
             <div className="modal-footer">
-              <a 
-                href="/" 
-                className="modal-footer-link"
-              >
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="16" 
-                  height="16" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="#0a7b8e" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  className="me-2"
-                >
+              <a href="/" className="modal-footer-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="me-2">
                   <path d="M19 12H5"></path>
                   <path d="M12 19l-7-7 7-7"></path>
                 </svg>
@@ -360,35 +281,13 @@ const Header = () => {
               <div className="modal-footer-links">
                 <a href="#" className="modal-footer-link">
                   Suivez-nous 
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width="16" 
-                    height="16" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="#0a7b8e" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="ms-1"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1">
                     <path d="M16 8a6 6 0 0 1 6 6v2a6 6 0 0 1-6 6h-4v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2H4a6 6 0 0 1-6-6v-2a6 6 0 0 1 6-6h4v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8h4z"></path>
                   </svg>
                 </a>
                 <a href="/contact" className="modal-footer-link">
                   Contactez-nous 
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width="16" 
-                    height="16" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="#0a7b8e" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="ms-1"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
@@ -401,7 +300,6 @@ const Header = () => {
     </div>
 
     <style jsx>{`
-      /* Support pour les devices avec notch/encoche */
       .header-menu-system {
         padding-top: env(safe-area-inset-top);
       }
@@ -419,17 +317,9 @@ const Header = () => {
         padding-right: env(safe-area-inset-right);
       }
 
-      /* Logo responsive */
       .logo-container {
         margin-top: 0.5rem;
         flex-shrink: 0;
-      }
-      .logo-img {
-        height: 120px;
-        padding: 0;
-        margin: 0;
-        max-width: 100px;
-        width: auto;
       }
       .logo-text {
         font-size: 1.9rem;
@@ -440,7 +330,6 @@ const Header = () => {
         white-space: nowrap;
       }
 
-      /* Navigation desktop */
       .header-link {
         text-decoration: none !important;
         font-size: 0.8rem;
@@ -457,7 +346,6 @@ const Header = () => {
         padding-left: 4px;
       }
 
-      /* Menu mobile optimisé */
       .mobile-menu-btn {
         padding: 0.5rem;
         margin: 0;
@@ -477,7 +365,6 @@ const Header = () => {
         width: 85vw;
         max-width: 320px;
         height: 100vh;
-        height: 100dvh; /* Dynamic viewport height pour iOS */
         background-color: white;
         box-shadow: -2px 0 10px rgba(0,0,0,0.1);
         transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -596,25 +483,40 @@ const Header = () => {
         left: 0;
         width: 100%;
         height: 100vh;
-        height: 100dvh;
         background-color: rgba(0, 0, 0, 0.6);
         z-index: 1055;
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(2px);
       }
 
-      /* Modal responsive optimisé */
       .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.98);
+        z-index: 1050;
         padding-top: env(safe-area-inset-top);
         padding-left: env(safe-area-inset-left);
         padding-right: env(safe-area-inset-right);
         padding-bottom: env(safe-area-inset-bottom);
+        transform: translateY(100%);
+        opacity: 0;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+      }
+      
+      .modal-overlay.show {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: all;
       }
 
       .modal-container {
         padding: 1rem;
         height: 100vh;
-        height: 100dvh;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         position: relative;
@@ -656,21 +558,11 @@ const Header = () => {
         flex-wrap: wrap;
       }
       
-      .modal-section {
-        background: rgba(248, 249, 250, 0.5);
-        padding: 1.5rem;
-        border-radius: 8px;
-      }
-      
       .modal-section-title {
         color: #83b614;
         margin-bottom: 1rem;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         font-weight: 600;
-      }
-      
-      .modal-link-item {
-        margin-bottom: 0.8rem;
       }
       
       .modal-link {
@@ -722,12 +614,7 @@ const Header = () => {
         gap: 0.5rem;
       }
 
-      /* iPhone X et similaires (375px) */
       @media screen and (max-width: 414px) {
-        .logo-img {
-          height: 70px;
-          max-width: 70px;
-        }
         .logo-text {
           font-size: 1rem;
           line-height: 1.2;
@@ -745,31 +632,17 @@ const Header = () => {
         .modal-title {
           font-size: 1.4rem;
         }
-        .modal-content-grid {
-          gap: 1.5rem;
-        }
-        .modal-section {
-          padding: 1rem;
-        }
         .mobile-menu {
           width: 90vw;
         }
       }
 
-      /* Très petits écrans (320px) */
       @media screen and (max-width: 375px) {
-        .logo-img {
-          height: 60px;
-          max-width: 60px;
-        }
         .logo-text {
           font-size: 0.9rem;
         }
         .header-link {
           font-size: 0.6rem;
-        }
-        .nav-button {
-          font-size: 18px !important;
         }
         .modal-container {
           padding: 0.5rem;
@@ -779,49 +652,11 @@ const Header = () => {
         }
       }
 
-      /* Landscape sur mobile */
-      @media screen and (max-height: 500px) and (orientation: landscape) {
-        .logo-img {
-          height: 50px;
-        }
-        .logo-text {
-          font-size: 0.8rem;
-        }
-        .logo-container {
-          margin-top: 0;
-        }
-        .header-menu {
-          padding: 0.5rem 0;
-        }
-        .modal-header {
-          margin: 1rem 0;
-          padding-top: 0;
-        }
-        .modal-title {
-          font-size: 1.2rem;
-        }
-      }
-
-      /* Support pour les écrans avec ratio élevé (iPhone X, 11, 12, etc.) */
-      @media screen and (device-aspect-ratio: 375/812) {
-        .mobile-menu-header {
-          padding-top: 1rem;
-        }
-      }
-
-      /* Optimisations tactiles */
       @media (hover: none) and (pointer: coarse) {
         .mobile-nav-button,
         .mobile-link,
         .modal-link,
         .modal-footer-link {
-          min-height: 48px;
-        }
-        
-        .mobile-menu-btn,
-        .mobile-close-btn,
-        .modal-close-btn {
-          min-width: 48px;
           min-height: 48px;
         }
       }
