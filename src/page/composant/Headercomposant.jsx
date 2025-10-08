@@ -247,9 +247,12 @@ const Header = () => {
               <li key={menuKey}>
                 <button 
                   className="mobile-nav-button"
-                  onClick={() => {
+                  onClick={() =>{
+                    if (menuKey !== 'accueil') {
                     openModal(menuKey);
-                    setIsMobileMenuOpen(false);
+                  } else {
+                    window.location.href = '/';
+                  }
                   }}
                 >
                   {menuKey === 'entreprise' ? "L'Entreprise" : 
