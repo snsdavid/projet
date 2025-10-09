@@ -484,6 +484,8 @@ const Header = () => {
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.6);
         z-index: 1055;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(2px);
       }
@@ -505,6 +507,8 @@ const Header = () => {
         transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
                     opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         pointer-events: none;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
       }
       
       .modal-overlay.show {
