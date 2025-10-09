@@ -278,7 +278,7 @@ const Header = () => {
               </a>
               
               <div className="modal-footer-links">
-                <a href="#" className="modal-footer-link">
+                <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311" className="modal-footer-link">
                   Suivez-nous 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1">
                     <path d="M16 8a6 6 0 0 1 6 6v2a6 6 0 0 1-6 6h-4v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2H4a6 6 0 0 1-6-6v-2a6 6 0 0 1 6-6h4v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8h4z"></path>
