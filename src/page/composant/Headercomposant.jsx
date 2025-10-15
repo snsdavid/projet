@@ -63,11 +63,21 @@ const Header = () => {
           ]
         },
         {
-          title: "AGRICULTURE ET NEGOCE AGRICOLE",
+          title: "AGRICULTURE",
           icon: "/studi.svg",
           links: [
-            { label: "AGRICULTURE", url: "/domaine-d-intervention/AGRICULTURE" },
-            { label: "NEGOCE AGRICOLE", url: "/domaine-d-intervention/NEGOCE_AGRICOLE" },
+            { label: "Développement et gestion des exploitations agricoles", url: "/domaine-d-intervention/AGRICULTURE" },
+            { label: "Appui-conseil et accompagnement de projets agricoles", url: "/domaine-d-intervention/NEGOCE_AGRICOLE" },
+            { label: "Formation et transfert de compétences agricoles", url: "/domaine-d-intervention/NEGOCE_AGRICOLE" },
+          ]
+        },
+        {
+          title: "NEGOCE AGRICOLE",
+          icon: "/studi.svg",
+          links: [
+            { label: "Commercialisation et valorisation des produits agricoles", url: "/domaine-d-intervention/AGRICULTURE" },
+            { label: "Intermédiation et partenariat marchand", url: "/domaine-d-intervention/NEGOCE_AGRICOLE" },
+            { label: "Logistique et gestion de la qualité", url: "/domaine-d-intervention/NEGOCE_AGRICOLE" },
           ]
         },
         {
@@ -140,7 +150,6 @@ const Header = () => {
                 alt="Logo" 
                 style={{ width: "200px", height: "150px"}}
               />
-              <span className="logo-text">NYA AGRITEK</span>
             </div>
             
             <button 

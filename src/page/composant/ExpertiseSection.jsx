@@ -11,7 +11,6 @@ const customIcon = new L.Icon({
 });
 
 const ExpertiseSection = () => {
-  // Exemple de données de projets
   const projects = [
     {
       id: 1,
@@ -43,10 +42,9 @@ const ExpertiseSection = () => {
           Notre expertise
         </h2>
         <p className="text-center mb-5" style={{lineHeight: '1.6' , fontSize: '1.1rem' , fontWeight: 'semi-bold' , maxWidth: "700px" , margin: "0 auto"}}>
-          NYA AGRITEK est le prolongement d'une expertise développée depuis
-          plusieurs années sur des projets agricoles et environnementaux en
-          Afrique. Nous mettons en avant notre savoir-faire et nos réalisations
-          à travers une carte interactive.
+        NYA AGRITEK est le prolongement et la structuration d'une expertise forgée au travers de projets ambitieux dans la foresterie, la cartographie, l’agriculture et le développement durable <br />
+        Cette expérience nous permet aujourd’hui de concevoir des solutions adaptées pour accompagner nos partenaires dans la réussite de leurs projets. <br />
+        Notre approche repose sur une maîtrise technique solide et une vision tournée vers l’avenir, afin de transformer les défis en opportunités.
         </p>
 
         {/* Carte dynamique */}

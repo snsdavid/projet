@@ -13,34 +13,28 @@ const EntreprisePage = () => {
             Qui_Somme_Nous: {
                 title1:"L ENTREPRISE",
                 title: "Qui sommes-nous",
-                text: `Nous sommes une organisation engagée dans le développement rural et agricole durable.
-                Notre mission est claire : soutenir nos partenaires en leur offrant des solutions novatrices, adaptées à leurs besoins spécifiques, afin de relever les défis actuels et futurs.
-
-                Nous combinons expertise stratégique, créativité et technologies pour proposer des accompagnements sur mesure, et nous nous engageons à être aux côtés de nos clients à chaque étape de la mise en œuvre de leurs projets.
-
-                Guidés par nos valeurs fondamentales — Intégrité, Excellence et Collaboration — nous construisons des relations solides, fiables et durables, au service du progrès partagé.`,
+                text: `NYA AGRITEK incarne une ambition forte : contribuer à un développement équilibré et durable en s’appuyant sur des collaborations solides et des approches novatrices. Depuis sa création, l’entreprise s’engage à accompagner la transformation des territoires et des filières, en contribuant à apporter des réponses concrètes aux enjeux économiques, sociaux et environnementaux qui façonnent notre époque.\n\n Nous sommes persuadés que la performance durable repose sur la combinaison d’une expertise solide, de la technologie et d’un engagement constant. Pour cette raison, nous concevons des approches modernes et des outils performants qui permettent aux organisations de concrétiser leurs projets stratégiques, d’améliorer leur efficacité et de s’adapter aux évolutions rapides de leurs environnements. Chaque action que nous entreprenons vise à créer un impact positif, en conciliant compétitivité et responsabilité. \n\n Notre objectif est simple : proposer des méthodes et solutions qui renforcent la compétitivité, la résilience et la durabilité des acteurs avec lesquels nous collaborons. Nous travaillons en étroite synergie avec nos partenaires pour faire évoluer les pratiques, intégrer des innovations pertinentes et bâtir des modèles capables de répondre aux défis d’aujourd’hui tout en anticipant ceux de demain.\n\n Chez NYA AGRITEK, nous plaçons l’accompagnement au cœur de notre démarche. En tant que partenaire de confiance, nous apportons un soutien opérationnel et stratégique à chaque étape, afin de transformer les ambitions en résultats concrets. Notre approche repose sur la proximité, l’écoute et l’innovation, pour garantir des solutions qui créent de la valeur durable et renforcent la compétitivité de nos clients.`,
                         points:[],
                         petittitre:""
             },
             Notre_Vision: {
                 title1:"Notre vision",
                 title: "Notre vision de l entreprise",
-                text: `Soutenir le développement rural et agricole durable en forgeant des partenariats solides et en offrant des solutions novatrices, adaptées aux besoins uniques de nos partenaires, face aux défis actuels et futurs.`,
+                text: `Soutenir le développement rural et agricole durable, c’est bien plus qu’un objectif : c’est notre raison d’être. Chez NYA AGRITEK, nous croyons que la transformation des territoires passe par des partenariats solides et une approche collaborative. Nous travaillons main dans la main avec nos partenaires pour concevoir des solutions innovantes, adaptées à leurs réalités et capables de répondre aux défis actuels tout en anticipant ceux de demain. \n\n Notre vision s’appuie sur une conviction simple: l’avenir des filières rurales et agricoles dépend de l’intégration de pratiques responsables, de technologies adaptées et d’une stratégie orientée vers la durabilité. En combinant expertise, innovation et engagement, nous voulons contribuer à bâtir des écosystèmes résilients, compétitifs et inclusifs, au service d’un développement harmonieux et durable.`,
                 points:[],
-                petittitre:""
+                petittitre:"Soutenir le développement rural et agricole durable en forgeant des partenariats solides et en offrant des solutions novatrices, adaptées aux besoins uniques de nos partenaires, face aux défis actuels et futurs. "
             },
             Notre_Mission: {
                 title1:"Notre mission",
                 title: "La mission de l entreprise",
-                text: ` accompagner nos clients vers le succès. 
-Nous combinons expertise stratégique, créativité et technologies pour fournir des prestations sur mesure qui répondent aux besoins uniques de chaque client. Notre engagement envers l'excellence et notre passion pour ce que nous faisons nous permettent d'accompagner nos clients à chaque étape de mise en œuvre de leurs projets et programmes de développement agricole durable.`,
+                text: ` Nous combinons expertise stratégique, créativité et technologies pour fournir des prestations sur mesure qui répondent aux besoins uniques de chaque client. Notre engagement envers l'excellence et notre passion pour ce que nous faisons nous permettent d'accompagner nos clients à chaque étape de mise en œuvre de leurs projets et programmes de développement agricole durable.`,
                 points:[],
-                petittitre:"Notre mission est simple :"
+                petittitre:"Notre mission est simple : accompagner nos clients vers le succès. "
             },
             Nos_Valeurs: {
                 title1:"Nos valeurs",
-                title: "Nos valeurs : Intégrité, excellence et collaboration",
-                text: `Intégrité, excellence et collaboration: nos valeurs fondamentales guident nos actions et renforcent nos relations.Ces valeurs fondamentales assurent une base solide pour guider nos actions quotidiennes et renforcer les relations professionnelles et humaines. Elles posent les piliers d’une entreprise fiable, performante et tournée vers le progrès durable.`,
+                title: "Intégrité, excellence et collaboration : nos valeurs fondamentales guident nos actions et renforcent nos relations.",
+                text: `Ces valeurs fondamentales assurent une base solide pour guider nos actions quotidiennes et renforcer les relations professionnelles et humaines. Elles posent les piliers d’une entreprise fiable, performante et tournée vers le progrès durable.`,
                 points:[
                     {
                         titre:"Intégrité ",
