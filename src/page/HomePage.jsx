@@ -4,6 +4,10 @@ import Carrosel from './composant/Carrosel';
 import Section1 from './composant/Section1'; // Assuming you have a Section1 component
 import Section2 from './composant/Section2';
 import Footer from './composant/Footer'; // Assuming you have a Footer component
+import EcosysHero from './composant/EcosysEnTete';
+import MissionEntete from './composant/MissionEntete';
+import CarteVision from './composant/CarteVision';
+import NewsCarousel from './composant/CarroselDomaineIntervention';
 
 const HomePage = () => {
   return (
@@ -39,8 +43,10 @@ const HomePage = () => {
       </div>
 
       <div className="h-8"></div>
-      <Section1></Section1>
-      <Section2></Section2>
+      <EcosysHero />
+      <MissionEntete />
+      <NewsCarousel />
+      <CarteVision />
       <Footer />
     </>
   );

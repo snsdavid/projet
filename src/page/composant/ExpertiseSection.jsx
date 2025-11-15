@@ -3,14 +3,14 @@ import { MapContainer, TileLayer, Marker, Popup, Tooltip } from "react-leaflet";
 import L from "leaflet";
 
 // Icône personnalisée 📌
-const customIcon = new L.Icon({
+export const customIcon = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
   iconSize: [30, 30],
   iconAnchor: [15, 30],
   popupAnchor: [0, -30],
 });
 
-const ExpertiseSection = () => {
+export const ExpertiseSection = () => {
   const projects = [
     {
       id: 1,

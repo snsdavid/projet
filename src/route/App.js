@@ -9,6 +9,10 @@ import ExpertisePage from '../page/ExpertisePage';
 import DomaineDintervention from '../page/DomaineDintervention';
 import NosPrestation from '../page/NosPrestation';
 import NousRecrutons from '../page/NousRecrutons';
+import Actualites from '../page/composant/ActualitePage';
+import CandidatePage from '../page/CandidatePage';
+
+
 const ScrollToTop = () => {
   const location = useLocation();
 
@@ -33,6 +37,8 @@ const AppRoute = () => {
         <Route path="/domaine-d-intervention/:id" element={<DomaineDintervention></DomaineDintervention>} />
         <Route path="/nos-prestation/:id" element={<NosPrestation></NosPrestation>} />
         <Route path="/nous-recrutons" element={<NousRecrutons></NousRecrutons>} />
+        <Route path="/actualites" element={<Actualites></Actualites>} />
+        <Route path="/candidate" element={<CandidatePage></CandidatePage>} />
       </Routes>
     </>
   );

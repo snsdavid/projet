@@ -59,7 +59,9 @@ const Header = () => {
           icon: "/styleico.svg",
           title: "FORESTERIE & ENVIRONNEMENT",
           links: [
-            { label: "FORESTERIE & ENVIRONNEMENT", url: "/domaine-d-intervention/FORESTERIE_ENVIRONNEMENT" },
+            { label: "Appui à la conformité réglementaire et à la gouvernance forestière", url: "/domaine-d-intervention/FORESTERIE_ENVIRONNEMENT" },
+            { label: "Solutions fondées sur la nature : production végétale et restauration des écosystèmes", url: "/domaine-d-intervention/FORESTERIE_ENVIRONNEMENT" },
+            { label: "Cartographie opérationnelle et suivi forestier assisté par télédétection", url: "/domaine-d-intervention/FORESTERIE_ENVIRONNEMENT" },
           ]
         },
         {
@@ -84,58 +86,98 @@ const Header = () => {
           title: "ETUDE ET CONSEIL",
           icon: "/computer.svg",
           links: [
-            { label: "ETUDE ET CONSEIL", url: "/domaine-d-intervention/ETUDE_ET_CONSEIL" },
+            { label: "Etudes de marché et analyse de filières agricoles", url: "/domaine-d-intervention/ETUDE_ET_CONSEIL" },
+            { label: "Etudes de faisabilité et montage de projets agricoles", url: "/domaine-d-intervention/ETUDE_ET_CONSEIL" },
+            { label: "Conseil en financement agricole et accompagnement institutionnel", url: "/domaine-d-intervention/ETUDE_ET_CONSEIL" },
+
           ]
         },
         {
           title: "DIGITALISATION AGRICOLE",
           icon: "/agriculture (1).svg",
           links: [
-            { label: "DIGITALISATION AGRICOLE", url: "/domaine-d-intervention/DIGITALISATION_AGRICOLE" },
+            { label: "Conception et déploiement de solutions numériques pour la gestion agricole", url: "/domaine-d-intervention/DIGITALISATION_AGRICOLE" },
+            { label: "Digitalisation des circuits de commercialisation et de traçabilité des produits agricoles", url: "/domaine-d-intervention/DIGITALISATION_AGRICOLE" },
+            { label: "Formation digitale et accompagnement à l’usage des outils numériques agricoles", url: "/domaine-d-intervention/DIGITALISATION_AGRICOLE" },
           ]
         },
       ]
     },
-    prestations: {
-      title: "NOS PRESTATIONS",
+    realisation: {
+      title: "Nos Realisations",
       sections: [
         {
-          title: "𝐅𝐨𝐫𝐞𝐬𝐭𝐞𝐫𝐢𝐞 & 𝐄𝐧𝐯𝐢𝐫𝐨𝐧𝐧𝐞𝐦𝐞𝐧𝐭",
-          icon: "/styleico.svg",
+          title: "Nos Realisations",
           links: [
-            { label: "Agroforesterie & reforestation", url: "/nos-prestation/Agroforesterie" },
-            { label: "Suivi de reboisement & réalisation de plans d'aménagement", url: "/nos-prestation/Suivi" },
-          ]
-        },
-        {
-          title: "𝐀𝐠𝐫𝐢𝐜𝐮𝐥𝐭𝐮𝐫𝐞",
-          icon: "/studi.svg",
-          links: [
-            { label: "Production de plants forestiers et fruitiers ", url: "/nos-prestation/Production" },
-          ]
-        },
-        {
-          title: "𝐄𝐓𝐔𝐃𝐄 𝐄𝐓 𝐂𝐎𝐍𝐒𝐄𝐈𝐋",
-          icon: "/computer.svg",
-          links: [
-            { label: "Télédétection & cartographie forestière", url: "/nos-prestation/Télédétection" },
-            { label: "Formation en sylviculture & techniques de production de plants", url: "/nos-prestation/Formation" },
-            { label: "Gestion des écosystèmes & sensibilisation des communautés", url: "/nos-prestation/Gestion" },
+            { label: "Nos Realisations", url: "/NosRealisations" },
           ]
         }
       ]
     },
-    contact: {
-      title: "Nous recrutons",
+    actualites: {
+      title: "Actualités",
       sections: [
         {
-          title: "Nous recrutons",
+          title: "Actualités",
           links: [
-            { label: "Nous recrutons", url: "/nous-recrutons" },
+            { label: "Actualités", url: "/actualites" },
           ]
         }
       ]
-    }
+    },
+    espace: {
+      title: "Espace Client/Partenaire",
+      sections: [
+        {
+          title: "Espace Client/Partenaire",
+          links: [
+            { label: "Espace Client/Partenaire", url: "/espace-client-partenaire" },
+          ]
+        }
+      ]
+    },
+    // prestations: {
+    //   title: "NOS PRESTATIONS",
+    //   sections: [
+    //     {
+    //       title: "𝐅𝐨𝐫𝐞𝐬𝐭𝐞𝐫𝐢𝐞 & 𝐄𝐧𝐯𝐢𝐫𝐨𝐧𝐧𝐞𝐦𝐞𝐧𝐭",
+    //       icon: "/styleico.svg",
+    //       links: [
+    //         { label: "Agroforesterie & reforestation", url: "/nos-prestation/Agroforesterie" },
+    //         { label: "Suivi de reboisement & réalisation de plans d'aménagement", url: "/nos-prestation/Suivi" },
+    //       ]
+    //     },
+    //     {
+    //       title: "𝐀𝐠𝐫𝐢𝐜𝐮𝐥𝐭𝐮𝐫𝐞",
+    //       icon: "/studi.svg",
+    //       links: [
+    //         { label: "Production de plants forestiers et fruitiers ", url: "/nos-prestation/Production" },
+    //       ]
+    //     },
+    //     {
+    //       title: "𝐄𝐓𝐔𝐃𝐄 𝐄𝐓 𝐂𝐎𝐍𝐒𝐄𝐈𝐋",
+    //       icon: "/computer.svg",
+    //       links: [
+    //         { label: "Télédétection & cartographie forestière", url: "/nos-prestation/Télédétection" },
+    //         { label: "Formation en sylviculture & techniques de production de plants", url: "/nos-prestation/Formation" },
+    //         { label: "Gestion des écosystèmes & sensibilisation des communautés", url: "/nos-prestation/Gestion" },
+    //       ]
+    //     }
+    //   ]
+    // }
+    // contact: {
+    //   title: "Nous recrutons",
+    //   sections: [
+    //     {
+    //       title: "Nous recrutons",
+    //       links: [
+    //         { label: "Nous recrutons", url: "/nous-recrutons" },
+    //       ]
+    //     }
+    //   ]
+    // }
+    
+    
   };
   
   return (
@@ -145,11 +187,13 @@ const Header = () => {
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">
             <div className="d-flex align-items-center logo-container mt-4">
-              <img 
-                src="/icon.png"
-                alt="Logo" 
-                style={{ width: "200px", height: "150px"}}
-              />
+              <a href="/">
+                <img 
+                  src="/icon.png"
+                  alt="Logo" 
+                  style={{ width: "200px", height: "150px"}}
+                />
+              </a>
             </div>
             
             <button 
@@ -179,7 +223,7 @@ const Header = () => {
                 {Object.keys(menuData).map((menuKey) => (
                   <li key={menuKey}>
                     <button 
-                      className="btn btn-link text-uppercase fw-medium fort nav-button "
+                      className="btn btn-link text-uppercase fw-bold fort nav-button "
                       onClick={() =>{
                         if (menuKey !== 'accueil') {
                         openModal(menuKey);
@@ -188,11 +232,15 @@ const Header = () => {
                       }
                       }}
                     >
-                      {menuKey === 'entreprise' ? "L'Entreprise " : 
-                       menuKey === 'enjeux' ? "Domaines d'intervention " : 
-                       menuKey === 'prestations' ? "Nos Prestations " : 
-                       menuKey === 'contact' ? "Nous recrutons" : "Accueil "}
-                       {menuKey !== 'contact' && <span className="fw-bold nav-dot">o</span>}
+                      {menuKey === 'entreprise' ? "L'Entreprise" : 
+                       menuKey === 'enjeux' ? "Domaines d'intervention" : 
+                       menuKey === 'actualites' ? "Actualités" : 
+                       menuKey === 'realisation' ? "Nos Realistions" : 
+                       menuKey === 'prestations' ? "Nos Prestations" : 
+                       menuKey === 'espace' ? 'Espace Client/Partenaire':
+                       menuKey === 'contact' ? "Nous recrutons" : "Accueil"
+                       }
+                       {menuKey !== 'espace' && <span className="fw-bold nav-dot " >o</span>}
                     </button>
                   </li>
                 ))}
@@ -229,8 +277,11 @@ const Header = () => {
                   }}
                 >
                   {menuKey === 'entreprise' ? "L'Entreprise" : 
-                   menuKey === 'enjeux' ? "Domaines d'intervention" : 
+                   menuKey === 'enjeux' ? "Domaines d'intervention" :
+                   menuKey === 'realisation' ? "Nos Realistions" : 
+                   menuKey === 'actualites' ? "Actualités" : 
                    menuKey === 'prestations' ? "Nos Prestations" : 
+                   menuKey === 'espace' ? 'Espace Client/Partenaire':
                    menuKey === 'contact' ? "Nous recrutons" : "Accueil"}
                 </button>
               </li>

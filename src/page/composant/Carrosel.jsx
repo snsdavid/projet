@@ -68,7 +68,7 @@ const Carrosel = () => {
     return (
       <div>
 
-    <div className="position-relative overflow-hidden pb-5" style={{ borderRadius: '0 0 20px 20px', maxWidth:'1000px', margin:'0 auto' , maxHeight:'350px'}}>
+    <div className="position-relative overflow-hidden pb-5" style={{ borderRadius: '0 0 20px 20px', maxWidth:'1000px', margin:'0 auto' , maxHeight:'350px' }}>
     <div id="agricultureCarousel" className="carousel slide" onMouseEnter={() => setIsHovered(true)}
   onMouseLeave={() => setIsHovered(false)}>
     <div className="carousel-inner">
