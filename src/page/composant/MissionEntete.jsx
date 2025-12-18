@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function MissionSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -184,51 +183,199 @@ export default function MissionSection() {
         .image-hover-container {
           animation: pulse 3s ease-in-out infinite;
         }
+
+        .mission-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 3rem 1.25rem;
+        }
+
+        .mission-row {
+          display: flex;
+          align-items: center;
+          gap: 3rem;
+          flex-wrap: wrap;
+        }
+
+        .mission-col-image {
+          flex: 1 1 500px;
+          min-width: 300px;
+        }
+
+        .mission-col-text {
+          flex: 1 1 500px;
+          min-width: 300px;
+        }
+
+        .mission-title {
+          font-size: 2.5rem;
+          line-height: 1.2;
+          color: #1a1a1a;
+          font-weight: bold;
+          margin-bottom: 1.5rem;
+        }
+
+        .mission-text {
+          font-size: 1.125rem;
+          line-height: 1.8;
+          color: #6c757d;
+          margin-bottom: 1.5rem;
+        }
+
+        .mission-btn {
+          background-color: transparent;
+          color: #1a1a1a;
+          border: 2px solid #1a1a1a;
+          padding: 0.75rem 1.5rem;
+          font-size: 1rem;
+          font-weight: 600;
+          border-radius: 8px;
+          cursor: pointer;
+          display: inline-block;
+        }
+
+        .mission-image {
+          width: 100%;
+          object-fit: cover;
+          min-height: 450px;
+          border-radius: 24px;
+        }
+
+        /* Responsive pour tablettes */
+        @media (max-width: 992px) {
+          .mission-container {
+            padding: 2.5rem 1rem;
+          }
+
+          .mission-row {
+            gap: 2rem;
+          }
+
+          .mission-title {
+            font-size: 2rem;
+          }
+
+          .mission-text {
+            font-size: 1rem;
+          }
+
+          .mission-image {
+            min-height: 350px;
+          }
+
+          .image-hover-container:hover {
+            transform: translateY(-5px);
+          }
+        }
+
+        /* Responsive pour mobiles */
+        @media (max-width: 768px) {
+          .animate-image {
+            animation: fadeInUp 1s ease-out;
+          }
+
+          .animate-title {
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+          }
+
+          .mission-container {
+            padding: 2rem 1rem;
+          }
+
+          .mission-row {
+            gap: 2rem;
+          }
+
+          .mission-col-image,
+          .mission-col-text {
+            flex: 1 1 100%;
+          }
+
+          .mission-title {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+          }
+
+          .title-highlight::after {
+            bottom: 5px;
+            height: 6px;
+          }
+
+          .mission-text {
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+          }
+
+          .mission-image {
+            min-height: 300px;
+          }
+
+          .mission-btn {
+            width: 100%;
+            text-align: center;
+            padding: 0.875rem 1.5rem;
+          }
+        }
+
+        /* Responsive pour petits mobiles */
+        @media (max-width: 576px) {
+          .mission-container {
+            padding: 1.5rem 0.75rem;
+          }
+
+          .mission-row {
+            gap: 1.5rem;
+          }
+
+          .mission-title {
+            font-size: 1.5rem;
+          }
+
+          .mission-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+          }
+
+          .mission-image {
+            min-height: 250px;
+            border-radius: 16px;
+          }
+
+          .image-hover-container {
+            border-radius: 16px;
+          }
+
+          .image-hover-container::before {
+            border-radius: 16px;
+          }
+        }
       `}</style>
 
-      <div className="container py-5" ref={sectionRef}>
-        <div className="row align-items-center g-5">
+      <div className="mission-container" ref={sectionRef}>
+        <div className="mission-row">
           {/* Colonne Image */}
-          <div className="col-lg-6 col-md-12">
+          <div className="mission-col-image">
             <div 
-              className={`position-relative image-hover-container ${isVisible ? 'animate-image' : ''}`}
-              style={{
-                borderRadius: '24px',
-                overflow: 'hidden',
-              }}
+              className={`image-hover-container ${isVisible ? 'animate-image' : ''}`}
             >
               <img 
                 src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop"
                 alt="Équipe ECOSYS"
-                className="img-fluid w-100"
-                style={{ 
-                  objectFit: 'cover',
-                  minHeight: '450px'
-                }}
+                className="mission-image"
               />
             </div>
           </div>
           
           {/* Colonne Texte */}
-          <div className="col-lg-6 col-md-12">
+          <div className="mission-col-text">
             <h2 
-              className={`fw-bold mb-4 ${isVisible ? 'animate-title' : ''}`}
-              style={{ 
-                fontSize: '2.5rem',
-                lineHeight: '1.2',
-                color: '#1a1a1a'
-              }}
+              className={`mission-title ${isVisible ? 'animate-title' : ''}`}
             >
               Notre mission : <span className="title-highlight">Transformer le potentiel</span> en prospérité
             </h2>
             
             <p 
-              className={`mb-4 ${isVisible ? 'animate-text' : ''}`}
-              style={{ 
-                fontSize: '1.125rem',
-                lineHeight: '1.8',
-                color: '#6c757d'
-              }}
+              className={`mission-text ${isVisible ? 'animate-text' : ''}`}
             >
               Fondée en 2019 à Abidjan, ECOSYS INTERNATIONAL a pour mission de 
               créer de la valeur à partir des ressources locales, en plaçant l'innovation 
@@ -236,11 +383,7 @@ export default function MissionSection() {
             </p>
             
             <button 
-              className={`btn btn-outline-dark btn-lg px-4 py-3 btn-animated ${isVisible ? 'animate-button' : ''}`}
-              style={{ 
-                fontWeight: '600',
-                borderWidth: '2px',
-              }}
+              className={`mission-btn btn-animated ${isVisible ? 'animate-button' : ''}`}
               onMouseOver={(e) => {
                 e.target.style.backgroundColor = '#1a1a1a';
                 e.target.style.color = 'white';

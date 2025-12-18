@@ -38,7 +38,7 @@ const Header = () => {
         {
           title: "A propos",
           links: [
-            { label: "Qui sommes-nous", url: "/entreprise/Qui_Somme_Nous" },
+            { label: "Qui sommes-nous ?", url: "/entreprise/Qui_Somme_Nous" },
             { label: "Notre vision", url: "/entreprise/Notre_Vision" },
             { label: "Notre mission", url: "/entreprise/Notre_Mission" },
             { label: "Nos valeurs", url: "/entreprise/Nos_Valeurs" },
@@ -50,6 +50,18 @@ const Header = () => {
             { label: "Notre expertise", url: "/expertise" },
           ]
         },
+        {
+          title: "Nous Rejoindre",
+          links: [
+            { label: "Nous Rejoindre", url: "/Nous_Recrutons" },
+          ]
+        },
+        {
+          title: "Contact",
+          links: [
+            { label: "Contactez-nous", url: "/contact" },
+          ]
+        }
       ]
     },
     enjeux: {
@@ -183,10 +195,11 @@ const Header = () => {
   return (
     <>
     <div className="header-menu-system">
-      <header className="shadow-sm py-3 header-menu pt-5">
+    <header className="shadow-sm py-3 header-menu pt-5">
         <div className="container">
-          <div className="d-flex justify-content-between align-items-center">
-            <div className="d-flex align-items-center logo-container mt-4">
+          {/* Première ligne: Logo + Liens sociaux */}
+          <div className="d-flex justify-content-between align-items-center header-first-row">
+            <div className="d-flex align-items-center logo-container">
               <a href="/">
                 <img 
                   src="/icon.png"
@@ -203,50 +216,53 @@ const Header = () => {
               <Menu size={24} color="#0a7b8e" />
             </button>
             
-            <nav className="d-none d-lg-block mb-2">
-              <div className="d-flex align-items-center gap-3 justify-content-end mb-3">
-                <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311" target="_blank" rel="noopener noreferrer" className="btn btn-link p-0 d-flex align-items-center fort header-link">
-                  Suivez-nous 
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1">
-                    <path d="M16 8a6 6 0 0 1 6 6v2a6 6 0 0 1-6 6h-4v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2H4a6 6 0 0 1-6-6v-2a6 6 0 0 1 6-6h4v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8h4z"></path>
-                  </svg>
-                </a>
-                <a href="/contact" className="btn btn-link p-0 d-flex align-items-center fort header-link">
-                  Contactez-nous 
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1 fort">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                </a>
-              </div>
-              <ul className="list-unstyled d-flex mb-0 gap-3 mt-2">
-                {Object.keys(menuData).map((menuKey) => (
-                  <li key={menuKey}>
-                    <button 
-                      className="btn btn-link text-uppercase fw-bold fort nav-button "
-                      onClick={() =>{
-                        if (menuKey !== 'accueil') {
-                        openModal(menuKey);
-                      } else {
-                        window.location.href = '/';
-                      }
-                      }}
-                    >
-                      {menuKey === 'entreprise' ? "L'Entreprise" : 
-                       menuKey === 'enjeux' ? "Domaines d'intervention" : 
-                       menuKey === 'actualites' ? "Actualités" : 
-                       menuKey === 'realisation' ? "Nos Realistions" : 
-                       menuKey === 'prestations' ? "Nos Prestations" : 
-                       menuKey === 'espace' ? 'Espace Client/Partenaire':
-                       menuKey === 'contact' ? "Nous recrutons" : "Accueil"
-                       }
-                       {menuKey !== 'espace' && <span className="fw-bold nav-dot " >o</span>}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            {/* Liens sociaux - desktop uniquement */}
+            <div className="d-none d-lg-flex align-items-center gap-3 header-social-links">
+              <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311" target="_blank" rel="noopener noreferrer" className="btn btn-link p-0 d-flex align-items-center fort header-link">
+                Suivez-nous 
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1">
+                  <path d="M16 8a6 6 0 0 1 6 6v2a6 6 0 0 1-6 6h-4v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2H4a6 6 0 0 1-6-6v-2a6 6 0 0 1 6-6h4v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8h4z"></path>
+                </svg>
+              </a>
+              <a href="/contact" className="btn btn-link p-0 d-flex align-items-center fort header-link">
+                Contactez-nous 
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1 fort">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </a>
+            </div>
           </div>
+
+          {/* Deuxième ligne: Navigation centrée */}
+          <nav className="d-none d-lg-block header-nav-row">
+            <ul className="list-unstyled d-flex justify-content-center mb-0 gap-3 flex-wrap">
+              {Object.keys(menuData).map((menuKey) => (
+                <li key={menuKey}>
+                  <button 
+                    className="btn btn-link text-uppercase fw-bold fort nav-button"
+                    onClick={() =>{
+                      if (menuKey !== 'accueil') {
+                      openModal(menuKey);
+                    } else {
+                      window.location.href = '/';
+                    }
+                    }}
+                  >
+                    {menuKey === 'entreprise' ? "L'Entreprise" : 
+                     menuKey === 'enjeux' ? "Domaines d'intervention" : 
+                     menuKey === 'actualites' ? "Actualités" : 
+                     menuKey === 'realisation' ? "Nos Realistions" : 
+                     menuKey === 'prestations' ? "Nos Prestations" : 
+                     menuKey === 'espace' ? 'Espace Client/Partenaire':
+                     menuKey === 'contact' ? "Nous recrutons" : "Accueil"
+                     }
+                     {menuKey !== 'espace' && <span className="fw-bold nav-dot">o</span>}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </header>
 
@@ -344,13 +360,13 @@ const Header = () => {
                     <path d="M16 8a6 6 0 0 1 6 6v2a6 6 0 0 1-6 6h-4v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2H4a6 6 0 0 1-6-6v-2a6 6 0 0 1 6-6h4v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8h4z"></path>
                   </svg>
                 </a>
-                <a href="/contact" className="modal-footer-link">
+                {/* <a href="/contact" className="modal-footer-link">
                   Contactez-nous 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
@@ -614,14 +630,13 @@ const Header = () => {
       }
       
       .modal-link {
-        display: flex;
-        align-items: center;
-        color: #0a7b8e;
-        text-decoration: none;
-        padding: 0.3rem 0;
-        font-size: 0.8rem;
-        min-height: 15px;
-      }
+  display: flex;
+  align-items: flex-start; 
+  color: #0a7b8e;
+  text-decoration: none;
+  padding: 0.1rem 0;
+  font-size: 0.8rem;
+}
       
       .modal-link:hover {
         color: #9cc24d;
@@ -631,6 +646,8 @@ const Header = () => {
         margin-right: 0.8rem;
         color: #83b614;
         font-size: 1.2rem;
+        margin-top: -5px;
+        padding-left: 5px;
       }
       
       .modal-footer {

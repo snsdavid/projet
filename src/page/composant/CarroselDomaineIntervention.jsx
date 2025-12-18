@@ -1,7 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const NewsCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(3);
+
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      const width = window.innerWidth;
+      if (width < 600) {
+        setCardsPerView(1);
+      } else if (width >= 600 && width < 760) {
+        setCardsPerView(2);
+      } else {
+        setCardsPerView(3);
+      }
+    };
+
+    updateCardsPerView();
+    window.addEventListener('resize', updateCardsPerView);
+    return () => window.removeEventListener('resize', updateCardsPerView);
+  }, []);
 
   const articles = [
     {
@@ -15,14 +33,14 @@ const NewsCarousel = () => {
       id: 2,
       image: "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&h=400&fit=crop",
       title: "AGRICULTURE",
-      description: "Accompagner la création, l’optimisation et la pérennisation des exploitations agricoles en offrant des solutions techniques, économiques et humaines intégrées, afin d’améliorer la productivité, la rentabilité et la durabilité des",
+      description: "Accompagner la création, l'optimisation et la pérennisation des exploitations agricoles en offrant des solutions techniques, économiques et humaines intégrées, afin d'améliorer la productivité, la rentabilité et la durabilité des",
       link: "/domaine-d-intervention/AGRICULTURE"
     },
     {
       id: 3,
       image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=400&fit=crop",
       title: "NEGOCE AGRICOLE",
-      description: "Faciliter l’accès aux marchés, optimiser la chaîne de valeur et garantir la qualité des produits agricoles à travers des services intégrés de commercialisation, intermédiation et logistique, adaptés aux réalités des producteurs et aux exigences des ...",
+      description: "Faciliter l'accès aux marchés, optimiser la chaîne de valeur et garantir la qualité des produits agricoles à travers des services intégrés de commercialisation, intermédiation et logistique, adaptés aux réalités des producteurs et aux exigences des ...",
       link: "/domaine-d-intervention/NEGOCE_AGRICOLE"
     },
     {
@@ -36,19 +54,23 @@ const NewsCarousel = () => {
       id: 5,
       image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&h=400&fit=crop",
       title: "DIGITALISATION AGRICOLE",
-      description: "Accélérer la transformation numérique du secteur agricole en concevant, déployant et accompagnant des solutions digitales intégrées qui optimisent la gestion des exploitations, renforcent la traçabilité et facilitent l’accès aux marchés, tout en développant les compétences ...",
+      description: "Accélérer la transformation numérique du secteur agricole en concevant, déployant et accompagnant des solutions digitales intégrées qui optimisent la gestion des exploitations, renforcent la traçabilité et facilitent l'accès aux marchés, tout en développant les compétences ...",
       link: "/domaine-d-intervention/DIGITALISATION_AGRICOLE"
     }
   ];
 
-  const totalSlides = 3;
+  const totalSlides = articles.length;
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalSlides);
+    if (currentIndex < totalSlides - cardsPerView) {
+      setCurrentIndex((prev) => prev + 1);
+    }
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
+    if (currentIndex > 0) {
+      setCurrentIndex((prev) => prev - 1);
+    }
   };
 
   const goToSlide = (index) => {
@@ -56,15 +78,17 @@ const NewsCarousel = () => {
   };
 
   const handleReadMore = (link) => {
-    // Pour une vraie application React avec React Router, utilisez:
-    // navigate(link);
-    
-    // Pour la démo, on affiche une alerte
-    // alert(`Redirection vers: ${link}`);
     window.location.href = link;
-    
-    // Dans votre application, décommentez cette ligne si vous utilisez React Router:
-    // window.location.href = link;
+  };
+
+  const getTranslateX = () => {
+    if (cardsPerView === 1) {
+      return currentIndex * 100;
+    } else if (cardsPerView === 2) {
+      return currentIndex * 52;
+    } else {
+      return currentIndex * 35.333;
+    }
   };
 
   return (
@@ -82,7 +106,7 @@ const NewsCarousel = () => {
           <div style={styles.carouselContainer}>
             <div style={{
               ...styles.carouselTrack,
-              transform: `translateX(-${currentIndex * (33.333 + 2)}%)`
+              transform: `translateX(-${getTranslateX()}%)`
             }}>
               {articles.map((article) => (
                 <div key={article.id} style={styles.articleCard}>
@@ -126,7 +150,7 @@ const NewsCarousel = () => {
         </div>
 
         <div style={styles.carouselIndicators}>
-          {[...Array(totalSlides)].map((_, i) => (
+          {[...Array(totalSlides - cardsPerView + 1)].map((_, i) => (
             <button
               key={i}
               style={i === currentIndex ? {...styles.indicator, ...styles.indicatorActive} : styles.indicator}
@@ -135,6 +159,36 @@ const NewsCarousel = () => {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (min-width: 600px) and (max-width: 759px) {
+          div[style*="calc(33.333% - 16px)"] {
+            min-width: calc(50% - 12px) !important;
+          }
+        }
+
+        @media (max-width: 599px) {
+          div[style*="calc(33.333% - 16px)"] {
+            min-width: calc(100% - 16px) !important;
+          }
+          div[style*="padding: 0 60px"] {
+            padding: 0 40px !important;
+          }
+          button[style*="width: 50px"] {
+            width: 40px !important;
+            height: 40px !important;
+          }
+          h1[style*="font-size: 3rem"] {
+            font-size: 2rem !important;
+          }
+        }
+
+        @media (min-width: 600px) and (max-width: 759px) {
+          h1[style*="font-size: 3rem"] {
+            font-size: 2.5rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
