@@ -34,14 +34,14 @@ const NewsCarousel = () => {
       id: 2,
       image: "/images/domain_agriculture.png",
       title: "AGRICULTURE",
-      description: "Solutions techniques et économiques pour optimiser la productivité et la pérennité des exploitations agricoles...",
+      description: "Accompagner la création, l’optimisation et la pérennisation des exploitations agricoles en offrant des solutions techniques...",
       link: "/domaine-d-intervention/AGRICULTURE"
     },
     {
       id: 3,
       image: "/images/domain_trading.png",
       title: "NEGOCE AGRICOLE",
-      description: "Optimisation de la chaîne de valeur, intermédiation et logistique pour faciliter l'accès aux marchés...",
+      description: "Faciliter l’accès aux marchés, optimiser la chaîne de valeur et garantir la qualité des produits agricoles à travers des services...",
       link: "/domaine-d-intervention/NEGOCE_AGRICOLE"
     },
     {
