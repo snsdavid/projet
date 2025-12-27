@@ -528,7 +528,8 @@ const styles = {
     alignItems: 'center'
   },
   textCol: {
-    paddingRight: '20px'
+    paddingRight: '20px',
+    textAlign: 'justify'
   },
   badge: {
     color: '#1879be',

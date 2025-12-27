@@ -218,14 +218,18 @@ const styles = {
   cardText: {
       color: '#64748b',
       lineHeight: '1.6',
-      marginBottom: '20px'
+      marginBottom: '20px',
+        textAlign: 'justify'
+
   },
   quoteBox: {
       borderLeft: '4px solid #1879be',
       paddingLeft: '15px',
       fontStyle: 'italic',
       color: '#334155',
-      fontWeight: '500'
+      fontWeight: '500',
+        textAlign: 'justify'
+
   },
   pageWrapper: {
     fontFamily: "'Inter', sans-serif",
@@ -281,7 +285,8 @@ const styles = {
     fontSize: '1.2rem',
     color: '#64748b',
     lineHeight: '1.8',
-    marginBottom: '50px'
+    marginBottom: '50px',
+    textAlign: 'justify'
   },
   presButtons: {
     display: 'flex',
