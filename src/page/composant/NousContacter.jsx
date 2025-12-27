@@ -57,12 +57,12 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* ===== NOS IMPLANTATIONS ===== */}
+      {/* ===== Au Cœur du Terrain ===== */}
       <h2
         className="text-uppercase fw-bold mb-4"
         style={{ color: "#8bc34a" ,fontFamily: "Julius Sans One"}}
       >
-        Nos implantations
+        Au Cœur du Terrain
       </h2>
 
       <p>

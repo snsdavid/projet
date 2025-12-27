@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import HeaderComposant from './Headercomposant';
+import Footer from './Footer';
+import { Calendar, Clock, ChevronRight, Tag } from 'lucide-react';
 
 const NewsPag = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -6,7 +9,7 @@ const NewsPag = () => {
   const articlesPerPage = 6;
 
   const categories = [
-    { id: 'all', name: 'Toutes les actualités', icon: '📰' },
+    { id: 'all', name: 'Tout', icon: '📰' },
     { id: 'agriculture', name: 'Agriculture', icon: '🌾' },
     { id: 'technology', name: 'Innovation', icon: '💻' },
     { id: 'environment', name: 'Environnement', icon: '🌳' },
@@ -79,28 +82,6 @@ const NewsPag = () => {
       readTime: "4 min",
       featured: false,
       tags: ["Partenariat", "Coopératives", "Commerce"]
-    },
-    {
-      id: 7,
-      title: "Nouvelle technologie de monitoring des cultures par satellite",
-      excerpt: "Utilisation de l'imagerie satellite pour surveiller la santé des cultures et optimiser les rendements agricoles.",
-      category: "technology",
-      date: "2025-01-01",
-      image: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=800&h=400&fit=crop",
-      readTime: "5 min",
-      featured: false,
-      tags: ["Satellite", "Monitoring", "Technologie"]
-    },
-    {
-      id: 8,
-      title: "Campagne de sensibilisation sur l'agriculture biologique",
-      excerpt: "Sensibilisation de 500 producteurs aux techniques d'agriculture biologique et aux certifications internationales.",
-      category: "agriculture",
-      date: "2024-12-28",
-      image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&h=400&fit=crop",
-      readTime: "3 min",
-      featured: false,
-      tags: ["Agriculture biologique", "Sensibilisation", "Certification"]
     }
   ];
 
@@ -112,461 +93,237 @@ const NewsPag = () => {
   const startIndex = (currentPage - 1) * articlesPerPage;
   const displayedArticles = filteredArticles.slice(startIndex, startIndex + articlesPerPage);
 
-  const featuredArticles = articles.filter(article => article.featured);
-
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('fr-FR', options);
+  // Link to detail page (using simple href for now, usually Link component)
+  const handleArticleClick = (id) => {
+      window.location.href = `/actualites/${id}`;
   };
 
   return (
-    <div className="news-page">
-      <style jsx>{`
-        .news-page {
-          background: linear-gradient(135deg, rgba(16, 185, 129, 0.03), rgba(34, 197, 94, 0.03), rgba(13, 148, 136, 0.03));
-          min-height: 100vh;
-        }
-
-        .hero-section {
-          background: rgb(30, 51, 78);
-          color: white;
-          padding: 100px 0;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .hero-section::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(135deg, #10b981, #22c55e, #0d9488);
-          opacity: 0.1;
-        }
-
-        .hero-content {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 20px;
-          text-align: center;
-          position: relative;
-          z-index: 1;
-        }
-
-        .hero-title {
-          font-size: 3.5rem;
-          font-weight: 700;
-          margin-bottom: 30px;
-          background: linear-gradient(135deg, #10b981, #22c55e, #0d9488);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        .hero-subtitle {
-          font-size: 1.3rem;
-          line-height: 1.6;
-          color: #cbd5e1;
-          max-width: 700px;
-          margin: 0 auto;
-        }
-
-        .main-content {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 80px 20px;
-        }
-
-        .featured-section {
-          margin-bottom: 80px;
-        }
-
-        .featured-title {
-          font-size: 2.5rem;
-          color: rgb(30, 51, 78);
-          text-align: center;
-          margin-bottom: 50px;
-          font-weight: 700;
-          position: relative;
-        }
-
-        .featured-title::after {
-          content: '';
-          position: absolute;
-          bottom: -15px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 100px;
-          height: 4px;
-          background: linear-gradient(135deg, #10b981, #22c55e, #0d9488);
-          border-radius: 2px;
-        }
-
-        .featured-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-          gap: 40px;
-        }
-
-        .featured-card {
-          background: white;
-          border-radius: 20px;
-          overflow: hidden;
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-          transition: all 0.3s ease;
-          position: relative;
-        }
-
-        .featured-card::before {
-          content: '⭐ À LA UNE';
-          position: absolute;
-          top: 20px;
-          left: 20px;
-          background: linear-gradient(135deg, #10b981, #22c55e, #0d9488);
-          color: white;
-          padding: 5px 15px;
-          border-radius: 20px;
-          font-size: 0.8rem;
-          font-weight: 600;
-          z-index: 2;
-        }
-
-        .featured-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .categories-filter {
-          display: flex;
-          justify-content: center;
-          flex-wrap: wrap;
-          gap: 15px;
-          margin-bottom: 50px;
-          background: white;
-          padding: 30px;
-          border-radius: 20px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .category-button {
-          padding: 12px 24px;
-          border: 2px solid #e2e8f0;
-          background: white;
-          border-radius: 25px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-size: 1rem;
-          font-weight: 500;
-          color: #64748b;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
-
-        .category-button:hover {
-          border-color: #10b981;
-          color: #10b981;
-          transform: translateY(-2px);
-        }
-
-        .category-button.active {
-          background: linear-gradient(135deg, #10b981, #22c55e, #0d9488);
-          border-color: transparent;
-          color: white;
-          transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
-        }
-
-        .articles-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          gap: 30px;
-          margin-bottom: 50px;
-        }
-
-        .article-card {
-          background: white;
-          border-radius: 15px;
-          overflow: hidden;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-          transition: all 0.3s ease;
-          cursor: pointer;
-        }
-
-        .article-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .article-image {
-          width: 100%;
-          height: 200px;
-          object-fit: cover;
-          transition: transform 0.3s ease;
-        }
-
-        .article-card:hover .article-image {
-          transform: scale(1.05);
-        }
-
-        .article-content {
-          padding: 25px;
-        }
-
-        .article-meta {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 15px;
-        }
-
-        .article-date {
-          color: #64748b;
-          font-size: 0.9rem;
-        }
-
-        .article-read-time {
-          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(34, 197, 94, 0.1));
-          color: #10b981;
-          padding: 4px 12px;
-          border-radius: 12px;
-          font-size: 0.85rem;
-          font-weight: 500;
-        }
-
-        .article-title {
-          font-size: 1.3rem;
-          font-weight: 600;
-          color: rgb(30, 51, 78);
-          margin-bottom: 15px;
-          line-height: 1.4;
-        }
-
-        .article-excerpt {
-          color: #64748b;
-          line-height: 1.6;
-          margin-bottom: 20px;
-          font-size: 0.95rem;
-        }
-
-        .article-tags {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-        }
-
-        .tag {
-          background: rgba(16, 185, 129, 0.1);
-          color: #10b981;
-          padding: 4px 10px;
-          border-radius: 12px;
-          font-size: 0.8rem;
-          font-weight: 500;
-        }
-
-        .pagination {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
-          margin-top: 50px;
-        }
-
-        .page-button {
-          padding: 10px 15px;
-          border: 2px solid #e2e8f0;
-          background: white;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-weight: 500;
-          color: #64748b;
-        }
-
-        .page-button:hover {
-          border-color: #10b981;
-          color: #10b981;
-        }
-
-        .page-button.active {
-          background: linear-gradient(135deg, #10b981, #22c55e, #0d9488);
-          border-color: transparent;
-          color: white;
-        }
-
-        .page-button:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-
-        .no-articles {
-          text-align: center;
-          padding: 60px 20px;
-          color: #64748b;
-        }
-
-        .no-articles-icon {
-          font-size: 4rem;
-          margin-bottom: 20px;
-          display: block;
-        }
-
-        .no-articles-text {
-          font-size: 1.2rem;
-          margin-bottom: 10px;
-        }
-
-        @media (max-width: 768px) {
-          .hero-title {
-            font-size: 2.5rem;
-          }
-          
-          .featured-grid {
-            grid-template-columns: 1fr;
-          }
-          
-          .categories-filter {
-            padding: 20px;
-          }
-          
-          .category-button {
-            padding: 10px 16px;
-            font-size: 0.9rem;
-          }
-          
-          .articles-grid {
-            grid-template-columns: 1fr;
-          }
-          
-          .pagination {
-            flex-wrap: wrap;
-          }
-        }
-      `}</style>
-
+    <div style={styles.pageWrapper}>
+      <HeaderComposant />
+      
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
-          <h1 className="hero-title">Actualités</h1>
-          <p className="hero-subtitle">
-            Restez informé des dernières nouvelles, innovations et projets de NYA AGRITEK. 
-            Découvrez notre impact sur l'agriculture durable en Côte d'Ivoire et au-delà.
+      <section style={styles.heroSection}>
+        <div style={styles.heroContent}>
+          <h1 style={styles.heroTitle}>Actualités & Innovations</h1>
+          <p style={styles.heroSubtitle}>
+            Restez informé des dernières avancées chez NYA AGRITEK et dans le monde agricole.
           </p>
         </div>
       </section>
 
-      <div className="main-content">
-        {/* Featured Articles */}
-        {featuredArticles.length > 0 && (
-          <section className="featured-section">
-            <h2 className="featured-title">Articles à la Une</h2>
-            <div className="featured-grid">
-              {featuredArticles.map(article => (
-                <article key={article.id} className="featured-card article-card">
-                  <img src={article.image} alt={article.title} className="article-image" />
-                  <div className="article-content">
-                    <div className="article-meta">
-                      <span className="article-date">{formatDate(article.date)}</span>
-                      <span className="article-read-time">📖 {article.readTime}</span>
-                    </div>
-                    <h3 className="article-title">{article.title}</h3>
-                    <p className="article-excerpt">{article.excerpt}</p>
-                    <div className="article-tags">
-                      {article.tags.map((tag, index) => (
-                        <span key={index} className="tag">{tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Categories Filter */}
-        <div className="categories-filter">
-          {categories.map(category => (
-            <button
-              key={category.id}
-              className={`category-button ${selectedCategory === category.id ? 'active' : ''}`}
-              onClick={() => {
-                setSelectedCategory(category.id);
-                setCurrentPage(1);
-              }}
-            >
-              <span>{category.icon}</span>
-              <span>{category.name}</span>
-            </button>
-          ))}
+      <div style={styles.container}>
+        
+        {/* Filter Section */}
+        <div style={styles.filterContainer}>
+            {categories.map(cat => (
+                <button 
+                    key={cat.id}
+                    style={{
+                        ...styles.filterBtn,
+                        ...(selectedCategory === cat.id ? styles.activeFilterBtn : {})
+                    }}
+                    onClick={() => setSelectedCategory(cat.id)}
+                >
+                    {cat.icon} {cat.name}
+                </button>
+            ))}
         </div>
 
         {/* Articles Grid */}
-        {displayedArticles.length > 0 ? (
-          <>
-            <div className="articles-grid">
-              {displayedArticles.map(article => (
-                <article key={article.id} className="article-card">
-                  <img src={article.image} alt={article.title} className="article-image" />
-                  <div className="article-content">
-                    <div className="article-meta">
-                      <span className="article-date">{formatDate(article.date)}</span>
-                      <span className="article-read-time">📖 {article.readTime}</span>
-                    </div>
-                    <h3 className="article-title">{article.title}</h3>
-                    <p className="article-excerpt">{article.excerpt}</p>
-                    <div className="article-tags">
-                      {article.tags.map((tag, index) => (
-                        <span key={index} className="tag">{tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="pagination">
-                <button
-                  className="page-button"
-                  disabled={currentPage === 1}
-                  onClick={() => setCurrentPage(currentPage - 1)}
-                >
-                  ← Précédent
-                </button>
-                
-                {[...Array(totalPages)].map((_, index) => (
-                  <button
-                    key={index + 1}
-                    className={`page-button ${currentPage === index + 1 ? 'active' : ''}`}
-                    onClick={() => setCurrentPage(index + 1)}
-                  >
-                    {index + 1}
-                  </button>
-                ))}
-                
-                <button
-                  className="page-button"
-                  disabled={currentPage === totalPages}
-                  onClick={() => setCurrentPage(currentPage + 1)}
-                >
-                  Suivant →
-                </button>
-              </div>
+        <div style={styles.grid}>
+            {displayedArticles.length > 0 ? (
+                displayedArticles.map(article => (
+                    <article 
+                        key={article.id} 
+                        style={styles.card}
+                        onClick={() => handleArticleClick(article.id)}
+                    >
+                        <div style={styles.imageContainer}>
+                            <img src={article.image} alt={article.title} style={styles.image} />
+                            <div style={styles.categoryTag}>{categories.find(c => c.id === article.category)?.name || 'News'}</div>
+                        </div>
+                        <div style={styles.cardContent}>
+                            <div style={styles.meta}>
+                                <span style={styles.metaItem}><Calendar size={14} /> {new Date(article.date).toLocaleDateString()}</span>
+                                <span style={styles.metaItem}><Clock size={14} /> {article.readTime}</span>
+                            </div>
+                            <h3 style={styles.cardTitle}>{article.title}</h3>
+                            <p style={styles.cardExcerpt}>{article.excerpt}</p>
+                            <div style={styles.cardFooter}>
+                                <span style={styles.readMore}>Lire la suite <ChevronRight size={16} /></span>
+                            </div>
+                        </div>
+                    </article>
+                ))
+            ) : (
+                <div style={styles.noResults}>
+                    <p>Aucun article trouvé dans cette catégorie.</p>
+                </div>
             )}
-          </>
-        ) : (
-          <div className="no-articles">
-            <span className="no-articles-icon">📰</span>
-            <p className="no-articles-text">Aucun article trouvé dans cette catégorie</p>
-            <p>Essayez de sélectionner une autre catégorie.</p>
-          </div>
-        )}
+        </div>
+
       </div>
+      <Footer />
     </div>
   );
+};
+
+const styles = {
+    pageWrapper: {
+        background: '#f8fafc',
+        minHeight: '100vh',
+    },
+    heroSection: {
+        background: '#1879be', // Solid Primary Blue
+        padding: '220px 20px 60px',
+        textAlign: 'center',
+        color: 'white',
+        marginBottom: '60px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    heroContent: {
+        maxWidth: '800px',
+        margin: '0 auto'
+    },
+    heroTitle: {
+        fontSize: '3rem',
+        fontWeight: 'bold',
+        marginBottom: '15px',
+        fontFamily: "'Julius Sans One', sans-serif"
+    },
+    heroSubtitle: {
+        fontSize: '1.2rem',
+        opacity: 0.9,
+        fontWeight: '300'
+    },
+    container: {
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 20px 100px'
+    },
+    filterContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '15px',
+        marginBottom: '60px',
+        flexWrap: 'wrap'
+    },
+    filterBtn: {
+        background: 'white',
+        border: '1px solid #e2e8f0',
+        padding: '12px 24px',
+        borderRadius: '30px',
+        fontSize: '0.95rem',
+        color: '#64748b',
+        cursor: 'pointer',
+        transition: 'all 0.3s',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px',
+        fontWeight: '500'
+    },
+    activeFilterBtn: {
+        background: '#1879be',
+        color: 'white',
+        borderColor: '#1879be',
+        boxShadow: '0 4px 12px rgba(24, 121, 190, 0.2)'
+    },
+    grid: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
+        gap: '40px'
+    },
+    card: {
+        background: 'white',
+        borderRadius: '20px',
+        overflow: 'hidden',
+        border: '1px solid #f1f5f9',
+        boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
+        transition: 'transform 0.3s, box-shadow 0.3s',
+        cursor: 'pointer',
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    imageContainer: {
+        position: 'relative',
+        height: '240px',
+        overflow: 'hidden'
+    },
+    image: {
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        transition: 'transform 0.5s'
+    },
+    categoryTag: {
+        position: 'absolute',
+        top: '20px',
+        right: '20px',
+        background: 'white',
+        color: '#1879be',
+        padding: '6px 14px',
+        borderRadius: '20px',
+        fontSize: '0.8rem',
+        fontWeight: '700',
+        boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+    },
+    cardContent: {
+        padding: '25px',
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    meta: {
+        display: 'flex',
+        gap: '15px',
+        marginBottom: '15px',
+        color: '#94a3b8',
+        fontSize: '0.85rem'
+    },
+    metaItem: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '5px'
+    },
+    cardTitle: {
+        fontSize: '1.25rem',
+        fontWeight: '700',
+        color: '#1e293b',
+        marginBottom: '15px',
+        lineHeight: '1.4',
+        fontFamily: "'Julius Sans One', sans-serif"
+    },
+    cardExcerpt: {
+        color: '#64748b',
+        fontSize: '0.95rem',
+        lineHeight: '1.6',
+        marginBottom: '20px',
+        flex: 1
+    },
+    cardFooter: {
+        borderTop: '1px solid #f1f5f9',
+        paddingTop: '20px',
+        display: 'flex',
+        justifyContent: 'flex-end'
+    },
+    readMore: {
+        color: '#f3a31a', // Secondary Orange
+        fontWeight: '600',
+        fontSize: '0.9rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '5px'
+    },
+    noResults: {
+        gridColumn: '1 / -1',
+        textAlign: 'center',
+        padding: '40px',
+        color: '#64748b'
+    }
 };
 
 export default NewsPag;

@@ -17,15 +17,15 @@ const Section2 = () => {
                 <div class="stats-container">
                     <div class="stat-item">
                         <span class="stat-number">+ 40</span>
-                        <div class="stat-label">Années<br/>d'activité</div>
+                        <div class="stat-label" style={{color: 'white'}}>Années<br/>d'activité</div>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">+ 3000</span>
-                        <div class="stat-label">Références<br/>dans le monde</div>
+                        <div class="stat-label" style={{color: 'white'}}>Références<br/>dans le monde</div>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">+ 800</span>
-                        <div class="stat-label">Projets pilotés<br/>(AT & AMO)</div>
+                        <div class="stat-label" style={{color: 'white'}}>Projets pilotés<br/>(AT & AMO)</div>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@ const Section2 = () => {
                             <circle cx="73" cy="23" r="1" fill="currentColor"/>
                             <path d="M67 25c3-2 3-6 0-8"/>
                         </svg>
-                        <div class="enjeu-text">Biodiversité et<br/>ressources<br/>naturelles</div>
+                        <div class="enjeu-text" style={{color: '#1879be'}}>Biodiversité et<br/>ressources<br/>naturelles</div>
                     </div>
 
                     <div class="enjeu-item">
@@ -57,7 +57,7 @@ const Section2 = () => {
                             <path d="M35 73h30" stroke-linecap="round"/>
                             <path d="M40 78h20" stroke-linecap="round"/>
                         </svg>
-                        <div class="enjeu-text">Arbres et forêts</div>
+                        <div class="enjeu-text" style={{color: '#1879be'}}>Arbres et forêts</div>
                     </div>
 
                     <div class="enjeu-item">
@@ -73,7 +73,7 @@ const Section2 = () => {
                             <circle cx="51" cy="46" r="1.5" fill="currentColor"/>
                             <circle cx="54" cy="48" r="1.5" fill="currentColor"/>
                         </svg>
-                        <div class="enjeu-text">Agriculture<br/>durable</div>
+                        <div class="enjeu-text" style={{color: '#1879be'}}>Agriculture<br/>durable</div>
                     </div>
 
                     <div class="enjeu-item">
@@ -90,7 +90,7 @@ const Section2 = () => {
                             <ellipse cx="35" cy="62" rx="8" ry="3"/>
                             <path d="M25 70c8-5 16-5 24 0s16 5 24 0" stroke-linecap="round"/>
                         </svg>
-                        <div class="enjeu-text">Territoires</div>
+                        <div class="enjeu-text" style={{color: '#1879be'}}>Territoires</div>
                     </div>
 
                     <div class="enjeu-item">
@@ -101,7 +101,7 @@ const Section2 = () => {
                             <path d="M55 45c-3 0-5 2-5 5 0 1 0 2 1 3h20c3 0 5-2 5-5s-2-5-5-5c0-5-4-9-9-9-3 0-6 2-7 5z"/>
                             <path d="M58 58v8 M63 60v6 M68 58v8 M73 60v6" stroke-linecap="round" stroke-width="2"/>
                         </svg>
-                        <div class="enjeu-text">Climat</div>
+                        <div class="enjeu-text" style={{color: '#1879be'}}>Climat</div>
                     </div>
                 </div>
 

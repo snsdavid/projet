@@ -1,233 +1,234 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { ChevronRight } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ChevronRight, ArrowRight } from 'lucide-react';
 
 const Carrosel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
+  // Using mostly local images + high quality unsplash fallback where needed
   const slides = [
     {
-      title: "PROMOUVOIR UNE AGRICULTURE DURABLE, SOURCE DE SÉCURITÉ ALIMENTAIRE",
-      buttonText: "Découvrez cet enjeu",
-      image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200&h=600&fit=crop"
-    },
-    {
-      title: "SOUTENIR L'INNOVATION AGRICOLE POUR UN AVENIR DURABLE",
-      buttonText: "En savoir plus",
-      image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&h=600&fit=crop"
-    },
-    {
-      title: "PRÉSERVER LES RESSOURCES NATURELLES POUR LES GÉNÉRATIONS FUTURES",
-      buttonText: "Découvrir",
-      image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1200&h=600&fit=crop"
-    },
-    {
-      title: "DÉVELOPPER DES PRATIQUES AGRICOLES RESPECTUEUSES DE L'ENVIRONNEMENT",
-      buttonText: "Explorer",
-      image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1200&h=600&fit=crop"
-    },
-    {
-      title: "AMÉLIORER LA QUALITÉ DE VIE DES AGRICULTEURS",
-      buttonText: "Découvrir l'initiative",
-      image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1200&h=600&fit=crop"
-    },
-    {
       title: "CULTIVER L'AVENIR ENSEMBLE",
-      buttonText: "Participez",
-      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1200&h=600&fit=crop"
+      subtitle: "Des solutions innovantes pour une agriculture durable.",
+      buttonText: "À propos de nous",
+      link: "/a-propos",
+      image: "/images/realisation2.png" // Local high quality
+    },
+    {
+      title: "L'EXPERTISE AU SERVICE DE LA TERRE",
+      subtitle: "Des stratégies éprouvées pour maximiser vos rendements.",
+      buttonText: "En savoir plus",
+      link: "/a-propos",
+      image: "/images/realisation1.png" // Local high quality
+    },
+    {
+      title: "DURABILITÉ ET PERFORMANCE",
+      subtitle: "Concilier rentabilité économique et respect de l'environnement.",
+      buttonText: "Nos Domaines",
+      link: "/domaines-intervention",
+      image: "/images/domain_forestry.png" // Local forestry
     }
   ];
 
   const nextSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    setActiveIndex((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
-  };
-
-  const goToSlide = (index) => {
-    setActiveIndex(index);
+    setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   useEffect(() => {
     let interval;
-
     if (!isHovered) {
-      interval = setInterval(() => {
-        nextSlide();
-      }, 1700);
+      interval = setInterval(nextSlide, 3000); // 3 seconds
     }
-
     return () => clearInterval(interval);
-  }, [isHovered, activeIndex]);
+  }, [isHovered]);
 
   return (
-    <div>
-      <div 
-        className="position-relative overflow-hidden" 
-        style={{ 
-          width: '100vw',
-          maxHeight: '450px',
-          margin: '0',
-          padding: '0'
-        }}
-      >
+    <div 
+      style={styles.carouselWrapper}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {slides.map((slide, index) => (
         <div 
-          id="agricultureCarousel" 
-          className="carousel slide" 
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          key={index} 
+          style={{
+            ...styles.slide,
+            opacity: index === activeIndex ? 1 : 0,
+            zIndex: index === activeIndex ? 1 : 0
+          }}
         >
-          <div className="carousel-inner">
-            {slides.map((slide, index) => (
-              <div key={index} className={`carousel-item ${index === activeIndex ? 'active' : ''}`}>
-                <div className="position-relative" style={{ height: '450px' }}>
-                  <img
-                    src={slide.image}
-                    className="d-block w-100 h-100"
-                    alt={`Slide ${index + 1}`}
-                    style={{ objectFit: 'cover' }}
-                  />
-
-                  <div className="position-absolute top-0 start-0 h-100" style={{ width: '40%' }}>
-                    <div 
-                      className="h-100 d-flex align-items-center"
-                      style={{
-                        background: 'linear-gradient(135deg, rgba(6, 147, 227, 0.95), rgba(4, 119, 184, 0.90))',
-                        clipPath: 'polygon(0 0, 100% 0, 85% 100%, 0% 100%)'
-                      }}
-                    >
-                      <div className="px-5">
-                        <h1 className="text-white fw-bold mb-5" style={{ fontSize: '1.8rem', lineHeight: '1.2', textTransform: 'uppercase' }}>
-                          {slide.title}
-                        </h1>
-
-                        <button 
-                          className="btn btn-lg text-white border-0 d-flex align-items-center gap-2"
-                          style={{
-                            backgroundColor: 'transparent',
-                            borderBottom: '2px solid white',
-                            borderRadius: 0,
-                            paddingLeft: 0,
-                            paddingRight: 0,
-                            fontSize: '1.2rem'
-                          }}
-                          onMouseEnter={(e) => {
-                            e.target.style.transform = 'translateX(5px)';
-                          }}
-                          onMouseLeave={(e) => {
-                            e.target.style.transform = 'translateX(0)';
-                          }}
-                        >
-                          {slide.buttonText}
-                          <ChevronRight size={24} />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* Background Image with Overlay */}
+          <div style={styles.imageWrapper}>
+            <img src={slide.image} alt={slide.title} style={styles.image} />
+            <div style={styles.overlay}></div>
           </div>
 
-          <div className="position-absolute bottom-0 start-0 w-100 d-flex justify-content-center pb-4" style={{ zIndex: 10 }}>
-            <div className="d-flex gap-2">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`border-0 rounded-circle transition-all ${
-                    index === activeIndex ? 'bg-warning' : 'bg-white'
-                  }`}
-                  style={{
-                    width: '12px',
-                    height: '12px',
-                    opacity: index === activeIndex ? 1 : 0.6,
-                    transition: 'all 0.3s ease',
-                    cursor: 'pointer'
-                  }}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
+          {/* Content */}
+          <div style={styles.contentContainer}>
+             <div style={{
+                 ...styles.content,
+                 transform: index === activeIndex ? 'translateY(0)' : 'translateY(30px)',
+                 opacity: index === activeIndex ? 1 : 0
+             }}>
+                <h1 style={styles.title}>{slide.title}</h1>
+                <p style={styles.subtitle}>{slide.subtitle}</p>
+                <a href={slide.link} style={styles.ctaButton}>
+                   {slide.buttonText} <ChevronRight size={20} />
+                </a>
+             </div>
           </div>
-
-          <button
-            className="carousel-control-prev border-0 bg-transparent"
-            type="button"
-            onClick={prevSlide}
-            style={{ width: '5%', opacity: 0.8 }}
-            onMouseEnter={(e) => e.target.style.opacity = 1}
-            onMouseLeave={(e) => e.target.style.opacity = 0.8}
-          >
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-
-          <button
-            className="carousel-control-next border-0 bg-transparent"
-            type="button"
-            onClick={nextSlide}
-            style={{ width: '5%', opacity: 0.8 }}
-            onMouseEnter={(e) => e.target.style.opacity = 1}
-            onMouseLeave={(e) => e.target.style.opacity = 0.8}
-          >
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
         </div>
+      ))}
 
-        <style jsx>{`
-          .carousel-item {
-            transition: transform 0.6s ease-in-out;
-          }
-          .carousel-control-prev-icon,
-          .carousel-control-next-icon {
-            filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
-          }
+      {/* Controls */}
+      <button onClick={prevSlide} style={{...styles.controlBtn, left: '20px'}}>
+         <span style={styles.arrow}>‹</span>
+      </button>
+      <button onClick={nextSlide} style={{...styles.controlBtn, right: '20px'}}>
+         <span style={styles.arrow}>›</span>
+      </button>
 
-          button {
-            transition: all 0.3s ease;
-          }
-
-          @media (max-width: 768px) {
-            .position-absolute.top-0 {
-              width: 100% !important;
-            }
-
-            h1 {
-              font-size: 1.4rem !important;
-            }
-
-            .px-5 {
-              padding-left: 1.5rem !important;
-              padding-right: 1.5rem !important;
-            }
-
-            div[style*="height: 450px"] {
-              height: 300px !important;
-            }
-          }
-
-          @media (max-width: 576px) {
-            h1 {
-              font-size: 1.1rem !important;
-            }
-
-            button[style*="font-size: 1.2rem"] {
-              font-size: 1rem !important;
-            }
-
-            div[style*="height: 450px"] {
-              height: 250px !important;
-            }
-          }
-        `}</style>
+      {/* Indicators */}
+      <div style={styles.indicators}>
+        {slides.map((_, idx) => (
+            <button 
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                style={{
+                    ...styles.indicator,
+                    background: idx === activeIndex ? '#f3a31a' : 'rgba(255,255,255,0.5)',
+                    width: idx === activeIndex ? '40px' : '12px'
+                }}
+            />
+        ))}
       </div>
     </div>
   );
+};
+
+const styles = {
+  carouselWrapper: {
+    position: 'relative',
+    height: '85vh',
+    minHeight: '600px',
+    width: '100%',
+    overflow: 'hidden',
+    background: '#000'
+  },
+  slide: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    transition: 'opacity 1s ease-in-out'
+  },
+  imageWrapper: {
+    width: '100%',
+    height: '100%',
+    position: 'relative'
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover'
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    background: 'linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%)'
+  },
+  contentContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'flex-end',
+    paddingLeft: '10%',
+    paddingBottom: '15vh',
+    zIndex: 2
+  },
+  content: {
+    maxWidth: '700px',
+    transition: 'all 1s ease-out 0.2s',
+    color: 'white'
+  },
+  title: {
+    fontSize: '3.5rem',
+    fontWeight: '900',
+    marginBottom: '20px',
+    fontFamily: "'Julius Sans One', sans-serif",
+    lineHeight: '1.2',
+    textTransform: 'uppercase'
+  },
+  subtitle: {
+    fontSize: '1.4rem',
+    marginBottom: '40px',
+    fontWeight: '300',
+    color: '#e0e0e0'
+  },
+  ctaButton: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '10px',
+    background: '#f3a31a', // Orange
+    color: 'white',
+    padding: '16px 36px',
+    borderRadius: '50px',
+    textDecoration: 'none',
+    fontSize: '1.1rem',
+    fontWeight: '700',
+    transition: 'transform 0.3s ease',
+    border: 'none',
+    cursor: 'pointer'
+  },
+  controlBtn: {
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    background: 'rgba(255,255,255,0.1)',
+    border: '1px solid rgba(255,255,255,0.2)',
+    borderRadius: '50%',
+    width: '60px',
+    height: '60px',
+    cursor: 'pointer',
+    color: 'white',
+    zIndex: 10,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'background 0.3s'
+  },
+  arrow: {
+    fontSize: '2rem',
+    lineHeight: 1,
+    marginTop: '-4px'
+  },
+  indicators: {
+    position: 'absolute',
+    bottom: '40px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    display: 'flex',
+    gap: '12px',
+    zIndex: 10
+  },
+  indicator: {
+    height: '12px',
+    borderRadius: '6px',
+    border: 'none',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease'
+  }
 };
 
 export default Carrosel;

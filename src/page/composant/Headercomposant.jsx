@@ -1,778 +1,564 @@
-import React, { useState } from 'react';
-import { X, Menu } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, ChevronDown, ChevronRight, Phone, Mail, Linkedin, Facebook } from 'lucide-react';
+import 'animate.css';
 
 const Header = () => {
-  const [activeModal, setActiveModal] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  const openModal = (modalId) => {
-    setActiveModal(modalId);
-    document.body.style.overflow = 'hidden'; 
-  };
-  
-  const closeModal = () => {
-    setActiveModal(null);
-    document.body.style.overflow = 'auto'; 
-  };
+  const [activeDropdown, setActiveDropdown] = useState(null); // For Mobile
+  const [activeDesktopDropdown, setActiveDesktopDropdown] = useState(null); // For Desktop
+  const [activePage, setActivePage] = useState('');
+
+  useEffect(() => {
+    // Set active page based on current URL
+    const updateActivePage = () => {
+      const currentPath = window.location.pathname;
+      setActivePage(currentPath);
+    };
+
+    updateActivePage();
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    // Close desktop dropdown on click outside
+    const handleClickOutside = () => setActiveDesktopDropdown(null);
+    document.addEventListener('click', handleClickOutside);
+
+    // Listen for URL changes (for SPA navigation)
+    const handlePopState = () => {
+      updateActivePage();
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    setActiveDropdown(null);
   };
-  
-  const menuData = {
-    accueil: {
-      title: "ACCUEIL",
-      sections: [
-        {
-          title: "Menu Accueil",
-          links: [
-            { label: "Sous-menu Accueil 1", url: "/" },
-            { label: "Sous-menu Accueil 2", url: "/" },
-          ]
-        }
-      ]
-    },
-    entreprise: {
-      title: "L'ENTREPRISE",
-      sections: [
-        {
-          title: "A propos",
-          links: [
-            { label: "Qui sommes-nous ?", url: "/entreprise/Qui_Somme_Nous" },
-            { label: "Notre vision", url: "/entreprise/Notre_Vision" },
-            { label: "Notre mission", url: "/entreprise/Notre_Mission" },
-            { label: "Nos valeurs", url: "/entreprise/Nos_Valeurs" },
-          ]
-        },
-        {
-          title: "Notre expertise",
-          links: [
-            { label: "Notre expertise", url: "/expertise" },
-          ]
-        },
-        {
-          title: "Nous Rejoindre",
-          links: [
-            { label: "Nous Rejoindre", url: "/Nous_Recrutons" },
-          ]
-        },
-        {
-          title: "Contact",
-          links: [
-            { label: "Contactez-nous", url: "/contact" },
-          ]
-        }
-      ]
-    },
-    enjeux: {
-      title: "DOMAINES D'INTERVENTION",
-      sections: [
-        {
-          icon: "/styleico.svg",
-          title: "FORESTERIE & ENVIRONNEMENT",
-          links: [
-            { label: "Appui à la conformité réglementaire et à la gouvernance forestière", url: "/domaine-d-intervention/FORESTERIE_ENVIRONNEMENT" },
-            { label: "Solutions fondées sur la nature : production végétale et restauration des écosystèmes", url: "/domaine-d-intervention/FORESTERIE_ENVIRONNEMENT" },
-            { label: "Cartographie opérationnelle et suivi forestier assisté par télédétection", url: "/domaine-d-intervention/FORESTERIE_ENVIRONNEMENT" },
-          ]
-        },
-        {
-          title: "AGRICULTURE",
-          icon: "/studi.svg",
-          links: [
-            { label: "Développement et gestion des exploitations agricoles", url: "/domaine-d-intervention/AGRICULTURE" },
-            { label: "Appui-conseil et accompagnement de projets agricoles", url: "/domaine-d-intervention/NEGOCE_AGRICOLE" },
-            { label: "Formation et transfert de compétences agricoles", url: "/domaine-d-intervention/NEGOCE_AGRICOLE" },
-          ]
-        },
-        {
-          title: "NEGOCE AGRICOLE",
-          icon: "/studi.svg",
-          links: [
-            { label: "Commercialisation et valorisation des produits agricoles", url: "/domaine-d-intervention/AGRICULTURE" },
-            { label: "Intermédiation et partenariat marchand", url: "/domaine-d-intervention/NEGOCE_AGRICOLE" },
-            { label: "Logistique et gestion de la qualité", url: "/domaine-d-intervention/NEGOCE_AGRICOLE" },
-          ]
-        },
-        {
-          title: "ETUDE ET CONSEIL",
-          icon: "/computer.svg",
-          links: [
-            { label: "Etudes de marché et analyse de filières agricoles", url: "/domaine-d-intervention/ETUDE_ET_CONSEIL" },
-            { label: "Etudes de faisabilité et montage de projets agricoles", url: "/domaine-d-intervention/ETUDE_ET_CONSEIL" },
-            { label: "Conseil en financement agricole et accompagnement institutionnel", url: "/domaine-d-intervention/ETUDE_ET_CONSEIL" },
 
-          ]
-        },
-        {
-          title: "DIGITALISATION AGRICOLE",
-          icon: "/agriculture (1).svg",
-          links: [
-            { label: "Conception et déploiement de solutions numériques pour la gestion agricole", url: "/domaine-d-intervention/DIGITALISATION_AGRICOLE" },
-            { label: "Digitalisation des circuits de commercialisation et de traçabilité des produits agricoles", url: "/domaine-d-intervention/DIGITALISATION_AGRICOLE" },
-            { label: "Formation digitale et accompagnement à l’usage des outils numériques agricoles", url: "/domaine-d-intervention/DIGITALISATION_AGRICOLE" },
-          ]
-        },
-      ]
-    },
-    realisation: {
-      title: "Nos Realisations",
-      sections: [
-        {
-          title: "Nos Realisations",
-          links: [
-            { label: "Nos Realisations", url: "/NosRealisations" },
-          ]
-        }
-      ]
-    },
-    actualites: {
-      title: "Actualités",
-      sections: [
-        {
-          title: "Actualités",
-          links: [
-            { label: "Actualités", url: "/actualites" },
-          ]
-        }
-      ]
-    },
-    espace: {
-      title: "Espace Client/Partenaire",
-      sections: [
-        {
-          title: "Espace Client/Partenaire",
-          links: [
-            { label: "Espace Client/Partenaire", url: "/espace-client-partenaire" },
-          ]
-        }
-      ]
-    },
-    // prestations: {
-    //   title: "NOS PRESTATIONS",
-    //   sections: [
-    //     {
-    //       title: "𝐅𝐨𝐫𝐞𝐬𝐭𝐞𝐫𝐢𝐞 & 𝐄𝐧𝐯𝐢𝐫𝐨𝐧𝐧𝐞𝐦𝐞𝐧𝐭",
-    //       icon: "/styleico.svg",
-    //       links: [
-    //         { label: "Agroforesterie & reforestation", url: "/nos-prestation/Agroforesterie" },
-    //         { label: "Suivi de reboisement & réalisation de plans d'aménagement", url: "/nos-prestation/Suivi" },
-    //       ]
-    //     },
-    //     {
-    //       title: "𝐀𝐠𝐫𝐢𝐜𝐮𝐥𝐭𝐮𝐫𝐞",
-    //       icon: "/studi.svg",
-    //       links: [
-    //         { label: "Production de plants forestiers et fruitiers ", url: "/nos-prestation/Production" },
-    //       ]
-    //     },
-    //     {
-    //       title: "𝐄𝐓𝐔𝐃𝐄 𝐄𝐓 𝐂𝐎𝐍𝐒𝐄𝐈𝐋",
-    //       icon: "/computer.svg",
-    //       links: [
-    //         { label: "Télédétection & cartographie forestière", url: "/nos-prestation/Télédétection" },
-    //         { label: "Formation en sylviculture & techniques de production de plants", url: "/nos-prestation/Formation" },
-    //         { label: "Gestion des écosystèmes & sensibilisation des communautés", url: "/nos-prestation/Gestion" },
-    //       ]
-    //     }
-    //   ]
-    // }
-    // contact: {
-    //   title: "Nous recrutons",
-    //   sections: [
-    //     {
-    //       title: "Nous recrutons",
-    //       links: [
-    //         { label: "Nous recrutons", url: "/nous-recrutons" },
-    //       ]
-    //     }
-    //   ]
-    // }
-    
-    
+  const toggleMobileDropdown = (e, name) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveDropdown(activeDropdown === name ? null : name);
   };
-  
+
+  const toggleDesktopDropdown = (e, name) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveDesktopDropdown(prev => (prev === name ? null : name));
+  };
+
+  // Menu Items Configuration - UPDATED path for NousRecrutons
+  const navItems = [
+    { label: 'ACCUEIL', path: '/' },
+    {
+      label: "L'ENTREPRISE",
+      path: '#',
+      isDropdown: true,
+      children: [
+        { label: 'A propos', path: '/a-propos' },
+        { label: 'Notre expertise', path: '/expertise' },
+        { label: 'Nous Rejoindre', path: '/nous-recrutons' }, // Fixed path
+        { label: 'Contact', path: '/contact' }
+      ]
+    },
+    { label: "DOMAINES D'INTERVENTION", path: '/domaines-intervention' },
+    { label: 'NOS PROJETS', path: '/NosRealisations' },
+    { label: 'ACTUALITÉS', path: '/actualites' },
+    { label: 'ESPACE OPPORTUNITÉS', path: '/espace-client-partenaire', isButton: true }
+  ];
+
   return (
     <>
-    <div className="header-menu-system">
-    <header className="shadow-sm py-3 header-menu pt-5">
-        <div className="container">
-          {/* Première ligne: Logo + Liens sociaux */}
-          <div className="d-flex justify-content-between align-items-center header-first-row">
-            <div className="d-flex align-items-center logo-container">
-              <a href="/">
-                <img 
-                  src="/icon.png"
-                  alt="Logo" 
-                  style={{ width: "200px", height: "150px"}}
-                />
+      <header className={`modern-header ${isScrolled ? 'scrolled' : ''}`}>
+        <div className="top-bar">
+          <div className="container d-flex justify-content-between align-items-center">
+            <div className="top-info d-flex gap-4 animate__animated animate__fadeInLeft">
+              <a href="mailto:contact@nya-agritek.com" className="info-link">
+                <Mail size={14} /> <span>contact@nya-agritek.com</span>
+              </a>
+              <a href="tel:+2250586253131" className="info-link">
+                <Phone size={14} /> <span>+225 05 86 25 31 31</span>
               </a>
             </div>
-            
-            <button 
-              className="btn btn-link d-lg-none mobile-menu-btn"
-              onClick={toggleMobileMenu}
-            >
-              <Menu size={24} color="#0a7b8e" />
-            </button>
-            
-            {/* Liens sociaux - desktop uniquement */}
-            <div className="d-none d-lg-flex align-items-center gap-3 header-social-links">
-              <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311" target="_blank" rel="noopener noreferrer" className="btn btn-link p-0 d-flex align-items-center fort header-link">
-                Suivez-nous 
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1">
-                  <path d="M16 8a6 6 0 0 1 6 6v2a6 6 0 0 1-6 6h-4v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2H4a6 6 0 0 1-6-6v-2a6 6 0 0 1 6-6h4v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8h4z"></path>
-                </svg>
+            <div className="top-social d-flex gap-3">
+              <a href="https://www.linkedin.com/company/nya-agritek-sarl/" target="_blank" rel="noreferrer" className="social-link">
+                <Linkedin size={14} />
               </a>
-              <a href="/contact" className="btn btn-link p-0 d-flex align-items-center fort header-link">
-                Contactez-nous 
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1 fort">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
+              <a href="https://www.facebook.com/nya.agritekSarl" target="_blank" rel="noreferrer" className="social-link">
+                <Facebook size={14} />
               </a>
             </div>
           </div>
+        </div>
 
-          {/* Deuxième ligne: Navigation centrée */}
-          <nav className="d-none d-lg-block header-nav-row">
-            <ul className="list-unstyled d-flex justify-content-center mb-0 gap-3 flex-wrap">
-              {Object.keys(menuData).map((menuKey) => (
-                <li key={menuKey}>
-                  <button 
-                    className="btn btn-link text-uppercase fw-bold fort nav-button"
-                    onClick={() =>{
-                      if (menuKey !== 'accueil') {
-                      openModal(menuKey);
-                    } else {
-                      window.location.href = '/';
-                    }
-                    }}
+        <div className="main-nav-container">
+          <div className="container">
+            <nav className="main-nav">
+              {/* Logo */}
+              <a href="/" className="brand-logo">
+                <img src="/icon.png" alt="NYA AGRITEK" className="logo-img" />
+              </a>
+
+              {/* Desktop Menu */}
+              <ul className="desktop-menu">
+                {navItems.map((item, index) => (
+                  <li key={index}
+                      className={`menu-item ${item.isDropdown ? 'has-dropdown' : ''}`}
+                      onMouseEnter={() => !activeDesktopDropdown && setActiveDesktopDropdown(null)}
                   >
-                    {menuKey === 'entreprise' ? "L'Entreprise" : 
-                     menuKey === 'enjeux' ? "Domaines d'intervention" : 
-                     menuKey === 'actualites' ? "Actualités" : 
-                     menuKey === 'realisation' ? "Nos Realistions" : 
-                     menuKey === 'prestations' ? "Nos Prestations" : 
-                     menuKey === 'espace' ? 'Espace Client/Partenaire':
-                     menuKey === 'contact' ? "Nous recrutons" : "Accueil"
-                     }
-                     {menuKey !== 'espace' && <span className="fw-bold nav-dot">o</span>}
-                  </button>
+                    {item.isDropdown ? (
+                      <div className="dropdown-wrapper">
+                         <button
+                            className={`nav-link dropdown-trigger ${activeDesktopDropdown === item.label ? 'active' : ''}`}
+                            onClick={(e) => toggleDesktopDropdown(e, item.label)}
+                         >
+                          {item.label} <ChevronDown size={14} className="chevron" />
+                        </button>
+                        <ul className={`dropdown-menu ${activeDesktopDropdown === item.label ? 'show' : ''}`}>
+                          {item.children.map((subItem, subIndex) => (
+                            <li key={subIndex}>
+                              <a href={subItem.path} className="dropdown-item">
+                                {subItem.label}
+                                <ChevronRight size={14} className="arrow" />
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <a
+                        href={item.path}
+                        className={`nav-link ${item.isButton ? 'cta-button' : ''} ${activePage === item.path ? 'active' : ''}`}
+                      >
+                        {item.label}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Mobile Toggle */}
+              <button className="mobile-toggle" onClick={toggleMobileMenu}>
+                {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </nav>
+          </div>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'active' : ''}`}>
+          <div className="mobile-menu-content">
+            <div className="mobile-header">
+              <span className="mobile-title">Menu</span>
+              <button className="close-btn" onClick={toggleMobileMenu}><X size={24} /></button>
+            </div>
+            <ul className="mobile-links">
+              {navItems.map((item, index) => (
+                <li key={index}>
+                  {item.isDropdown ? (
+                    <div className="mobile-dropdown">
+                      <button 
+                        className={`mobile-link has-child ${activeDropdown === item.label ? 'active' : ''}`}
+                        onClick={(e) => toggleMobileDropdown(e, item.label)}
+                      >
+                        {item.label}
+                        <ChevronRight size={16} className="mobile-arrow" />
+                      </button>
+                      <div className="sub-menu-container" style={{ maxHeight: activeDropdown === item.label ? '500px' : '0' }}>
+                        {item.children.map((subItem, subIndex) => (
+                          <a key={subIndex} href={subItem.path} className="mobile-sub-link">
+                            {subItem.label}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <a href={item.path} className={`mobile-link ${activePage === item.path ? 'active' : ''}`}>
+                      {item.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
-          </nav>
+          </div>
         </div>
       </header>
 
-      <div className={`mobile-menu ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
-        <div className="mobile-menu-header">
-          <span className="mobile-menu-title">Menu</span>
-          <button className="btn btn-link mobile-close-btn" onClick={toggleMobileMenu}>
-            <X size={15} color="#0a7b8e" className="fort" />
-          </button>
-        </div>
-        <div className="mobile-menu-content">
-          <div className="mobile-links mb-4">
-            <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311" target="_blank" rel="noopener noreferrer" className="mobile-link">Suivez-nous</a>
-            <a href="/contact" className="mobile-link">Contactez-nous</a>
-          </div>
-          <ul className="mobile-nav-list">
-            {Object.keys(menuData).map((menuKey) => (
-              <li key={menuKey}>
-                <button 
-                  className="mobile-nav-button"
-                  onClick={() => {
-                    if (menuKey !== 'accueil') {
-                      openModal(menuKey);
-                      setIsMobileMenuOpen(false);
-                  } else {
-                    window.location.href = '/';
-                  }
-                  }}
-                >
-                  {menuKey === 'entreprise' ? "L'Entreprise" : 
-                   menuKey === 'enjeux' ? "Domaines d'intervention" :
-                   menuKey === 'realisation' ? "Nos Realistions" : 
-                   menuKey === 'actualites' ? "Actualités" : 
-                   menuKey === 'prestations' ? "Nos Prestations" : 
-                   menuKey === 'espace' ? 'Espace Client/Partenaire':
-                   menuKey === 'contact' ? "Nous recrutons" : "Accueil"}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      
-      {isMobileMenuOpen && (
-        <div className="mobile-menu-overlay" onClick={toggleMobileMenu} />
-      )}
-      
-      {Object.keys(menuData).map((menuKey) => (
-        <div 
-          key={menuKey}
-          className={`modal-overlay ${activeModal === menuKey ? 'show' : ''}`}
-        >
-          <div className="container modal-container">
-          <div className="modal-header">
-            <button className="btn btn-link modal-close-btn" onClick={closeModal}>
-              <X size={24} />
-            </button>
-            <h2 className="modal-title">{menuData[menuKey].title}</h2>
-          </div>
-            
-            <div className="modal-content-grid">
-              {menuData[menuKey].sections.map((section, idx) => (
-                <div key={idx} className={`col-md-${menuKey === 'entreprise' ? '3' : '4'}`}>
-                  {section.icon && (
-                    <img src={section.icon} alt={section.title} style={{ width: "15px", height: "15px", objectFit: "contain" }}/>
-                  )}
-                  <h3 className="modal-section-title">{section.title}</h3>
-                  <ul className="list-unstyled">
-                    {section.links.map((link, linkIdx) => (
-                      <li key={linkIdx} className="mb-2">
-                        <a href={link.url} className="modal-link">
-                          <span className="modal-link-bullet">◦</span>
-                          {link.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-            
-            <div className="modal-footer">
-              <a href="/" className="modal-footer-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="me-2">
-                  <path d="M19 12H5"></path>
-                  <path d="M12 19l-7-7 7-7"></path>
-                </svg>
-                Retour page d'accueil
-              </a>
-              
-              <div className="modal-footer-links">
-                <a href="https://www.linkedin.com/in/nya-agritek-sarl-0754ab311" className="modal-footer-link">
-                  Suivez-nous 
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1">
-                    <path d="M16 8a6 6 0 0 1 6 6v2a6 6 0 0 1-6 6h-4v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2H4a6 6 0 0 1-6-6v-2a6 6 0 0 1 6-6h4v2a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8h4z"></path>
-                  </svg>
-                </a>
-                {/* <a href="/contact" className="modal-footer-link">
-                  Contactez-nous 
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a7b8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-1">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                </a> */}
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <style jsx>{`
-      .header-menu-system {
-        padding-top: env(safe-area-inset-top);
-      }
-
-      .fort:hover {
-        color: #9cc24d;
-      }
-      .fort {
-        color: #0a7b8e;
-      }
-      .header-menu {
-        clip-path: ellipse(110% 100% at 50% 0%);
-        background-color: white;
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
-      }
-
-      .logo-container {
-        margin-top: 0.5rem;
-        flex-shrink: 0;
-      }
-      .logo-text {
-        font-size: 1.9rem;
-        color: #0a7b8e;
-        font-weight: bold;
-        font-family: 'Julius Sans One', Arial, sans-serif;
-        margin-left: 0.5rem;
-        white-space: nowrap;
-      }
-
-      .header-link {
-        text-decoration: none !important;
-        font-size: 0.8rem;
-      }
-      .nav-button {
-        text-decoration: none !important;
-        padding: 0.3rem 0;
-        font-family: 'Julius Sans One';
-        font-size: 13px;
-        white-space: nowrap;
-      }
-      .nav-dot {
-        font-size: 6px;
-        padding-left: 4px;
-      }
-
-      .mobile-menu-btn {
-        padding: 0.5rem;
-        margin: 0;
-        background: none;
-        border: none;
-        min-width: 44px;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .mobile-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 85vw;
-        max-width: 320px;
-        height: 100vh;
-        background-color: white;
-        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1060;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-top: env(safe-area-inset-top);
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
-        padding-bottom: env(safe-area-inset-bottom);
-      }
-      
-      .mobile-menu-open {
-        right: 0;
-      }
-      
-      .mobile-menu-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.5rem 1rem 1rem 1rem;
-        border-bottom: 1px solid #eee;
-        position: sticky;
-        top: 0;
-        background: white;
-        z-index: 1;
-      }
-      
-      .mobile-menu-title {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: #0a7b8e;
-        font-family: 'Julius Sans One', Arial, sans-serif;
-      }
-      
-      .mobile-close-btn {
-        padding: 0.5rem;
-        margin: 0;
-        background: none;
-        border: none;
-        min-width: 35px;
-        min-height: 35px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .mobile-menu-content {
-        padding: 1rem;
-        flex: 1;
-      }
-      
-      .mobile-links {
-        padding-bottom: 1rem;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 1rem;
-      }
-      
-      .mobile-link {
-        display: flex;
-        align-items: center;
-        padding: 1rem 0;
-        color: #0a7b8e;
-        text-decoration: none;
-        font-size: 1rem;
-        min-height: 48px;
-        border-bottom: 1px solid #f5f5f5;
-      }
-      
-      .mobile-link:hover {
-        color: #9cc24d;
-        background-color: #f8f9fa;
-      }
-      
-      .mobile-nav-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      
-      .mobile-nav-button {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        padding: 1.2rem 0;
-        border: none;
-        background: none;
-        text-align: left;
-        color: #0a7b8e;
-        font-size: 1.1rem;
-        font-family: 'Julius Sans One', Arial, sans-serif;
-        border-bottom: 1px solid #f0f0f0;
-        cursor: pointer;
-        min-height: 56px;
-        position: relative;
-      }
-      
-      .mobile-nav-button:hover,
-      .mobile-nav-button:focus {
-        color: #9cc24d;
-        background-color: #f8f9fa;
-        outline: none;
-      }
-      
-      .mobile-nav-button::after {
-        content: '›';
-        position: absolute;
-        right: 0;
-        font-size: 1.5rem;
-        color: #ccc;
-      }
-      
-      .mobile-menu-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.6);
-        z-index: 1055;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        backdrop-filter: blur(2px);
-        -webkit-backdrop-filter: blur(2px);
-      }
-
-      .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(255, 255, 255, 0.98);
-        z-index: 1050;
-        padding-top: env(safe-area-inset-top);
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
-        padding-bottom: env(safe-area-inset-bottom);
-        transform: translateY(100%);
-        opacity: 0;
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        pointer-events: none;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-      
-      .modal-overlay.show {
-        transform: translateX(0);
-        opacity: 1;
-        pointer-events: all;
-      }
-
-      .modal-container {
-        padding: 1rem;
-        height: 100vh;
-        width: 60%;
-        overflow-y: none;
-        -webkit-overflow-scrolling: touch;
-        position: absolute;
-        top: 0;
-      }
-      
-      
-      .modal-header {
-        text-align: center;
-        margin: 3rem 0 2rem 0;
-        padding-top: 2rem;
-      }
-      
-      .modal-title {
-        font-weight: bold;
-        color: #0a7b8e;
-        font-size: 1rem;
-        font-family: 'Julius Sans One', Arial, sans-serif;
-      }
-      
-      .modal-content-grid {
-        display: flex;
-        flex-wrap: wrap;
-      }
-      
-      .modal-section-title {
-        color: #83b614;
-        margin-bottom: 0.2rem;
-        font-size: 0.9rem;
-        font-weight: 600;
-      }
-      
-      .modal-link {
-  display: flex;
-  align-items: flex-start; 
-  color: #0a7b8e;
-  text-decoration: none;
-  padding: 0.1rem 0;
-  font-size: 0.8rem;
-}
-      
-      .modal-link:hover {
-        color: #9cc24d;
-      }
-      
-      .modal-link-bullet {
-        margin-right: 0.8rem;
-        color: #83b614;
-        font-size: 1.2rem;
-        margin-top: -5px;
-        padding-left: 5px;
-      }
-      
-      .modal-footer {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        border-top: 1px solid #dee2e6;
-        margin-bottom: calc(2rem + env(safe-area-inset-bottom));
-      }
-      
-      .modal-footer-link {
-        display: flex;
-        align-items: center;
-        color: #0a7b8e;
-        text-decoration: none;
-        padding: 0.2rem 0;
-        font-size: 0.9rem;
-      }
-      
-      .modal-footer-link:hover {
-        color: #9cc24d;
-      }
-      
-      .modal-footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      @media screen and (max-width: 414px) {
-        .logo-text {
-          font-size: 1rem;
-          line-height: 1.2;
-        }
-        .logo-container {
-          margin-top: 0.25rem;
-        }
-        .header-link {
-          font-size: 0.7rem;
-        }
-        .nav-button {
-          font-size: 18px !important;
-          padding: 0.2rem 0;
-        }
-        .modal-title {
-          font-size: 1rem;
-        }
-        .mobile-menu {
-          width: 90vw;
-        }
-      }
-
-      @media screen and (max-width: 375px) {
-        .logo-text {
-          font-size: 0.9rem;
-        }
-        .header-link {
-          font-size: 0.6rem;
-        }
-        .modal-container {
-          padding: 0.5rem;
-        }
-        .mobile-menu {
-          width: 95vw;
-        }
-      }
-
-      @media (hover: none) and (pointer: coarse) {
-        .mobile-nav-button,
-        .mobile-link,
-        .modal-link,
-        .modal-footer-link {
-          min-height: 48px;
+      <style>{`
+        /* Variables & Reset */
+        :root {
+          --primary: #1879be;
+          --secondary: #f3a31a;
+          --tertiary: #82c28a;
+          --dark: #1e334e;
+          --light: #f8fafc;
+          --glass-bg: rgba(255, 255, 255, 0.98);
+          --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+          --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+          --font-julius: 'Julius Sans One', sans-serif;
+          --font-main: 'Gill Sans MT', 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
         }
 
-      }
-        .modal-overlay {
+        /* Top Bar */
+        .top-bar {
+          background: var(--primary);
+          color: white;
+          font-size: 13px;
+          padding: 8px 0;
+          transition: all 0.3s ease;
+        }
+        .modern-header.scrolled .top-bar {
+          height: 0;
+          padding: 0;
+          overflow: hidden;
+          opacity: 0;
+        }
+        .info-link {
+          color: inherit;
+          text-decoration: none;
           display: flex;
-          justify-content: center;
+          align-items: center;
+          gap: 6px;
+          transition: color 0.2s;
+          font-family: var(--font-main);
+        }
+        .info-link:hover, .social-link:hover {
+          color: var(--secondary);
+        }
+        .social-link {
+          color: inherit;
+        }
+
+        /* Main Header */
+        .modern-header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 1000;
+          background: transparent;
+          transition: all 0.3s ease;
+          font-family: var(--font-main);
+        }
+        .modern-header.scrolled {
+          background: white;
+          box-shadow: var(--shadow-sm);
+        }
+        .modern-header:not(.scrolled) .main-nav-container {
+          background: white;
+          border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .main-nav-container {
+          padding: 1rem 0;
+          transition: padding 0.3s ease;
+        }
+        .modern-header.scrolled .main-nav-container {
+          padding: 0.8rem 0;
+        }
+
+        .main-nav {
+          display: flex;
+          justify-content: space-between;
           align-items: center;
         }
 
-        .modal-container {
-          width: 70%;
-          max-height: 80vh;
-          height: auto;
-          background: white;
-          padding: 2rem;
-          overflow-y: none;
+        /* Branding */
+        .brand-logo {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          text-decoration: none;
+        }
+        .logo-img {
+          height: 90px;
+          width: auto;
+          transition: height 0.3s ease;
+        }
+        .modern-header.scrolled .logo-img {
+          height: 65px;
+        }
+        .logo-text {
+          font-family: Arial, sans-serif;
+          font-size: 1.5rem;
+          font-weight: 900;
+          color: var(--primary);
+          line-height: 1;
+        }
+        .logo-text .highlight {
+          color: var(--secondary);
         }
 
-        .modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #ddd; /* fine ligne de séparation */
-  padding-bottom: 0.75rem;
-  margin-bottom: 1.5rem;
-}
+        /* Desktop Menu */
+        .desktop-menu {
+          display: none;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          gap: 2rem;
+          align-items: center;
+        }
+        @media (min-width: 992px) {
+          .desktop-menu {
+            display: flex;
+          }
+        }
 
-.modal-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #0a7b8e;
-  margin: 0;
-  font-family: 'Julius Sans One', Arial, sans-serif;
-}
+        .nav-link {
+          font-family: var(--font-main);
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: var(--dark);
+          text-decoration: none;
+          padding: 0.5rem 0;
+          position: relative;
+          transition: color 0.3s ease;
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
 
-.modal-close-btn {
-  border-radius: 50%;
-  z-index: 10;
-  background: none;
-  border: none;
-  color: #0a7b8e;
-  font-size: 1.3rem;
-  cursor: pointer;
-  padding: 0.25rem;
-  transition: color 0.2s ease;
-}
+        .nav-link:hover, .menu-item:hover .nav-link {
+          color: var(--primary);
+        }
 
-.modal-close-btn:hover {
-  color: #9cc24d;
-}
+        .nav-link.active {
+          color: var(--primary);
+        }
 
-    `}</style>
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: var(--secondary);
+          transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+          width: 100%;
+        }
+
+        .nav-link.active::after {
+          width: 100%;
+          background: var(--secondary);
+        }
+
+        /* CTA Button */
+        .cta-button {
+          background: var(--primary);
+          color: white !important;
+          padding: 0.6rem 1.5rem !important;
+          border-radius: 5px;
+          transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+          background: var(--secondary);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0,0,0, 0.1);
+          color: white !important;
+        }
+        .cta-button::after {
+          display: none;
+        }
+
+        /* Dropdown */
+        .menu-item {
+          position: relative;
+        }
+        
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);
+          background: white;
+          min-width: 240px;
+          padding: 1rem 0;
+          box-shadow: var(--shadow-md);
+          border-radius: 4px;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+          list-style: none;
+          z-index: 105;
+          border-top: 3px solid var(--secondary);
+        }
+        
+        .menu-item:hover .dropdown-menu,
+        .dropdown-menu.show {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.8rem 1.5rem;
+          color: var(--dark);
+          text-decoration: none;
+          font-family: var(--font-main);
+          font-size: 0.9rem;
+          transition: all 0.2s ease;
+          border-left: 2px solid transparent;
+        }
+
+        .dropdown-item:hover {
+          background: #f8fafc;
+          color: var(--primary);
+          border-left-color: var(--secondary);
+          padding-left: 1.8rem;
+        }
+        
+        .dropdown-item .arrow {
+          opacity: 0;
+          transform: translateX(-10px);
+          transition: all 0.2s ease;
+        }
+        .dropdown-item:hover .arrow {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        .chevron {
+            transition: transform 0.3s;
+        }
+        .menu-item:hover .chevron, 
+        .nav-link.active .chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Mobile Header */
+        .mobile-toggle {
+          display: block;
+          background: none;
+          border: none;
+          color: var(--primary);
+          padding: 0;
+          cursor: pointer;
+        }
+        @media (min-width: 992px) {
+          .mobile-toggle {
+            display: none;
+          }
+        }
+
+        .mobile-menu-overlay {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 85%;
+          max-width: 400px;
+          height: 100vh;
+          background: white;
+          box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+          z-index: 1001;
+          transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+          overflow-y: auto;
+        }
+        .mobile-menu-overlay.active {
+          right: 0;
+        }
+
+        .mobile-menu-content {
+          padding: 2rem;
+        }
+
+        .mobile-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 3rem;
+          border-bottom: 2px solid #f1f1f1;
+          padding-bottom: 1rem;
+        }
+
+        .mobile-title {
+          font-family: var(--font-julius);
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--primary);
+        }
+
+        .close-btn {
+          background: none;
+          border: none;
+          color: #999;
+        }
+
+        .mobile-links {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .mobile-link {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          padding: 1rem 0;
+          font-size: 1.1rem;
+          color: var(--dark);
+          text-decoration: none;
+          border-bottom: 1px solid #f1f1f1;
+          background: none;
+          border-left: none;
+          border-right: none;
+          border-top: none;
+          text-align: left;
+          font-family: var(--font-main);
+          font-weight: 600;
+        }
+
+        .mobile-link.active, .mobile-link:hover {
+          color: var(--primary);
+        }
+        
+        .mobile-arrow {
+          transition: transform 0.3s;
+        }
+        .mobile-link.active .mobile-arrow {
+          transform: rotate(90deg);
+        }
+
+        .sub-menu-container {
+          overflow: hidden;
+          transition: max-height 0.4s ease;
+          background: #f8fafc;
+        }
+        
+        .mobile-sub-link {
+          display: block;
+          padding: 0.8rem 0 0.8rem 2rem;
+          color: #666;
+          text-decoration: none;
+          font-family: var(--font-main);
+          font-size: 0.95rem;
+          border-bottom: 1px dashed #eee;
+        }
+        .mobile-sub-link:hover {
+            color: var(--secondary);
+        }
+      `}</style>
     </>
   );
 };
