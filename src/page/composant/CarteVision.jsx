@@ -529,7 +529,6 @@ const styles = {
   },
   textCol: {
     paddingRight: '20px',
-    textAlign: 'justify'
   },
   badge: {
     color: '#1879be',
@@ -551,7 +550,9 @@ const styles = {
     fontSize: '1.1rem',
     color: '#64748b',
     lineHeight: '1.8',
-    marginBottom: '30px'
+    marginBottom: '30px',
+        textAlign: 'justify'
+
   },
   list: {
     listStyle: 'none',
