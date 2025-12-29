@@ -34,14 +34,14 @@ const NewsCarousel = () => {
       id: 2,
       image: "/images/domain_agriculture.png",
       title: "AGRICULTURE",
-      description: "Accompagner la création, l’optimisation et la pérennisation des exploitations agricoles en offrant des solutions techniques...",
+      description: "Accompagner la création, l'optimisation et la pérennisation des exploitations agricoles en offrant des solutions techniques...",
       link: "/domaine-d-intervention/AGRICULTURE"
     },
     {
       id: 3,
       image: "/images/domain_trading.png",
       title: "NEGOCE AGRICOLE",
-      description: "Faciliter l’accès aux marchés, optimiser la chaîne de valeur et garantir la qualité des produits agricoles à travers des services...",
+      description: "Faciliter l'accès aux marchés, optimiser la chaîne de valeur et garantir la qualité des produits agricoles à travers des services...",
       link: "/domaine-d-intervention/NEGOCE_AGRICOLE"
     },
     {
@@ -61,23 +61,14 @@ const NewsCarousel = () => {
   ];
 
   const totalSlides = articles.length;
+  const maxIndex = Math.max(0, totalSlides - cardsPerView);
 
   const nextSlide = () => {
-    if (currentIndex < totalSlides - cardsPerView) {
-      setCurrentIndex((prev) => prev + 1);
-    }
+    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
   };
 
   const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
-    }
-  };
-
-  const getTranslateX = () => {
-     // Calculate width percentage to shift based on cardsPerView
-     const cardWidth = 100 / cardsPerView;
-     return currentIndex * cardWidth;
+    setCurrentIndex((prev) => Math.max(prev - 1, 0));
   };
 
   return (
@@ -97,9 +88,9 @@ const NewsCarousel = () => {
                   <ChevronLeft size={24} />
               </button>
               <button 
-                style={{...styles.controlBtn, ...(currentIndex >= totalSlides - cardsPerView ? styles.disabledBtn : {})}} 
+                style={{...styles.controlBtn, ...(currentIndex >= maxIndex ? styles.disabledBtn : {})}} 
                 onClick={nextSlide}
-                disabled={currentIndex >= totalSlides - cardsPerView}
+                disabled={currentIndex >= maxIndex}
               >
                   <ChevronRight size={24} />
               </button>
@@ -109,14 +100,12 @@ const NewsCarousel = () => {
         <div style={styles.carouselContainer}>
             <div style={{
               ...styles.track,
-              transform: `translateX(-${getTranslateX()}%)`,
-              // Fix width calculation to ensure proper sliding
-              width: `${(totalSlides / cardsPerView) * 100}%` 
+              transform: `translateX(calc(-${currentIndex} * (100% / ${cardsPerView}) - ${currentIndex * 30}px))`
             }}>
                 {articles.map((article) => (
                     <div key={article.id} style={{
                         ...styles.cardWrapper,
-                        width: `${100 / totalSlides}%`
+                        flex: `0 0 calc((100% / ${cardsPerView}) - 30px)`
                     }}>
                         <div style={styles.card}>
                             <div style={styles.imageBlock}>
@@ -126,7 +115,7 @@ const NewsCarousel = () => {
                             <div style={styles.content}>
                                 <h3 style={styles.cardTitle}>{article.title}</h3>
                                 <p style={styles.cardDesc}>{article.description}</p>
-                                <a href="/domaines-intervention" style={styles.linkBtn}>
+                                <a href={article.link} style={styles.linkBtn}>
                                     En savoir plus <ArrowRight size={16} />
                                 </a>
                             </div>
@@ -178,7 +167,7 @@ const styles = {
     fontSize: '2.5rem',
     color: '#1e334e',
     fontWeight: '900',
-    fontFamily: "'Julius Sans One', sans-serif', serif", // Fixed visual font suggestion
+    fontFamily: "'Julius Sans One', sans-serif",
     margin: 0
   },
   controls: {
@@ -200,7 +189,7 @@ const styles = {
   },
   disabledBtn: {
     opacity: 0.5,
-    cursor: 'default',
+    cursor: 'not-allowed',
     background: '#f1f5f9'
   },
   carouselContainer: {
@@ -209,10 +198,10 @@ const styles = {
   },
   track: {
     display: 'flex',
+    gap: '30px',
     transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)'
   },
   cardWrapper: {
-    padding: '0 15px',
     boxSizing: 'border-box'
   },
   card: {
@@ -223,8 +212,9 @@ const styles = {
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    transition: 'transform 0.3s ease',
-    border: '1px solid #f1f5f9'
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    border: '1px solid #f1f5f9',
+    cursor: 'pointer'
   },
   imageBlock: {
     height: '220px',
@@ -269,7 +259,7 @@ const styles = {
     display: 'inline-flex',
     alignItems: 'center',
     gap: '8px',
-    background: '#1879be', // Brand Blue
+    background: '#1879be',
     color: 'white',
     padding: '12px 24px',
     borderRadius: '50px',
@@ -292,8 +282,7 @@ const styles = {
     fontSize: '1rem',
     border: '2px solid #1e334e',
     transition: 'all 0.3s',
-    cursor: 'pointer',
-    marginTop: '20px'
+    cursor: 'pointer'
   }
 };
 
